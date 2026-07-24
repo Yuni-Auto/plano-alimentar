@@ -2,7 +2,12 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F4">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Plano Alimentar">
 <title>Plano Alimentar</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -54,7 +59,8 @@ header p { font-size: 14px; color: var(--muted); }
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin: 0 -1.5rem 2rem;
+  margin: 0 -1.25rem 1.25rem;
+  border-radius: 18px 18px 0 0;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 .tracker-left { display: flex; flex-direction: column; gap: 2px; }
@@ -92,9 +98,20 @@ header p { font-size: 14px; color: var(--muted); }
 
 /* Meals */
 .meal { margin-bottom: 1.5rem; }
-.meal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.6rem; }
+.meal-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 0.6rem;
+  cursor: pointer; user-select: none;
+}
 .meal-emoji { font-size: 18px; line-height: 1; }
 .meal-title { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--text); flex: 1; }
+.meal-chevron {
+  font-size: 12px; color: var(--muted); flex-shrink: 0;
+  transition: transform 0.25s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.meal.collapsed .meal-header { margin-bottom: 0; }
+.meal.collapsed .card { display: none; }
+.meal.collapsed .meal-chevron { transform: rotate(-90deg); }
 .kcal-pill {
   font-size: 12px; padding: 3px 10px; border-radius: 99px;
   background: var(--border); color: var(--muted); font-weight: 400;
@@ -105,6 +122,25 @@ header p { font-size: 14px; color: var(--muted); }
   border-radius: 14px;
   padding: 1rem 1.25rem;
 }
+.meals-wrapper {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.25rem 1.25rem 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.meals-wrapper-title {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.meals-wrapper .meal:last-child { margin-bottom: 0.5rem; }
 .option-label {
   font-size: 11px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.06em;
@@ -491,14 +527,12 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
 
 /* ── Histórico diário ── */
 .hist-section { margin-top: 1.5rem; }
-.hist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+.hist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; cursor: pointer; user-select: none; }
+.hist-chevron { font-size: 12px; color: var(--muted); flex-shrink: 0; transition: transform 0.25s ease; }
+.hist-section.collapsed .hist-header { margin-bottom: 0; }
+.hist-section.collapsed .hist-body-wrap { display: none; }
+.hist-section.collapsed .hist-chevron { transform: rotate(-90deg); }
 .hist-title { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--text); }
-.hist-save-btn {
-  background: var(--accent); color: #fff; border: none; border-radius: 8px;
-  padding: 6px 14px; font-size: 12px; font-family: 'DM Sans', sans-serif;
-  cursor: pointer; transition: opacity 0.15s;
-}
-.hist-save-btn:hover { opacity: 0.85; }
 .hist-empty { font-size: 13px; color: var(--muted); text-align: center; padding: 1.5rem 0; }
 .hist-list { display: flex; flex-direction: column; gap: 8px; }
 .hist-row {
@@ -539,22 +573,17 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
 
 /* ── Suplementos ── */
 .suplem-section { margin-top: 1.5rem; }
-.suplem-title { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
-.suplem-subtitle { font-size: 12px; color: var(--muted); margin-bottom: 1rem; }
-.suplem-week-nav { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
-.suplem-week-label { font-size: 13px; color: var(--muted); flex: 1; text-align: center; }
-.suplem-grid { display: flex; flex-direction: column; gap: 14px; }
-.suplem-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
-.suplem-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.suplem-icon { font-size: 20px; line-height: 1; }
-.suplem-info { flex: 1; }
-.suplem-name { font-size: 14px; font-weight: 500; color: var(--text); }
-.suplem-dose { font-size: 12px; color: var(--muted); }
-.suplem-week-pct { font-size: 12px; font-weight: 500; color: var(--accent); }
-.suplem-days { display: flex; gap: 6px; }
-.suplem-day { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.suplem-day-label { font-size: 10px; color: var(--muted); font-weight: 500; text-transform: uppercase; }
-.suplem-dots { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.suplem-title { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--text); }
+.suplem-subtitle { font-size: 12px; color: var(--muted); margin: 0.25rem 0 1rem; }
+.suplem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.suplem-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; }
+.suplem-card-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.suplem-icon { font-size: 17px; line-height: 1.2; }
+.suplem-info { flex: 1; min-width: 0; }
+.suplem-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.suplem-dose { font-size: 10.5px; color: var(--muted); line-height: 1.3; }
+.suplem-week-pct { font-size: 11px; font-weight: 500; color: var(--accent); white-space: nowrap; }
+.suplem-dots-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .suplem-dot {
   width: 22px; height: 22px; border-radius: 50%;
   border: 1.5px solid var(--border); background: #fff;
@@ -568,8 +597,83 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   border: 1.5px solid #fff; border-top: none; border-left: none;
   transform: rotate(45deg) translate(-1px,-1px);
 }
-.suplem-dot.today-col { border-color: var(--gold); }
-.suplem-dot.today-col.done { background: var(--accent); border-color: var(--accent); }
+
+/* ── Controle de Água ── */
+.agua-section { margin-top: 1.5rem; }
+.agua-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.agua-title { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.agua-meta-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.agua-meta-label b { color: var(--text); font-weight: 500; }
+.agua-meta-btn {
+  background: none; border: 1px solid var(--border); border-radius: 8px;
+  padding: 6px 12px; font-size: 12px; color: var(--text);
+  cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.15s; white-space: nowrap;
+}
+.agua-meta-btn:hover { background: var(--bg); }
+.agua-progress-wrap {
+  width: 100%; height: 8px; background: var(--border);
+  border-radius: 99px; overflow: hidden; margin-top: 14px;
+}
+.agua-progress-fill {
+  height: 100%; background: #4A90D9; border-radius: 99px;
+  transition: width 0.4s cubic-bezier(.4,0,.2,1); width: 0%;
+}
+.agua-progress-text { font-size: 12px; color: var(--muted); text-align: right; margin-top: 6px; }
+.agua-subtitle {
+  font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--muted); margin: 18px 0 10px;
+}
+.agua-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+}
+.agua-item {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 8px; text-align: center; cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+}
+.agua-item:hover { border-color: #4A90D9; transform: translateY(-1px); }
+.agua-item-icon { font-size: 22px; line-height: 1; margin-bottom: 6px; }
+.agua-item-name { font-size: 12px; color: var(--text); font-weight: 500; }
+.agua-item-pct { font-size: 11px; color: #4A90D9; margin-top: 2px; }
+.agua-week-nav { display: flex; align-items: center; gap: 10px; margin: 18px 0 12px; }
+.agua-week-label { font-size: 13px; color: var(--muted); flex: 1; text-align: center; }
+.agua-days { display: flex; gap: 6px; align-items: flex-end; }
+.agua-day { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.agua-day-bar-wrap {
+  width: 100%; max-width: 34px; height: 60px; background: var(--border);
+  border-radius: 8px; overflow: hidden; display: flex; align-items: flex-end;
+  cursor: default;
+}
+.agua-day-bar-fill { width: 100%; background: #4A90D9; border-radius: 8px 8px 0 0; transition: height 0.3s; }
+.agua-day-label { font-size: 11px; color: var(--muted); font-weight: 500; text-transform: uppercase; }
+.agua-day.today-col .agua-day-label { color: var(--gold); font-weight: 600; }
+.agua-day.today-col .agua-day-bar-wrap { box-shadow: 0 0 0 1.5px var(--gold); }
+
+/* Histórico semanal de suplementos — layout tipo pirulito (haste + bolinha) */
+.suplweek-days { display: flex; gap: 6px; align-items: flex-end; }
+.suplweek-day { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.suplweek-day-bar-wrap {
+  width: 100%; max-width: 34px; height: 60px;
+  position: relative; display: flex; align-items: flex-end; justify-content: center;
+  cursor: default;
+}
+.suplweek-day-bar-wrap::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 2px; background: var(--border); transform: translateX(-50%);
+}
+.suplweek-day-bar-fill { width: 2px; background: transparent; position: relative; transition: height 0.3s; }
+.suplweek-day-bar-fill::after {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #4A90D9;
+  box-shadow: 0 0 0 3px var(--card);
+  transition: top 0.3s, background 0.3s;
+}
+.suplweek-day-label { font-size: 11px; color: var(--muted); font-weight: 500; text-transform: uppercase; }
+.suplweek-day.today-col .suplweek-day-label { color: var(--gold); font-weight: 600; }
+.suplweek-day.today-col .suplweek-day-bar-fill::after { background: var(--gold); }
 
 /* ── Alimentos extras ── */
 .extra-toggle {
@@ -643,6 +747,65 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   transition: color 0.15s; line-height: 1;
 }
 .extra-del:hover { color: #C0392B; }
+
+/* ── Responsivo / Mobile ── */
+html { -webkit-text-size-adjust: 100%; }
+body {
+  padding-left: max(1.5rem, env(safe-area-inset-left));
+  padding-right: max(1.5rem, env(safe-area-inset-right));
+  padding-bottom: max(6rem, calc(env(safe-area-inset-bottom) + 2rem));
+}
+img, svg { max-width: 100%; }
+button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 640px) {
+  body { padding: 1.5rem 1rem 5rem; padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right)); }
+  header { margin-bottom: 1.75rem; }
+  header h1 { font-size: 1.55rem; }
+  header p { font-size: 13px; }
+
+  .card, .summary-card, .meals-wrapper { padding-left: 1rem; padding-right: 1rem; }
+
+  .tracker { margin: 0 -1rem 1.25rem; padding: 10px 1rem; gap: 8px; }
+  .tracker-kcal { font-size: 1.2rem; }
+  .progress-bar-wrap { width: 96px; }
+  .btn-reset { padding: 5px 9px; font-size: 11px; }
+
+  .macro-grid { gap: 6px; }
+  .macro-val { font-size: 16px; }
+  .macro-card { padding: 8px 4px; }
+
+  .totals-grid { gap: 8px; }
+  .total-box { padding: 10px 10px; }
+  .total-box-val { font-size: 1.1rem; }
+
+  .suplem-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .report-summary { grid-template-columns: 1fr; }
+
+  .checkin-table th { font-size: 9px; padding: 0 2px 8px; }
+  .checkin-table td { padding: 4px 2px; }
+  .ci-dot { width: 24px; height: 24px; }
+  .row-name { font-size: 12px; }
+  .row-icon { font-size: 14px; }
+
+  .hist-row { flex-wrap: wrap; gap: 8px 12px; padding: 10px 12px; }
+  .hist-bar-wrap { order: 5; flex-basis: 100%; }
+
+  .agua-day-bar-wrap, .suplweek-day-bar-wrap { max-width: 28px; }
+  .extra-inputs { flex-wrap: wrap; }
+  .extra-input-kcal { width: 100%; }
+}
+
+@media (max-width: 380px) {
+  header h1 { font-size: 1.35rem; }
+  .tracker { flex-wrap: wrap; }
+  .tracker-right { align-items: flex-start; width: 100%; }
+  .progress-bar-wrap { width: 100%; }
+  .suplem-grid { grid-template-columns: 1fr; }
+  .macro-grid { grid-template-columns: repeat(3, 1fr); }
+}
 </style>
 </head>
 <body>
@@ -653,27 +816,98 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
     <p>Clique nos itens para registrar o que comeu</p>
   </header>
 
-  <!-- Sticky tracker -->
-  <div class="tracker" id="tracker">
-    <div class="tracker-left">
-      <div class="tracker-label">Consumido hoje</div>
-      <div class="tracker-kcal" id="tracker-val">0 <span>kcal</span></div>
-    </div>
-    <div class="tracker-right">
-      <div class="progress-bar-wrap">
-        <div class="progress-bar-fill" id="progress-fill"></div>
+  <!-- CONTROLE DE ÁGUA -->
+  <div class="summary-card agua-section" id="agua-section">
+    <div class="agua-header">
+      <div>
+        <div class="agua-title">💧 Controle de Água</div>
+        <div class="agua-meta-label">Meta de hoje: <b id="agua-meta-label"></b></div>
       </div>
-      <div class="tracker-estimado" id="tracker-pct">0% da meta (1.600 kcal)</div>
+      <button class="agua-meta-btn" onclick="ajustarMetaAgua()">Ajustar meta</button>
     </div>
-    <button class="btn-reset" onclick="resetAll()">Resetar</button>
+
+    <div class="agua-progress-wrap">
+      <div class="agua-progress-fill" id="agua-progress-fill"></div>
+    </div>
+    <div class="agua-progress-text" id="agua-progress-text">0 / 2.500 ml de água (0%)</div>
+
+    <div class="agua-subtitle">O que você bebeu?</div>
+    <div class="agua-grid" id="agua-grid"></div>
   </div>
 
+  <!-- HISTÓRICO DE ÁGUA -->
+  <div class="summary-card hist-section" id="aguahist-section" data-hist-id="aguahist">
+    <div class="hist-header" onclick="toggleHistSection(this)">
+      <div class="hist-title">📅 Histórico de água</div>
+      <span class="hist-chevron">▾</span>
+    </div>
+    <div class="hist-body-wrap">
+      <div class="agua-week-nav">
+        <button class="week-nav-btn" onclick="aguaChangeWeek(-1)">‹</button>
+        <span class="agua-week-label" id="agua-week-label"></span>
+        <button class="week-nav-btn" onclick="aguaChangeWeek(1)">›</button>
+      </div>
+      <div class="agua-days" id="agua-days"></div>
+
+      <div class="divider-line" style="margin-top:16px;"></div>
+
+      <div id="aguahist-body"></div>
+    </div>
+  </div>
+
+  <!-- SUPLEMENTOS -->
+  <div class="summary-card suplem-section" id="suplem-section">
+    <div class="suplem-title">💊 Suplementos</div>
+    <div class="suplem-subtitle">Marque as doses de hoje — salvo automaticamente</div>
+    <div class="suplem-grid" id="suplem-grid"></div>
+  </div>
+
+  <!-- HISTÓRICO DE SUPLEMENTOS -->
+  <div class="summary-card hist-section" id="suplhist-section" data-hist-id="suplhist">
+    <div class="hist-header" onclick="toggleHistSection(this)">
+      <div class="hist-title">📅 Histórico de suplementos</div>
+      <span class="hist-chevron">▾</span>
+    </div>
+    <div class="hist-body-wrap">
+      <div class="agua-week-nav">
+        <button class="week-nav-btn" onclick="suplChangeWeek(-1)">‹</button>
+        <span class="agua-week-label" id="suplweek-label"></span>
+        <button class="week-nav-btn" onclick="suplChangeWeek(1)">›</button>
+      </div>
+      <div class="suplweek-days" id="suplweek-days"></div>
+
+      <div class="divider-line" style="margin-top:16px;"></div>
+
+      <div id="suplhist-body"></div>
+    </div>
+  </div>
+
+  <!-- CONTROLE DE ALIMENTAÇÃO (card único com todas as refeições) -->
+  <div class="meals-wrapper">
+    <div class="meals-wrapper-title">🍽️ Controle de Alimentação</div>
+
+    <!-- Sticky tracker -->
+    <div class="tracker" id="tracker">
+      <div class="tracker-left">
+        <div class="tracker-label">Consumido hoje</div>
+        <div class="tracker-kcal" id="tracker-val">0 <span>kcal</span></div>
+      </div>
+      <div class="tracker-right">
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="tracker-estimado" id="tracker-pct">0% da meta (1.600 kcal)</div>
+      </div>
+      <button class="btn-reset" onclick="resetAll()">Resetar</button>
+    </div>
+
   <!-- CAFÉ DA MANHÃ -->
-  <div class="meal">
-    <div class="meal-header">
+  <div class="meal" data-meal-id="cafe">
+    <div class="meal-header" onclick="toggleMeal(this)">
       <span class="meal-emoji">☕</span>
       <span class="meal-title">Café da manhã</span>
       <span class="kcal-pill">300–450 kcal</span>
+      <span class="meal-chevron">▾</span>
     </div>
     <div class="card" data-meal="cafe">
       <div class="option-label">Opção 1</div>
@@ -732,11 +966,12 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   </div>
 
   <!-- LANCHE MANHÃ -->
-  <div class="meal">
-    <div class="meal-header">
+  <div class="meal" data-meal-id="lanche-manha">
+    <div class="meal-header" onclick="toggleMeal(this)">
       <span class="meal-emoji">🍎</span>
       <span class="meal-title">Lanche da manhã</span>
       <span class="kcal-pill">60–90 kcal</span>
+      <span class="meal-chevron">▾</span>
     </div>
     <div class="card" data-meal="lanche-manha">
       <div class="item" onclick="toggle(this)" data-kcal="75" data-id="lm-1">
@@ -786,11 +1021,12 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   </div>
 
   <!-- ALMOÇO -->
-  <div class="meal">
-    <div class="meal-header">
+  <div class="meal" data-meal-id="almoco">
+    <div class="meal-header" onclick="toggleMeal(this)">
       <span class="meal-emoji">🍚</span>
       <span class="meal-title">Almoço</span>
       <span class="kcal-pill">500–600 kcal</span>
+      <span class="meal-chevron">▾</span>
     </div>
     <div class="card" data-meal="almoco">
       <div class="option-label">Proteína — escolher 1</div>
@@ -842,11 +1078,12 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   </div>
 
   <!-- LANCHE TARDE -->
-  <div class="meal">
-    <div class="meal-header">
+  <div class="meal" data-meal-id="lanche-tarde">
+    <div class="meal-header" onclick="toggleMeal(this)">
       <span class="meal-emoji">🍿</span>
       <span class="meal-title">Lanche da tarde</span>
       <span class="kcal-pill">150–220 kcal</span>
+      <span class="meal-chevron">▾</span>
     </div>
     <div class="card" data-meal="lanche-tarde">
       <div class="option-label">Escolher 1</div>
@@ -880,11 +1117,12 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   </div>
 
   <!-- JANTAR -->
-  <div class="meal">
-    <div class="meal-header">
+  <div class="meal" data-meal-id="jantar">
+    <div class="meal-header" onclick="toggleMeal(this)">
       <span class="meal-emoji">🍗</span>
       <span class="meal-title">Jantar</span>
       <span class="kcal-pill">330–420 kcal</span>
+      <span class="meal-chevron">▾</span>
     </div>
     <div class="card" data-meal="jantar">
       <div class="item" onclick="toggle(this)" data-kcal="215" data-id="jan-1">
@@ -922,11 +1160,12 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   </div>
 
   <!-- CEIA -->
-  <div class="meal">
-    <div class="meal-header">
+  <div class="meal" data-meal-id="ceia">
+    <div class="meal-header" onclick="toggleMeal(this)">
       <span class="meal-emoji">🌙</span>
       <span class="meal-title">Ceia <span style="font-weight:300; font-size:13px; color:#7A7570;">(opcional)</span></span>
       <span class="kcal-pill">60–150 kcal</span>
+      <span class="meal-chevron">▾</span>
     </div>
     <div class="card" data-meal="ceia">
       <div class="option-label">Escolher 1</div>
@@ -955,10 +1194,11 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   </div>
 
   <!-- DOCE -->
-  <div class="meal">
-    <div class="meal-header">
+  <div class="meal" data-meal-id="doce">
+    <div class="meal-header" onclick="toggleMeal(this)">
       <span class="meal-emoji">🍫</span>
       <span class="meal-title">Doce do dia <span style="font-weight:300; font-size:13px; color:#7A7570;">(1 opção)</span></span>
+      <span class="meal-chevron">▾</span>
     </div>
     <div class="card">
       <div class="sweet-grid">
@@ -986,15 +1226,12 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
     </div>
   </div>
 
+  </div>
+  <!-- FIM DO CONTROLE DE ALIMENTAÇÃO -->
+
   <!-- SUMMARY -->
   <div class="summary-card">
     <div class="summary-title">⚖️ Resumo do dia</div>
-    <div class="summary-row"><span class="summary-label">Café da manhã</span><span class="summary-value">300–450 kcal</span></div>
-    <div class="summary-row"><span class="summary-label">Lanche da manhã</span><span class="summary-value">60–90 kcal</span></div>
-    <div class="summary-row"><span class="summary-label">Almoço</span><span class="summary-value">500–600 kcal</span></div>
-    <div class="summary-row"><span class="summary-label">Lanche da tarde</span><span class="summary-value">150–220 kcal</span></div>
-    <div class="summary-row"><span class="summary-label">Jantar</span><span class="summary-value">330–420 kcal</span></div>
-    <div class="summary-row"><span class="summary-label">Ceia (opcional)</span><span class="summary-value">60–150 kcal</span></div>
 
     <div class="totals-grid">
       <div class="total-box estimado">
@@ -1015,24 +1252,14 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   </div>
 
   <!-- HISTÓRICO DIÁRIO -->
-  <div class="summary-card hist-section" id="hist-section">
-    <div class="hist-header">
+  <div class="summary-card hist-section" id="hist-section" data-hist-id="hist">
+    <div class="hist-header" onclick="toggleHistSection(this)">
       <div class="hist-title">📅 Histórico de calorias</div>
-      <button class="hist-save-btn" onclick="salvarDia()">Salvar dia de hoje</button>
+      <span class="hist-chevron">▾</span>
     </div>
-    <div id="hist-body"></div>
-  </div>
-
-  <!-- SUPLEMENTOS -->
-  <div class="summary-card suplem-section" id="suplem-section">
-    <div class="suplem-title">💊 Suplementos</div>
-    <div class="suplem-subtitle">Marque as doses diárias — salvo automaticamente</div>
-    <div class="suplem-week-nav">
-      <button class="week-nav-btn" onclick="suplChangeWeek(-1)">‹</button>
-      <span class="suplem-week-label" id="supl-week-label"></span>
-      <button class="week-nav-btn" onclick="suplChangeWeek(1)">›</button>
+    <div class="hist-body-wrap">
+      <div id="hist-body"></div>
     </div>
-    <div class="suplem-grid" id="suplem-grid"></div>
   </div>
 
   <!-- CHECK-IN SEMANAL -->
@@ -1081,6 +1308,30 @@ function saveChecked(obj) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
 }
 
+// ── Reset automático ao virar o dia ──
+// Os itens marcados e os extras eram salvos sem nenhuma referência de data,
+// então ao abrir o app em um novo dia eles continuavam marcados de ontem e
+// as calorias iam se somando. Isso garante que, na primeira ação do dia,
+// tudo comece zerado.
+var LAST_DAY_KEY = 'plano_alimentar_last_day';
+var EXTRA_KEY_NAME = 'plano_extras_v1';
+
+function todayKeyISO() {
+  var d = new Date();
+  return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+}
+
+function resetSeNovoDia() {
+  var last = localStorage.getItem(LAST_DAY_KEY);
+  var hoje = todayKeyISO();
+  if (last !== hoje) {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(EXTRA_KEY_NAME);
+    localStorage.setItem(LAST_DAY_KEY, hoje);
+  }
+}
+resetSeNovoDia();
+
 function updateTracker() {
   const checked = getChecked();
   let total = 0;
@@ -1109,13 +1360,69 @@ function toggle(el) {
   }
   saveChecked(checked);
   updateTracker();
+  autoSalvarDia();
 }
+
+// ── Dropdown das refeições ──
+var MEALS_COLLAPSED_KEY = 'meals_collapsed_v1';
+
+function getMealsCollapsed() {
+  try { return JSON.parse(localStorage.getItem(MEALS_COLLAPSED_KEY)) || {}; } catch { return {}; }
+}
+function saveMealsCollapsed(obj) { localStorage.setItem(MEALS_COLLAPSED_KEY, JSON.stringify(obj)); }
+
+function toggleMeal(headerEl) {
+  var mealEl = headerEl.parentElement;
+  var collapsed = mealEl.classList.toggle('collapsed');
+  var id = mealEl.dataset.mealId;
+  if (id) {
+    var state = getMealsCollapsed();
+    state[id] = collapsed;
+    saveMealsCollapsed(state);
+  }
+}
+
+function initMealsCollapsed() {
+  var state = getMealsCollapsed();
+  document.querySelectorAll('.meal[data-meal-id]').forEach(function(mealEl) {
+    if (state[mealEl.dataset.mealId]) mealEl.classList.add('collapsed');
+  });
+}
+initMealsCollapsed();
+
+// ── Dropdown das seções de histórico (suplementos e calorias) ──
+var HIST_SECTIONS_COLLAPSED_KEY = 'hist_sections_collapsed_v1';
+
+function getHistSectionsCollapsed() {
+  try { return JSON.parse(localStorage.getItem(HIST_SECTIONS_COLLAPSED_KEY)) || {}; } catch { return {}; }
+}
+function saveHistSectionsCollapsed(obj) { localStorage.setItem(HIST_SECTIONS_COLLAPSED_KEY, JSON.stringify(obj)); }
+
+function toggleHistSection(headerEl) {
+  var section = headerEl.parentElement;
+  var collapsed = section.classList.toggle('collapsed');
+  var id = section.dataset.histId;
+  if (id) {
+    var state = getHistSectionsCollapsed();
+    state[id] = collapsed;
+    saveHistSectionsCollapsed(state);
+  }
+}
+
+function initHistSectionsCollapsed() {
+  var state = getHistSectionsCollapsed();
+  document.querySelectorAll('.hist-section[data-hist-id]').forEach(function(section) {
+    if (state[section.dataset.histId]) section.classList.add('collapsed');
+  });
+}
+initHistSectionsCollapsed();
 
 function resetAll() {
   if (!confirm('Resetar todos os itens do dia?')) return;
   localStorage.removeItem(STORAGE_KEY);
   document.querySelectorAll('.item.checked').forEach(function(el) { el.classList.remove('checked'); });
   updateTracker();
+  autoSalvarDia();
 }
 
 // ── Histórico diário ──
@@ -1138,14 +1445,14 @@ function getTotalKcal() {
   return total;
 }
 
-function salvarDia() {
+// Salva automaticamente o dia de hoje no histórico, sem precisar clicar em nada.
+// Chamada sempre que uma refeição é marcada/desmarcada.
+function autoSalvarDia() {
   var kcal = getTotalKcal();
-  if (kcal === 0) { alert('Nenhum item marcado ainda!'); return; }
   var hist = getHist();
   var today = todayStr();
   var idx = hist.findIndex(function(r) { return r.date === today; });
   if (idx >= 0) {
-    if (!confirm('Já existe um registro para hoje (' + hist[idx].kcal + ' kcal). Substituir?')) return;
     hist[idx].kcal = kcal;
   } else {
     hist.unshift({ date: today, kcal: kcal });
@@ -1214,7 +1521,7 @@ function renderHist() {
   var hist = getHist();
   var body = document.getElementById('hist-body');
   if (!hist.length) {
-    body.innerHTML = '<div class="hist-empty">Nenhum dia salvo ainda.<br>Marque os itens e clique em "Salvar dia de hoje".</div>';
+    body.innerHTML = '<div class="hist-empty">Nenhum dia salvo ainda.<br>Marque os itens para começar a registrar.</div>';
     return;
   }
   var max = Math.max.apply(null, hist.map(function(r) { return r.kcal; }));
@@ -1579,121 +1886,537 @@ function changeWeek(dir) {
 
 renderCheckin();
 
-// ── Suplementos ──
+// ── Suplementos (marcação do dia) ──
 var SUPL_KEY = 'suplementos_v1';
-var SUPL_DAYS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
 var SUPL_ITEMS = [
   { id: 'creatina', icon: '💪', name: 'Creatina', dose: '1 dose por dia', doses: 1 },
   { id: 'omega3',   icon: '🐟', name: 'Ômega 3',  dose: '3 cápsulas por dia', doses: 3 }
 ];
-var suplWeekOffset = 0;
 
 function getSuplData() {
   try { return JSON.parse(localStorage.getItem(SUPL_KEY)) || {}; } catch { return {}; }
 }
 function saveSuplData(obj) { localStorage.setItem(SUPL_KEY, JSON.stringify(obj)); }
 
-function suplWeekKey(offset) {
-  var d = new Date();
-  var dow = d.getDay();
-  var diffToMon = (dow === 0) ? -6 : 1 - dow;
-  var mon = new Date(d);
-  mon.setDate(d.getDate() + diffToMon + offset * 7);
-  mon.setHours(0,0,0,0);
-  var y = mon.getFullYear();
-  var m = String(mon.getMonth()+1).padStart(2,'0');
-  var day = String(mon.getDate()).padStart(2,'0');
-  return y + '-' + m + '-' + day;
-}
-
-function suplTodayIdx() {
-  var d = new Date().getDay();
-  return d === 0 ? 6 : d - 1;
-}
-
-function suplToggle(supId, dayIdx, doseIdx) {
+function suplToggle(supId, doseIdx) {
   var data = getSuplData();
-  var wk = suplWeekKey(suplWeekOffset);
-  if (!data[wk]) data[wk] = {};
-  if (!data[wk][supId]) data[wk][supId] = {};
-  if (!data[wk][supId][dayIdx]) data[wk][supId][dayIdx] = [];
-  var arr = data[wk][supId][dayIdx];
+  var today = todayStr();
+  if (!data[today]) data[today] = {};
+  if (!data[today][supId]) data[today][supId] = [];
+  var arr = data[today][supId];
   var pos = arr.indexOf(doseIdx);
   if (pos >= 0) arr.splice(pos, 1); else arr.push(doseIdx);
   saveSuplData(data);
   renderSuplem();
-}
-
-function suplChangeWeek(dir) {
-  suplWeekOffset += dir;
-  renderSuplem();
+  autoSalvarSuplementoDia();
 }
 
 function renderSuplem() {
-  var wk = suplWeekKey(suplWeekOffset);
+  var today = todayStr();
   var data = getSuplData();
-  var weekData = data[wk] || {};
-  var todayIdx = (suplWeekOffset === 0) ? suplTodayIdx() : -1;
-
-  // Week label
-  var dow = new Date().getDay();
-  var diffToMon = (dow === 0) ? -6 : 1 - dow;
-  var mon = new Date();
-  mon.setDate(mon.getDate() + diffToMon + suplWeekOffset * 7);
-  var fri = new Date(mon); fri.setDate(mon.getDate() + 6);
-  var fmt = function(d) { return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'short' }); };
-  document.getElementById('supl-week-label').textContent = fmt(mon) + ' – ' + fmt(fri);
+  var todayData = data[today] || {};
 
   var grid = document.getElementById('suplem-grid');
   grid.innerHTML = '';
 
   SUPL_ITEMS.forEach(function(sup) {
-    var supDay = weekData[sup.id] || {};
+    var taken = todayData[sup.id] || [];
 
-    // Calc week completion
-    var totalDoses = sup.doses * 7;
-    var doneDoses = 0;
-    for (var di = 0; di < 7; di++) {
-      doneDoses += (supDay[di] || []).length;
+    var dotsHtml = '<div class="suplem-dots-row">';
+    for (var dose = 0; dose < sup.doses; dose++) {
+      var isDone = taken.indexOf(dose) >= 0;
+      var cls = 'suplem-dot' + (isDone ? ' done' : '');
+      dotsHtml += '<div class="' + cls + '" onclick="suplToggle(\'' + sup.id + '\',' + dose + ')"></div>';
     }
-    var pct = Math.round((doneDoses / totalDoses) * 100);
+    dotsHtml += '</div>';
 
     var card = document.createElement('div');
     card.className = 'suplem-card';
-
-    // Header
-    var header = '<div class="suplem-card-header">' +
-      '<span class="suplem-icon">' + sup.icon + '</span>' +
-      '<div class="suplem-info">' +
-        '<div class="suplem-name">' + sup.name + '</div>' +
-        '<div class="suplem-dose">' + sup.dose + '</div>' +
+    card.innerHTML =
+      '<div class="suplem-card-header">' +
+        '<span class="suplem-icon">' + sup.icon + '</span>' +
+        '<div class="suplem-info">' +
+          '<div class="suplem-name">' + sup.name + '</div>' +
+          '<div class="suplem-dose">' + sup.dose + '</div>' +
+        '</div>' +
+        '<span class="suplem-week-pct">' + taken.length + '/' + sup.doses + ' hoje</span>' +
       '</div>' +
-      '<span class="suplem-week-pct">' + doneDoses + '/' + totalDoses + ' doses · ' + pct + '%</span>' +
-    '</div>';
-
-    // Days row
-    var daysHtml = '<div class="suplem-days">';
-    for (var di = 0; di < 7; di++) {
-      var taken = supDay[di] || [];
-      var isToday = (di === todayIdx);
-      daysHtml += '<div class="suplem-day">';
-      daysHtml += '<span class="suplem-day-label">' + SUPL_DAYS[di] + '</span>';
-      daysHtml += '<div class="suplem-dots">';
-      for (var dose = 0; dose < sup.doses; dose++) {
-        var isDone = taken.indexOf(dose) >= 0;
-        var cls = 'suplem-dot' + (isDone ? ' done' : '') + (isToday ? ' today-col' : '');
-        daysHtml += '<div class="' + cls + '" onclick="suplToggle(\'' + sup.id + '\',' + di + ',' + dose + ')"></div>';
-      }
-      daysHtml += '</div></div>';
-    }
-    daysHtml += '</div>';
-
-    card.innerHTML = header + daysHtml;
+      dotsHtml;
     grid.appendChild(card);
   });
 }
 
 renderSuplem();
+
+// ── Reset visual dos suplementos ao virar o dia ──
+// Os dados já são salvos por data (data[today][supId]), então o histórico
+// nunca se perde. O problema era só visual: se a aba ficava aberta de um dia
+// para o outro sem recarregar, os pontinhos continuavam mostrando as doses
+// marcadas ontem, porque a tela só é redesenhada quando alguma ação acontece.
+// Isso aqui verifica se a data mudou e, se sim, redesenha os cards do zero
+// (voltam "vazios" no controle de hoje) mantendo o dia anterior já salvo no
+// histórico.
+var suplUltimoDiaRenderizado = todayStr();
+
+function suplVerificarVirouODia() {
+  var hoje = todayStr();
+  if (hoje !== suplUltimoDiaRenderizado) {
+    suplUltimoDiaRenderizado = hoje;
+    renderSuplem();
+    renderSuplHist();
+    if (suplWeekOffset === 0) renderSuplWeek();
+  }
+}
+
+// Checa assim que a aba volta a ficar visível/em foco (cobre o caso mais comum:
+// abrir o navegador de novo no dia seguinte com a aba ainda aberta).
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) suplVerificarVirouODia();
+});
+window.addEventListener('focus', suplVerificarVirouODia);
+
+// Checagem periódica de segurança, caso a aba fique aberta e em foco
+// exatamente no momento da virada da meia-noite.
+setInterval(suplVerificarVirouODia, 60 * 1000);
+
+// ── Histórico de suplementos ──
+var SUPLHIST_KEY = 'suplementos_hist_v1';
+
+function getSuplHist() {
+  try { return JSON.parse(localStorage.getItem(SUPLHIST_KEY)) || []; } catch { return []; }
+}
+function saveSuplHist(arr) { localStorage.setItem(SUPLHIST_KEY, JSON.stringify(arr)); }
+
+function getSuplDoseTotals(dateKey) {
+  var data = getSuplData();
+  var dayData = data[dateKey] || {};
+  var done = 0, total = 0;
+  SUPL_ITEMS.forEach(function(sup) {
+    total += sup.doses;
+    done += (dayData[sup.id] || []).length;
+  });
+  return { done: done, total: total };
+}
+
+// Salva/atualiza automaticamente o registro de hoje no histórico sempre que
+// uma dose é marcada ou desmarcada. Se nenhuma dose estiver marcada, remove
+// o registro de hoje do histórico.
+function autoSalvarSuplementoDia() {
+  var today = todayStr();
+  var totals = getSuplDoseTotals(today);
+  var hist = getSuplHist();
+  var idx = hist.findIndex(function(r) { return r.date === today; });
+
+  if (totals.done === 0) {
+    if (idx >= 0) hist.splice(idx, 1);
+  } else if (idx >= 0) {
+    hist[idx].done = totals.done;
+    hist[idx].total = totals.total;
+  } else {
+    hist.unshift({ date: today, done: totals.done, total: totals.total });
+  }
+
+  if (hist.length > 30) hist = hist.slice(0, 30);
+  saveSuplHist(hist);
+  renderSuplHist();
+  if (suplWeekOffset === 0) renderSuplWeek();
+}
+
+function deleteSuplDia(date) {
+  if (!confirm('Remover registro de ' + date + '?')) return;
+  var hist = getSuplHist().filter(function(r) { return r.date !== date; });
+  saveSuplHist(hist);
+  renderSuplHist();
+}
+
+function editSuplDate(oldDate) {
+  var parts = oldDate.split('/');
+  var isoVal = parts[2] + '-' + parts[1] + '-' + parts[0];
+
+  var row = document.querySelector('#suplhist-body [data-suplhist-date="' + oldDate + '"]');
+  if (!row) return;
+  var dateSpan = row.querySelector('.hist-date');
+
+  var input = document.createElement('input');
+  input.type = 'date';
+  input.className = 'hist-date-input';
+  input.value = isoVal;
+  dateSpan.replaceWith(input);
+  input.focus();
+
+  function commit() {
+    if (!input.value) { renderSuplHist(); return; }
+    var p = input.value.split('-');
+    var newDate = p[2] + '/' + p[1] + '/' + p[0];
+    if (newDate === oldDate) { renderSuplHist(); return; }
+    var hist = getSuplHist();
+    var conflict = hist.find(function(r) { return r.date === newDate; });
+    if (conflict) {
+      if (!confirm('Já existe um registro em ' + newDate + ' (' + conflict.done + '/' + conflict.total + ' doses). Substituir?')) { renderSuplHist(); return; }
+      hist = hist.filter(function(r) { return r.date !== newDate; });
+    }
+    var idx = hist.findIndex(function(r) { return r.date === oldDate; });
+    if (idx >= 0) hist[idx].date = newDate;
+    hist.sort(function(a, b) {
+      var da = a.date.split('/').reverse().join('');
+      var db = b.date.split('/').reverse().join('');
+      return db.localeCompare(da);
+    });
+    saveSuplHist(hist);
+    renderSuplHist();
+  }
+
+  input.addEventListener('change', commit);
+  input.addEventListener('blur', function() { setTimeout(commit, 150); });
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') commit();
+    if (e.key === 'Escape') renderSuplHist();
+  });
+}
+
+function renderSuplHist() {
+  var hist = getSuplHist();
+  var body = document.getElementById('suplhist-body');
+  if (!hist.length) {
+    body.innerHTML = '<div class="hist-empty">Nenhum dia registrado ainda.<br>Marque as doses no card de Suplementos para começar.</div>';
+    return;
+  }
+  var avgPct = Math.round(hist.reduce(function(s, r) { return s + (r.done / r.total * 100); }, 0) / hist.length);
+  var rows = hist.map(function(r) {
+    var pct = Math.round((r.done / r.total) * 100);
+    var barColor = pct >= 100 ? '#5C6E3F' : pct >= 50 ? '#C4972A' : '#C0392B';
+    return '<div class="hist-row" data-suplhist-date="' + r.date + '">' +
+      '<span class="hist-date">' + r.date + '</span>' +
+      '<div class="hist-bar-wrap"><div class="hist-bar-fill" style="width:' + pct + '%;background:' + barColor + '"></div></div>' +
+      '<span class="hist-kcal">' + r.done + '/' + r.total + '</span>' +
+      '<span class="hist-pct">' + pct + '%</span>' +
+      '<button class="hist-edit-btn" onclick="editSuplDate(\'' + r.date + '\')" title="Editar data">✏️</button>' +
+      '<button class="hist-del" onclick="deleteSuplDia(\'' + r.date + '\')" title="Remover">✕</button>' +
+    '</div>';
+  }).join('');
+  body.innerHTML = '<div class="hist-list">' + rows + '</div>' +
+    '<div class="hist-avg-row"><span>Média dos últimos ' + hist.length + ' dias</span><strong>' + avgPct + '%</strong></div>';
+}
+
+renderSuplHist();
+
+// ── Controle semanal de suplementos ──
+var suplWeekOffset = 0;
+var SUPL_WEEK_DAYS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+
+function suplChangeWeek(dir) {
+  suplWeekOffset += dir;
+  renderSuplWeek();
+}
+
+function renderSuplWeek() {
+  var mon = getWeekStart(suplWeekOffset);
+  var sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+  var fmt = function(d) { return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' }); };
+  document.getElementById('suplweek-label').textContent = fmt(mon) + ' – ' + fmt(sun);
+
+  var hojeStr = todayStr();
+  var daysEl = document.getElementById('suplweek-days');
+  daysEl.innerHTML = '';
+  for (var i = 0; i < 7; i++) {
+    var d = new Date(mon); d.setDate(mon.getDate() + i);
+    var dateStr = d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    var totals = getSuplDoseTotals(dateStr);
+    var pct = totals.total > 0 ? Math.round((totals.done / totals.total) * 100) : 0;
+    var isToday = (dateStr === hojeStr);
+    var dayDiv = document.createElement('div');
+    dayDiv.className = 'suplweek-day' + (isToday ? ' today-col' : '');
+    dayDiv.title = totals.done + '/' + totals.total + ' doses (' + pct + '%)';
+    dayDiv.innerHTML =
+      '<div class="suplweek-day-bar-wrap"><div class="suplweek-day-bar-fill" style="height:' + pct + '%"></div></div>' +
+      '<div class="suplweek-day-label">' + SUPL_WEEK_DAYS[i] + '</div>';
+    daysEl.appendChild(dayDiv);
+  }
+}
+
+renderSuplWeek();
+
+// ── Controle de Água ──
+var AGUA_KEY = 'agua_v1';
+var AGUA_META_KEY = 'agua_meta_v1';
+var AGUA_DAYS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+var AGUA_TYPES = [
+  { id: 'agua',       icon: '💧', name: 'Água',           pct: 100 },
+  { id: 'agua_gas',   icon: '🫧', name: 'Água c/ gás',    pct: 100 },
+  { id: 'refri',      icon: '🥤', name: 'Refrigerante',   pct: 85 },
+  { id: 'cafe_leite', icon: '☕', name: 'Café com leite', pct: 85 },
+  { id: 'suco',       icon: '🧃', name: 'Suco',           pct: 88 },
+  { id: 'outra',      icon: '🍹', name: 'Outra bebida',   pct: 75 }
+];
+var aguaWeekOffset = 0;
+
+function getAguaData() {
+  try { return JSON.parse(localStorage.getItem(AGUA_KEY)) || {}; } catch { return {}; }
+}
+function saveAguaData(obj) { localStorage.setItem(AGUA_KEY, JSON.stringify(obj)); }
+
+function getAguaMeta() {
+  var m = parseInt(localStorage.getItem(AGUA_META_KEY));
+  return (m && m > 0) ? m : 2500;
+}
+function saveAguaMeta(v) { localStorage.setItem(AGUA_META_KEY, String(v)); }
+
+function aguaTodayIdx() {
+  var d = new Date().getDay();
+  return d === 0 ? 6 : d - 1;
+}
+
+function ajustarMetaAgua() {
+  var atual = getAguaMeta();
+  var novo = prompt('Nova meta diária de água em ml (recomendado entre 2000 e 3000):', atual);
+  if (novo === null) return;
+  var val = parseInt(novo);
+  if (isNaN(val) || val < 500) { alert('Informe um valor válido em ml.'); return; }
+  saveAguaMeta(val);
+  renderAgua();
+  autoSalvarAguaDia();
+}
+
+function registrarAgua(typeId) {
+  var type = AGUA_TYPES.find(function(t) { return t.id === typeId; });
+  if (!type) return;
+  var val = prompt('Quantos ml de "' + type.name + '" você bebeu?', '250');
+  if (val === null) return;
+  var ml = parseInt(val);
+  if (isNaN(ml) || ml <= 0) { alert('Informe uma quantidade válida em ml.'); return; }
+
+  var data = getAguaData();
+  var wk = weekKey(0);
+  var dayIdx = aguaTodayIdx();
+  if (!data[wk]) data[wk] = {};
+  if (!data[wk][dayIdx]) data[wk][dayIdx] = [];
+  data[wk][dayIdx].push({
+    id: 'agua-' + Date.now(),
+    name: type.name,
+    icon: type.icon,
+    ml: ml,
+    effective: Math.round(ml * type.pct / 100)
+  });
+  saveAguaData(data);
+  aguaWeekOffset = 0;
+  renderAgua();
+  syncAguaComCheckin();
+  autoSalvarAguaDia();
+}
+
+function removerAgua(dayIdx, entryId) {
+  var data = getAguaData();
+  var wk = weekKey(aguaWeekOffset);
+  if (data[wk] && data[wk][dayIdx]) {
+    data[wk][dayIdx] = data[wk][dayIdx].filter(function(e) { return e.id !== entryId; });
+    saveAguaData(data);
+    renderAgua();
+    syncAguaComCheckin();
+    autoSalvarAguaDia();
+  }
+}
+
+function diaTotalAgua(entries) {
+  var total = 0;
+  (entries || []).forEach(function(e) { total += e.effective; });
+  return total;
+}
+
+function aguaChangeWeek(dir) {
+  aguaWeekOffset += dir;
+  renderAgua();
+}
+
+// ── Histórico de água ──
+var AGUAHIST_KEY = 'agua_hist_diario_v1';
+
+function getAguaHist() {
+  try { return JSON.parse(localStorage.getItem(AGUAHIST_KEY)) || []; } catch { return []; }
+}
+function saveAguaHist(arr) { localStorage.setItem(AGUAHIST_KEY, JSON.stringify(arr)); }
+
+// Salva/atualiza automaticamente o registro de hoje no histórico sempre que
+// uma bebida é adicionada, removida, ou a meta é ajustada. Se o total do dia
+// for zero, remove o registro de hoje do histórico.
+function autoSalvarAguaDia() {
+  var meta = getAguaMeta();
+  var wk = weekKey(0);
+  var data = getAguaData();
+  var entries = (data[wk] && data[wk][aguaTodayIdx()]) || [];
+  var total = diaTotalAgua(entries);
+  var hist = getAguaHist();
+  var today = todayStr();
+  var idx = hist.findIndex(function(r) { return r.date === today; });
+
+  if (total === 0) {
+    if (idx >= 0) hist.splice(idx, 1);
+  } else if (idx >= 0) {
+    hist[idx].ml = total;
+    hist[idx].meta = meta;
+  } else {
+    hist.unshift({ date: today, ml: total, meta: meta });
+  }
+
+  if (hist.length > 30) hist = hist.slice(0, 30);
+  saveAguaHist(hist);
+  renderAguaHist();
+}
+
+function deleteAguaDia(date) {
+  if (!confirm('Remover registro de ' + date + '?')) return;
+  var hist = getAguaHist().filter(function(r) { return r.date !== date; });
+  saveAguaHist(hist);
+  renderAguaHist();
+}
+
+function editAguaDate(oldDate) {
+  var parts = oldDate.split('/');
+  var isoVal = parts[2] + '-' + parts[1] + '-' + parts[0];
+
+  var row = document.querySelector('#aguahist-body [data-aguahist-date="' + oldDate + '"]');
+  if (!row) return;
+  var dateSpan = row.querySelector('.hist-date');
+
+  var input = document.createElement('input');
+  input.type = 'date';
+  input.className = 'hist-date-input';
+  input.value = isoVal;
+  dateSpan.replaceWith(input);
+  input.focus();
+
+  function commit() {
+    if (!input.value) { renderAguaHist(); return; }
+    var p = input.value.split('-');
+    var newDate = p[2] + '/' + p[1] + '/' + p[0];
+    if (newDate === oldDate) { renderAguaHist(); return; }
+    var hist = getAguaHist();
+    var conflict = hist.find(function(r) { return r.date === newDate; });
+    if (conflict) {
+      if (!confirm('Já existe um registro em ' + newDate + ' (' + conflict.ml.toLocaleString('pt-BR') + ' ml). Substituir?')) { renderAguaHist(); return; }
+      hist = hist.filter(function(r) { return r.date !== newDate; });
+    }
+    var idx = hist.findIndex(function(r) { return r.date === oldDate; });
+    if (idx >= 0) hist[idx].date = newDate;
+    hist.sort(function(a, b) {
+      var da = a.date.split('/').reverse().join('');
+      var db = b.date.split('/').reverse().join('');
+      return db.localeCompare(da);
+    });
+    saveAguaHist(hist);
+    renderAguaHist();
+  }
+
+  input.addEventListener('change', commit);
+  input.addEventListener('blur', function() { setTimeout(commit, 150); });
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') commit();
+    if (e.key === 'Escape') renderAguaHist();
+  });
+}
+
+function renderAguaHist() {
+  var hist = getAguaHist();
+  var body = document.getElementById('aguahist-body');
+  if (!hist.length) {
+    body.innerHTML = '<div class="hist-empty">Nenhum dia registrado ainda.<br>Registre o que bebeu no card de Água para começar.</div>';
+    return;
+  }
+  var avgMl = Math.round(hist.reduce(function(s, r) { return s + r.ml; }, 0) / hist.length);
+  var rows = hist.map(function(r) {
+    var pct = Math.min(Math.round((r.ml / r.meta) * 100), 100);
+    var barColor = pct >= 100 ? '#5C6E3F' : pct >= 60 ? '#C4972A' : '#C0392B';
+    return '<div class="hist-row" data-aguahist-date="' + r.date + '">' +
+      '<span class="hist-date">' + r.date + '</span>' +
+      '<div class="hist-bar-wrap"><div class="hist-bar-fill" style="width:' + pct + '%;background:' + barColor + '"></div></div>' +
+      '<span class="hist-kcal">' + r.ml.toLocaleString('pt-BR') + ' ml</span>' +
+      '<span class="hist-pct">' + pct + '%</span>' +
+      '<button class="hist-edit-btn" onclick="editAguaDate(\'' + r.date + '\')" title="Editar data">✏️</button>' +
+      '<button class="hist-del" onclick="deleteAguaDia(\'' + r.date + '\')" title="Remover">✕</button>' +
+    '</div>';
+  }).join('');
+  body.innerHTML = '<div class="hist-list">' + rows + '</div>' +
+    '<div class="hist-avg-row"><span>Média dos últimos ' + hist.length + ' dias</span><strong>' + avgMl.toLocaleString('pt-BR') + ' ml</strong></div>';
+}
+
+renderAguaHist();
+
+function renderAgua() {
+  var meta = getAguaMeta();
+  document.getElementById('agua-meta-label').textContent = meta.toLocaleString('pt-BR') + ' ml';
+
+  var grid = document.getElementById('agua-grid');
+  grid.innerHTML = AGUA_TYPES.map(function(t) {
+    return '<div class="agua-item" onclick="registrarAgua(\'' + t.id + '\')">' +
+      '<div class="agua-item-icon">' + t.icon + '</div>' +
+      '<div class="agua-item-name">' + t.name + '</div>' +
+      '<div class="agua-item-pct">' + t.pct + '% água</div>' +
+    '</div>';
+  }).join('');
+
+  var wk = weekKey(aguaWeekOffset);
+  var data = getAguaData();
+  var weekData = data[wk] || {};
+  var todayIdx = (aguaWeekOffset === 0) ? aguaTodayIdx() : -1;
+
+  var todayEntries = (aguaWeekOffset === 0) ? (weekData[aguaTodayIdx()] || []) : [];
+  var totalHoje = diaTotalAgua(todayEntries);
+  var pct = Math.min(Math.round((totalHoje / meta) * 100), 100);
+
+  document.getElementById('agua-progress-fill').style.width = pct + '%';
+  document.getElementById('agua-progress-text').textContent =
+    totalHoje.toLocaleString('pt-BR') + ' / ' + meta.toLocaleString('pt-BR') + ' ml de água (' + pct + '%)';
+
+  var mon = getWeekStart(aguaWeekOffset);
+  var sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+  var fmt = function(d) { return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' }); };
+  document.getElementById('agua-week-label').textContent = fmt(mon) + ' – ' + fmt(sun);
+
+  var daysEl = document.getElementById('agua-days');
+  daysEl.innerHTML = '';
+  for (var i = 0; i < 7; i++) {
+    var entries = weekData[i] || [];
+    var total = diaTotalAgua(entries);
+    var dpct = Math.min(Math.round((total / meta) * 100), 100);
+    var isToday = (i === todayIdx);
+    var dayDiv = document.createElement('div');
+    dayDiv.className = 'agua-day' + (isToday ? ' today-col' : '');
+    dayDiv.title = total.toLocaleString('pt-BR') + ' ml (' + dpct + '%)';
+    dayDiv.innerHTML =
+      '<div class="agua-day-bar-wrap"><div class="agua-day-bar-fill" style="height:' + dpct + '%"></div></div>' +
+      '<div class="agua-day-label">' + AGUA_DAYS[i] + '</div>';
+    daysEl.appendChild(dayDiv);
+  }
+}
+
+// Ao bater a meta do dia, marca automaticamente o item "Água" no check-in diário
+// (e desmarca se o total cair abaixo da meta novamente). Fins de semana não têm
+// coluna no check-in, então a sincronização só ocorre de segunda a sexta.
+function syncAguaComCheckin() {
+  var todayIdx5 = todayDayIndex();
+  if (todayIdx5 === -1) return;
+
+  var meta = getAguaMeta();
+  var wk = weekKey(0);
+  var aguaData = getAguaData();
+  var entries = (aguaData[wk] && aguaData[wk][aguaTodayIdx()]) || [];
+  var total = diaTotalAgua(entries);
+
+  var ciData = getCiData();
+  if (!ciData[wk]) ciData[wk] = {};
+  var key = 'agua_' + todayIdx5;
+  var bateuMeta = total >= meta;
+  var jaMarcado = !!ciData[wk][key];
+
+  if (bateuMeta === jaMarcado) return;
+
+  if (bateuMeta) ciData[wk][key] = true;
+  else delete ciData[wk][key];
+  saveCiData(ciData);
+
+  if (ciWeekOffset === 0) renderCheckin();
+}
+
+renderAgua();
 
 // ── Alimentos extras ──
 var EXTRA_KEY = 'plano_extras_v1';
@@ -1733,12 +2456,13 @@ function addExtra(meal) {
   nameEl.focus();
   renderExtras();
   updateTracker();
+  autoSalvarDia();
 }
 
 function toggleExtra(meal, id) {
   var extras = getExtras();
   var item = (extras[meal] || []).find(function(e) { return e.id === id; });
-  if (item) { item.checked = !item.checked; saveExtras(extras); renderExtras(); updateTracker(); }
+  if (item) { item.checked = !item.checked; saveExtras(extras); renderExtras(); updateTracker(); autoSalvarDia(); }
 }
 
 function deleteExtra(meal, id) {
@@ -1747,6 +2471,7 @@ function deleteExtra(meal, id) {
   saveExtras(extras);
   renderExtras();
   updateTracker();
+  autoSalvarDia();
 }
 
 function renderExtras() {
