@@ -7,7 +7,7 @@
   "hist": [
     {
       "date": "25/07/2026",
-      "kcal": 367
+      "kcal": 217
     },
     {
       "date": "24/07/2026",
@@ -442,7 +442,7 @@
         "id": "ext-jantar-1784942715775",
         "name": "Pão de hambuguer",
         "kcal": 150,
-        "checked": true
+        "checked": false
       }
     ]
   },
@@ -453,5 +453,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-25T13:09:58.749Z"
+  "_updatedAt": "2026-07-25T13:10:02.612Z"
 }
