@@ -225,7 +225,11 @@
       "agua_0": true,
       "oracao_3": true,
       "leitura_3": true,
-      "agua_3": true
+      "agua_3": true,
+      "cardio_4": true,
+      "oracao_4": true,
+      "leitura_4": true,
+      "agua_4": true
     }
   },
   "suplementos": {
@@ -371,5 +375,5 @@
     }
   ],
   "extras": {},
-  "_updatedAt": "2026-07-25T01:23:37.111Z"
+  "_updatedAt": "2026-07-25T01:23:54.322Z"
 }
