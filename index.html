@@ -47,6 +47,110 @@ header h1 {
 }
 header p { font-size: 14px; color: var(--muted); }
 
+/* Sync status */
+.sync-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: var(--card);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.sync-status:hover { background: var(--bg); }
+.sync-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: #c8c4bb; }
+.sync-dot.sync-ok { background: #5C6E3F; }
+.sync-dot.sync-syncing { background: var(--gold); animation: sync-pulse 1s ease-in-out infinite; }
+.sync-dot.sync-warn { background: var(--gold); }
+.sync-dot.sync-error { background: #C0392B; }
+.sync-dot.sync-offline { background: #9a958a; }
+@keyframes sync-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* Sync modal */
+.sync-modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(30,28,24,0.45);
+  z-index: 1000;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+.sync-modal-overlay.open { display: flex; }
+.sync-modal {
+  background: var(--card);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px 20px 0 0;
+  padding: 1.5rem 1.5rem 1.75rem;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+@media (min-width: 640px) {
+  .sync-modal-overlay { align-items: center; padding: 1.5rem; }
+  .sync-modal { border-radius: 18px; }
+}
+.sync-modal-title {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+.sync-form-group { margin-bottom: 1rem; }
+.sync-form-label {
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--muted); margin-bottom: 6px;
+}
+.sync-form-value {
+  font-size: 13px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 11px;
+}
+.sync-input {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin-top: 6px;
+}
+.sync-input:focus { outline: none; border-color: var(--accent); }
+.sync-help {
+  font-size: 11.5px; color: var(--muted);
+  margin-top: 8px; line-height: 1.55;
+}
+.sync-status-line { font-size: 13px; color: var(--text); }
+.sync-modal-actions { display: flex; gap: 8px; margin-top: 1.4rem; flex-wrap: wrap; }
+.sync-btn {
+  flex: 1;
+  min-width: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.sync-btn:hover { background: var(--bg); }
+.sync-btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.sync-btn-primary:hover { background: #4d5c34; }
+.sync-btn-danger { color: #C0392B; }
+.sync-backup-row { display: flex; gap: 8px; margin-top: 8px; }
+
 /* Sticky tracker */
 .tracker {
   position: sticky;
@@ -814,6 +918,10 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
   <header>
     <h1>Plano Alimentar</h1>
     <p>Clique nos itens para registrar o que comeu</p>
+    <button class="sync-status" id="sync-status-btn" onclick="openSyncModal()">
+      <span class="sync-dot sync-syncing" id="sync-dot"></span>
+      <span id="sync-label">Carregando…</span>
+    </button>
   </header>
 
   <!-- CONTROLE DE ÁGUA -->
@@ -1293,6 +1401,49 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
   </div>
 
   <footer>Plano alimentar — dados salvos no navegador</footer>
+</div>
+
+<!-- Sync Modal -->
+<div class="sync-modal-overlay" id="sync-modal" onclick="if(event.target===this) closeSyncModal()">
+  <div class="sync-modal">
+    <div class="sync-modal-title">☁️ Sincronização com GitHub</div>
+
+    <div class="sync-form-group">
+      <div class="sync-form-label">Repositório</div>
+      <div class="sync-form-value" id="sync-repo-label">—</div>
+    </div>
+
+    <div class="sync-form-group">
+      <div class="sync-form-label">Personal Access Token</div>
+      <input type="password" class="sync-input" id="sync-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+      <div class="sync-help">
+        Sem token, os dados só são lidos (funciona em qualquer aparelho). Com token, este aparelho também consegue salvar mudanças na nuvem. O token fica guardado apenas no navegador deste aparelho — cole-o de novo em cada um.<br><br>
+        Pra criar: GitHub → Settings → Developer settings → Personal access tokens → Fine-grained token → dê acesso de leitura/escrita (Contents) só ao repositório <strong>plano-alimentar</strong>.
+      </div>
+    </div>
+
+    <div class="sync-form-group" style="margin-bottom:0;">
+      <div class="sync-form-label">Status</div>
+      <div class="sync-status-line" id="sync-modal-status">—</div>
+    </div>
+
+    <div class="sync-form-group" style="margin-top:1.3rem; padding-top:1.1rem; border-top:1px solid var(--border); margin-bottom:0;">
+      <div class="sync-form-label">Backup manual</div>
+      <div class="sync-help" style="margin-top:4px;">Baixe um arquivo .json com todo o histórico (checklist, água, suplementos, check-in) como cópia de segurança, independente da nuvem.</div>
+      <div class="sync-backup-row">
+        <button class="sync-btn" onclick="exportSyncBackup()">⬇️ Exportar backup</button>
+        <button class="sync-btn" onclick="document.getElementById('sync-backup-file-input').click()">⬆️ Importar backup</button>
+      </div>
+      <input type="file" id="sync-backup-file-input" accept="application/json" style="display:none;" onchange="importSyncBackup(event)">
+    </div>
+
+    <div class="sync-modal-actions">
+      <button class="sync-btn sync-btn-danger" onclick="clearGhTokenFromModal()">Remover token</button>
+      <button class="sync-btn" onclick="closeSyncModal()">Cancelar</button>
+      <button class="sync-btn" onclick="manualSyncNow()">Sincronizar agora</button>
+      <button class="sync-btn sync-btn-primary" onclick="saveGhTokenFromModal()">Salvar</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -2538,6 +2689,284 @@ getTotalKcal = function() {
 
 renderExtras();
 updateTracker();
+
+/* ─── GitHub Cloud Sync ─────────────────────────────────────────────────────
+   Mesmo sistema usado no Content Manager: os dados ficam salvos sempre no
+   localStorage deste aparelho (nunca se perdem), e opcionalmente também
+   sincronizados com um arquivo JSON dentro de um repositório do GitHub.
+   Leitura: pública, sem token (funciona em qualquer aparelho).
+   Escrita: precisa de um Personal Access Token, salvo só no localStorage
+   deste aparelho (botão de status no topo da página).
+   Se o envio pra nuvem falhar (sem internet, GitHub fora do ar, etc.), o app
+   continua funcionando 100% local e tenta enviar de novo automaticamente,
+   inclusive ao reabrir a página depois.
+   ─────────────────────────────────────────────────────────────────────── */
+const GH_CONFIG = {
+  owner:  'Yuni-Auto',
+  repo:   'plano-alimentar',
+  branch: 'main',
+  path:   'data.json',
+};
+const GH_TOKEN_KEY = 'gh-sync-token-plano-v1';
+const LOCAL_UPDATED_KEY = 'plano-local-updated-at-v1';
+let ghFileSha    = null;
+let ghSyncTimer  = null;
+let ghIsSyncing  = false;
+let ghPendingSave = false;
+
+function touchLocalTimestamp() { localStorage.setItem(LOCAL_UPDATED_KEY, new Date().toISOString()); }
+function getLocalTimestamp()   { return localStorage.getItem(LOCAL_UPDATED_KEY) || null; }
+
+function ghApiUrl() {
+  return `https://api.github.com/repos/${GH_CONFIG.owner}/${GH_CONFIG.repo}/contents/${GH_CONFIG.path}?ref=${GH_CONFIG.branch}`;
+}
+function getGhToken()  { return localStorage.getItem(GH_TOKEN_KEY) || ''; }
+function setGhToken(t) { if (t) localStorage.setItem(GH_TOKEN_KEY, t); else localStorage.removeItem(GH_TOKEN_KEY); }
+
+function b64EncodeUnicode(str) {
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p1) => String.fromCharCode('0x' + p1)));
+}
+function b64DecodeUnicode(str) {
+  return decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+}
+
+function setSyncStatus(state, msg) {
+  const dot   = document.getElementById('sync-dot');
+  const label = document.getElementById('sync-label');
+  const modalStatus = document.getElementById('sync-modal-status');
+  if (dot)   dot.className = 'sync-dot sync-' + state;
+  if (label) label.textContent = msg;
+  if (modalStatus) modalStatus.textContent = msg;
+}
+
+/* Reúne todos os dados do plano num único objeto pra salvar em um arquivo só.
+   Estados puramente de interface (seções recolhidas) ficam de fora de propósito —
+   só o que é conteúdo/histórico de verdade é sincronizado. */
+function collectSyncData() {
+  return {
+    checked:      getChecked(),
+    hist:         getHist(),
+    checkin:      getCiData(),
+    suplementos:  getSuplData(),
+    suplHist:     getSuplHist(),
+    agua:         getAguaData(),
+    aguaMeta:     getAguaMeta(),
+    aguaHist:     getAguaHist(),
+    extras:       getExtras(),
+    _updatedAt:   new Date().toISOString(),
+  };
+}
+
+function applySyncData(data) {
+  if (data.checked && typeof data.checked === 'object') {
+    saveChecked(data.checked);
+    document.querySelectorAll('.item.checked').forEach(function(el) { el.classList.remove('checked'); });
+    Object.keys(data.checked).forEach(function(id) {
+      var el = document.querySelector('[data-id="' + id + '"]');
+      if (el) el.classList.add('checked');
+    });
+  }
+  if (Array.isArray(data.hist)) { saveHist(data.hist); renderHist(); }
+  if (data.checkin && typeof data.checkin === 'object') { saveCiData(data.checkin); renderCheckin(); }
+  if (data.suplementos && typeof data.suplementos === 'object') { saveSuplData(data.suplementos); renderSuplem(); }
+  if (Array.isArray(data.suplHist)) { saveSuplHist(data.suplHist); renderSuplHist(); }
+  if (data.agua && typeof data.agua === 'object') { saveAguaData(data.agua); }
+  if (typeof data.aguaMeta === 'number' && data.aguaMeta > 0) { saveAguaMeta(data.aguaMeta); }
+  if (Array.isArray(data.aguaHist)) { saveAguaHist(data.aguaHist); renderAguaHist(); }
+  if (data.extras && typeof data.extras === 'object') { saveExtras(data.extras); renderExtras(); }
+  renderAgua();
+  renderSuplWeek();
+  updateTracker();
+  localStorage.setItem(LOCAL_UPDATED_KEY, data._updatedAt || new Date().toISOString());
+}
+
+/* Busca o arquivo de dados no GitHub. Funciona sem token (repo público). */
+async function pullFromGitHub(silent) {
+  if (!silent) setSyncStatus('syncing', 'Carregando da nuvem…');
+  try {
+    const headers = { 'Accept': 'application/vnd.github+json' };
+    const token = getGhToken();
+    if (token) headers['Authorization'] = 'token ' + token;
+    const res = await fetch(ghApiUrl(), { headers, cache: 'no-store' });
+    if (res.status === 404) {
+      ghFileSha = null;
+      setSyncStatus(getGhToken() ? 'warn' : 'offline', 'Nenhum dado na nuvem ainda');
+      return false;
+    }
+    if (res.status === 403 || res.status === 429) {
+      const remaining = res.headers.get('x-ratelimit-remaining');
+      const resetHeader = res.headers.get('x-ratelimit-reset');
+      if (remaining === '0' && resetHeader) {
+        const resetDate = new Date(Number(resetHeader) * 1000);
+        const mins = Math.max(1, Math.ceil((resetDate - Date.now()) / 60000));
+        setSyncStatus('error', `Limite de requisições da API atingido — tente de novo em ~${mins} min`);
+      } else {
+        setSyncStatus('error', 'GitHub bloqueou a requisição (403) — tente de novo mais tarde');
+      }
+      return false;
+    }
+    if (!res.ok) { setSyncStatus('error', `Erro da nuvem (HTTP ${res.status}) — usando dados locais`); return false; }
+    const json = await res.json();
+    ghFileSha = json.sha;
+    const raw = b64DecodeUnicode(json.content.replace(/\n/g, ''));
+    const data = JSON.parse(raw);
+
+    // Só aceita os dados da nuvem se eles forem realmente mais recentes que os
+    // locais. Isso evita que um data.json antigo/incompleto apague dados que
+    // só existem neste aparelho (ex: nunca sincronizados ainda).
+    const hasLocalData = Object.keys(getChecked()).length || getHist().length ||
+      Object.keys(getCiData()).length || Object.keys(getSuplData()).length ||
+      getSuplHist().length || Object.keys(getAguaData()).length || getAguaHist().length;
+    const localTs  = getLocalTimestamp();
+    const remoteTs = data._updatedAt;
+    const remoteIsNewer = remoteTs && localTs && new Date(remoteTs) > new Date(localTs);
+
+    if (hasLocalData && !remoteIsNewer) {
+      if (!localTs) touchLocalTimestamp();
+      if (getGhToken()) {
+        setSyncStatus('warn', 'Dados locais preservados — enviando pra nuvem…');
+        scheduleCloudSync();
+      } else {
+        setSyncStatus('offline', 'Dados locais preservados (nuvem desatualizada)');
+      }
+      return false;
+    }
+
+    applySyncData(data);
+    setSyncStatus('ok', 'Sincronizado ✓');
+    return true;
+  } catch (e) {
+    if (e instanceof TypeError) {
+      setSyncStatus('offline', 'Sem conexão com a nuvem (rede ou bloqueador de conteúdo) — usando dados locais');
+    } else {
+      setSyncStatus('offline', 'Offline — usando dados locais');
+    }
+    return false;
+  }
+}
+
+function scheduleCloudSync() {
+  touchLocalTimestamp();
+  ghPendingSave = true;
+  if (!getGhToken()) { setSyncStatus('warn', 'Alterações não salvas na nuvem (sem token)'); return; }
+  setSyncStatus('syncing', 'Alterações pendentes…');
+  clearTimeout(ghSyncTimer);
+  ghSyncTimer = setTimeout(pushToGitHub, 2500);
+}
+
+async function pushToGitHub() {
+  const token = getGhToken();
+  if (!token) { setSyncStatus('warn', 'Configure o token pra sincronizar'); return; }
+  if (ghIsSyncing) { ghPendingSave = true; return; }
+  ghIsSyncing = true;
+  ghPendingSave = false;
+  setSyncStatus('syncing', 'Salvando na nuvem…');
+  try {
+    const payload = JSON.stringify(collectSyncData(), null, 2);
+    const body = {
+      message: 'Atualiza dados — ' + new Date().toISOString(),
+      content: b64EncodeUnicode(payload),
+      branch: GH_CONFIG.branch,
+    };
+    if (ghFileSha) body.sha = ghFileSha;
+    const res = await fetch(ghApiUrl().split('?')[0], {
+      method: 'PUT',
+      headers: { 'Accept': 'application/vnd.github+json', 'Authorization': 'token ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (res.status === 409) {
+      await pullFromGitHub(true);
+      setSyncStatus('warn', 'Conflito — dados recarregados, tente salvar de novo');
+      return;
+    }
+    if (res.status === 401 || res.status === 403) {
+      setSyncStatus('error', 'Token inválido ou sem permissão');
+      return;
+    }
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
+    ghFileSha = json.content.sha;
+    setSyncStatus('ok', 'Sincronizado às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }));
+  } catch (e) {
+    setSyncStatus('error', 'Erro ao salvar — tentando de novo em breve');
+    clearTimeout(ghSyncTimer);
+    ghSyncTimer = setTimeout(pushToGitHub, 8000);
+  } finally {
+    ghIsSyncing = false;
+    if (ghPendingSave) { clearTimeout(ghSyncTimer); ghSyncTimer = setTimeout(pushToGitHub, 1500); }
+  }
+}
+
+function openSyncModal() {
+  document.getElementById('sync-token-input').value = getGhToken();
+  document.getElementById('sync-repo-label').textContent = `${GH_CONFIG.owner}/${GH_CONFIG.repo} (${GH_CONFIG.branch})`;
+  document.getElementById('sync-modal').classList.add('open');
+}
+function closeSyncModal() { document.getElementById('sync-modal').classList.remove('open'); }
+function saveGhTokenFromModal() {
+  const val = document.getElementById('sync-token-input').value.trim();
+  setGhToken(val);
+  closeSyncModal();
+  if (val) pullFromGitHub(false).then(() => { if (!ghFileSha) pushToGitHub(); });
+  else setSyncStatus('offline', 'Somente leitura (sem token)');
+}
+function clearGhTokenFromModal() {
+  setGhToken('');
+  document.getElementById('sync-token-input').value = '';
+  setSyncStatus('offline', 'Somente leitura (sem token)');
+}
+function manualSyncNow() { pullFromGitHub(false); }
+
+/* ─── Backup manual (arquivo .json local) ──────────────────────────────── */
+function exportSyncBackup() {
+  const payload = JSON.stringify(collectSyncData(), null, 2);
+  const blob = new Blob([payload], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
+  a.href = url;
+  a.download = `plano-alimentar-backup-${stamp}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+function importSyncBackup(event) {
+  const file = event.target.files && event.target.files[0];
+  event.target.value = '';
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    let data;
+    try { data = JSON.parse(reader.result); }
+    catch (e) { alert('Arquivo inválido — não é um JSON de backup reconhecível.'); return; }
+    const ok = confirm('Importar este backup vai SUBSTITUIR os dados atuais deste navegador.\n\nIsso não pode ser desfeito. Deseja continuar?');
+    if (!ok) return;
+    applySyncData(data);
+    touchLocalTimestamp();
+    setSyncStatus('warn', 'Backup importado — envie pra nuvem se quiser sincronizar');
+    if (getGhToken()) scheduleCloudSync();
+  };
+  reader.onerror = () => alert('Não foi possível ler o arquivo.');
+  reader.readAsText(file);
+}
+
+/* Faz cada função de salvar também agendar o envio pra nuvem (sem alterar
+   nenhuma delas diretamente — só "encapsula" o comportamento original). */
+[
+  'saveChecked', 'saveHist', 'saveCiData', 'saveSuplData', 'saveSuplHist',
+  'saveAguaData', 'saveAguaMeta', 'saveAguaHist', 'saveExtras',
+].forEach(function(fnName) {
+  var original = window[fnName];
+  if (typeof original !== 'function') return;
+  window[fnName] = function() {
+    var result = original.apply(this, arguments);
+    scheduleCloudSync();
+    return result;
+  };
+});
+
+pullFromGitHub(false);
 </script>
 </body>
 </html>
