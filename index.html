@@ -48,11 +48,18 @@ header h1 {
 header p { font-size: 14px; color: var(--muted); }
 
 /* Sync status */
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
 .sync-status {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 10px;
   padding: 5px 12px;
   border: 1px solid var(--border);
   border-radius: 99px;
@@ -150,6 +157,81 @@ header p { font-size: 14px; color: var(--muted); }
 .sync-btn-primary:hover { background: #4d5c34; }
 .sync-btn-danger { color: #C0392B; }
 .sync-backup-row { display: flex; gap: 8px; margin-top: 8px; }
+
+/* Gerenciar suplementos */
+.suppl-manage-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.2rem; }
+.suppl-manage-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 11px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+}
+.suppl-manage-icon { font-size: 18px; flex-shrink: 0; }
+.suppl-manage-info { flex: 1; min-width: 0; }
+.suppl-manage-name { font-size: 13.5px; color: var(--text); font-weight: 500; }
+.suppl-manage-dose { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+.suppl-manage-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.suppl-icon-btn {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 7px; border: 1px solid var(--border); background: var(--card);
+  cursor: pointer; font-size: 13px; color: var(--muted);
+}
+.suppl-icon-btn:hover { background: var(--border); color: var(--text); }
+.suppl-manage-empty { font-size: 12.5px; color: var(--muted); padding: 10px 2px; }
+.suppl-form-row { display: flex; gap: 8px; }
+.suppl-form-row .sync-form-group { flex: 1; }
+.suppl-form-row-icon { max-width: 70px; }
+.suppl-icon-input { text-align: center; font-size: 17px; }
+
+/* Notificações */
+.notif-section { padding: 14px 0; border-top: 1px solid var(--border); }
+.notif-section:first-of-type { border-top: none; padding-top: 0; }
+.notif-section-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.notif-section-title { font-family: 'Lora', serif; font-size: 14px; font-weight: 600; color: var(--text); }
+.notif-inline-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.notif-inline-row .sync-input { width: auto; flex: 1; min-width: 90px; margin-top: 0; }
+.notif-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.notif-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 99px;
+  padding: 4px 6px 4px 11px; font-size: 12.5px; color: var(--text);
+}
+.notif-chip button {
+  width: 17px; height: 17px; border-radius: 50%; border: none; background: var(--border);
+  color: var(--muted); font-size: 11px; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.notif-chip button:hover { background: #C0392B; color: #fff; }
+.notif-add-row { display: flex; gap: 8px; }
+.notif-add-row input { flex: 1; }
+.notif-meal-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 0;
+}
+.notif-meal-name { flex: 1; font-size: 13px; color: var(--text); }
+.notif-meal-time { width: 100px; flex-shrink: 0; }
+.notif-perm-banner {
+  background: var(--bg); border: 1px dashed var(--border); border-radius: 10px;
+  padding: 10px 12px; font-size: 12.5px; color: var(--muted); margin-bottom: 1.1rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+}
+.suppl-optional-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin-top: 2px;
+}
+.suppl-optional-row .sync-form-label { margin-bottom: 0; }
+.suppl-switch { position: relative; width: 38px; height: 22px; flex-shrink: 0; }
+.suppl-switch input { opacity: 0; width: 0; height: 0; }
+.suppl-switch-track {
+  position: absolute; inset: 0; background: var(--border); border-radius: 99px;
+  cursor: pointer; transition: background 0.15s;
+}
+.suppl-switch-track::before {
+  content: ''; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px;
+  background: #fff; border-radius: 50%; transition: transform 0.15s;
+}
+.suppl-switch input:checked + .suppl-switch-track { background: var(--accent); }
+.suppl-switch input:checked + .suppl-switch-track::before { transform: translateX(16px); }
 
 /* Sticky tracker */
 .tracker {
@@ -679,9 +761,16 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
 .suplem-section { margin-top: 1.5rem; }
 .suplem-title { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--text); }
 .suplem-subtitle { font-size: 12px; color: var(--muted); margin: 0.25rem 0 1rem; }
+.suplem-header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
 .suplem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 .suplem-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; }
+.suplem-card.optional { border-style: dashed; opacity: 0.88; }
 .suplem-card-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.suplem-optional-tag {
+  font-size: 9.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--muted); background: var(--card); border: 1px solid var(--border);
+  border-radius: 5px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px;
+}
 .suplem-icon { font-size: 17px; line-height: 1.2; }
 .suplem-info { flex: 1; min-width: 0; }
 .suplem-name { font-size: 13px; font-weight: 500; color: var(--text); }
@@ -918,10 +1007,16 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
   <header>
     <h1>Plano Alimentar</h1>
     <p>Clique nos itens para registrar o que comeu</p>
-    <button class="sync-status" id="sync-status-btn" onclick="openSyncModal()">
-      <span class="sync-dot sync-syncing" id="sync-dot"></span>
-      <span id="sync-label">Carregando…</span>
-    </button>
+    <div class="header-actions">
+      <button class="sync-status" id="sync-status-btn" onclick="openSyncModal()">
+        <span class="sync-dot sync-syncing" id="sync-dot"></span>
+        <span id="sync-label">Carregando…</span>
+      </button>
+      <button class="sync-status" id="notif-status-btn" onclick="openNotifModal()">
+        <span class="sync-dot" id="notif-dot"></span>
+        <span id="notif-label">Notificações</span>
+      </button>
+    </div>
   </header>
 
   <!-- CONTROLE DE ÁGUA -->
@@ -965,8 +1060,13 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
 
   <!-- SUPLEMENTOS -->
   <div class="summary-card suplem-section" id="suplem-section">
-    <div class="suplem-title">💊 Suplementos</div>
-    <div class="suplem-subtitle">Marque as doses de hoje — salvo automaticamente</div>
+    <div class="suplem-header-row">
+      <div>
+        <div class="suplem-title">💊 Suplementos</div>
+        <div class="suplem-subtitle">Marque as doses de hoje — salvo automaticamente</div>
+      </div>
+      <button class="agua-meta-btn" onclick="openSupplManageModal()">Gerenciar</button>
+    </div>
     <div class="suplem-grid" id="suplem-grid"></div>
   </div>
 
@@ -1442,6 +1542,139 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
       <button class="sync-btn" onclick="closeSyncModal()">Cancelar</button>
       <button class="sync-btn" onclick="manualSyncNow()">Sincronizar agora</button>
       <button class="sync-btn sync-btn-primary" onclick="saveGhTokenFromModal()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Manage Supplements Modal -->
+<div class="sync-modal-overlay" id="suppl-modal" onclick="if(event.target===this) closeSupplManageModal()">
+  <div class="sync-modal">
+    <div class="sync-modal-title">💊 Gerenciar suplementos</div>
+
+    <div class="suppl-manage-list" id="suppl-manage-list"></div>
+
+    <div class="sync-form-group" style="padding-top:0.2rem; border-top:1px solid var(--border);">
+      <div class="sync-form-label" style="margin-top:1rem;" id="suppl-form-title">Adicionar suplemento</div>
+      <input type="hidden" id="suppl-form-editing-id" value="">
+      <div class="suppl-form-row" style="margin-top:8px;">
+        <div class="sync-form-group suppl-form-row-icon">
+          <div class="sync-form-label">Ícone</div>
+          <input type="text" class="sync-input suppl-icon-input" id="suppl-form-icon" maxlength="4" placeholder="💊">
+        </div>
+        <div class="sync-form-group">
+          <div class="sync-form-label">Nome</div>
+          <input type="text" class="sync-input" id="suppl-form-name" placeholder="Ex: Vitamina D">
+        </div>
+      </div>
+      <div class="suppl-form-row">
+        <div class="sync-form-group">
+          <div class="sync-form-label">Descrição da dose</div>
+          <input type="text" class="sync-input" id="suppl-form-dosedesc" placeholder="Ex: 1 dose por dia">
+        </div>
+        <div class="sync-form-group" style="max-width:110px;">
+          <div class="sync-form-label">Nº de doses/dia</div>
+          <input type="number" class="sync-input" id="suppl-form-doses" min="1" max="12" value="1">
+        </div>
+      </div>
+      <div class="sync-help">O número de doses define quantas bolinhas aparecem no card pra marcar ao longo do dia.</div>
+      <div class="suppl-optional-row">
+        <div class="sync-form-label" style="text-transform:none; letter-spacing:0; font-size:13px; color:var(--text);">Opcional (não conta na meta diária)</div>
+        <label class="suppl-switch">
+          <input type="checkbox" id="suppl-form-optional">
+          <span class="suppl-switch-track"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="sync-modal-actions">
+      <button class="sync-btn" id="suppl-form-cancel-btn" style="display:none;" onclick="resetSupplForm()">Cancelar edição</button>
+      <button class="sync-btn" onclick="closeSupplManageModal()">Fechar</button>
+      <button class="sync-btn sync-btn-primary" id="suppl-form-submit-btn" onclick="submitSupplForm()">Adicionar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Notifications Modal -->
+<div class="sync-modal-overlay" id="notif-modal" onclick="if(event.target===this) closeNotifModal()">
+  <div class="sync-modal">
+    <div class="sync-modal-title">🔔 Lembretes</div>
+
+    <div class="notif-perm-banner" id="notif-perm-banner" style="display:none;">
+      <span>Autorize as notificações no navegador pra receber os lembretes.</span>
+      <button class="sync-btn sync-btn-primary" style="flex:none;" onclick="requestNotifPermission()">Permitir</button>
+    </div>
+
+    <div class="sync-form-group" style="margin-bottom:0;">
+      <div class="suppl-optional-row">
+        <div class="sync-form-label" style="text-transform:none; letter-spacing:0; font-size:13.5px; color:var(--text); font-weight:600;">Ativar lembretes</div>
+        <label class="suppl-switch">
+          <input type="checkbox" id="notif-master-toggle">
+          <span class="suppl-switch-track"></span>
+        </label>
+      </div>
+      <div class="sync-help">Os lembretes só funcionam enquanto esta página estiver aberta no navegador (pode ficar em segundo plano). Se você fechar a aba, eles param.</div>
+    </div>
+
+    <!-- Água -->
+    <div class="notif-section">
+      <div class="notif-section-head">
+        <div class="notif-section-title">💧 Água</div>
+        <label class="suppl-switch">
+          <input type="checkbox" id="notif-agua-toggle">
+          <span class="suppl-switch-track"></span>
+        </label>
+      </div>
+      <div class="notif-inline-row">
+        <span style="font-size:13px; color:var(--muted);">a cada</span>
+        <select class="sync-input" id="notif-agua-intervalo" style="flex:none; width:auto;">
+          <option value="30">30 min</option>
+          <option value="45">45 min</option>
+          <option value="60">1h</option>
+          <option value="90">1h30</option>
+          <option value="120">2h</option>
+          <option value="180">3h</option>
+        </select>
+        <span style="font-size:13px; color:var(--muted);">entre</span>
+        <input type="time" class="sync-input" id="notif-agua-inicio" style="flex:none; width:auto;">
+        <span style="font-size:13px; color:var(--muted);">e</span>
+        <input type="time" class="sync-input" id="notif-agua-fim" style="flex:none; width:auto;">
+      </div>
+      <div class="sync-help">Só avisa se a meta de água do dia ainda não tiver sido atingida.</div>
+    </div>
+
+    <!-- Suplementos -->
+    <div class="notif-section">
+      <div class="notif-section-head">
+        <div class="notif-section-title">💊 Suplementos</div>
+        <label class="suppl-switch">
+          <input type="checkbox" id="notif-suplem-toggle">
+          <span class="suppl-switch-track"></span>
+        </label>
+      </div>
+      <div class="notif-chips" id="notif-suplem-chips"></div>
+      <div class="notif-add-row">
+        <input type="time" class="sync-input" id="notif-suplem-novo-horario">
+        <button class="sync-btn" style="flex:none;" onclick="addNotifHorario('suplementos')">+ Adicionar horário</button>
+      </div>
+      <div class="sync-help">Só avisa se ainda houver dose obrigatória pendente no horário.</div>
+    </div>
+
+    <!-- Alimentação -->
+    <div class="notif-section">
+      <div class="notif-section-head">
+        <div class="notif-section-title">🍽️ Controle de alimentação</div>
+        <label class="suppl-switch">
+          <input type="checkbox" id="notif-alim-toggle">
+          <span class="suppl-switch-track"></span>
+        </label>
+      </div>
+      <div id="notif-alim-list"></div>
+      <div class="sync-help">Um lembrete por refeição, só se nenhum item dela tiver sido marcado ainda naquele dia.</div>
+    </div>
+
+    <div class="sync-modal-actions">
+      <button class="sync-btn" onclick="closeNotifModal()">Cancelar</button>
+      <button class="sync-btn sync-btn-primary" onclick="saveNotifSettingsFromModal()">Salvar</button>
     </div>
   </div>
 </div>
@@ -2039,10 +2272,135 @@ renderCheckin();
 
 // ── Suplementos (marcação do dia) ──
 var SUPL_KEY = 'suplementos_v1';
-var SUPL_ITEMS = [
+var SUPL_ITEMS_KEY = 'suplementos_lista_v1';
+var SUPL_ITEMS_DEFAULT = [
   { id: 'creatina', icon: '💪', name: 'Creatina', dose: '1 dose por dia', doses: 1 },
   { id: 'omega3',   icon: '🐟', name: 'Ômega 3',  dose: '3 cápsulas por dia', doses: 3 }
 ];
+
+function getSuplItems() {
+  try {
+    var stored = JSON.parse(localStorage.getItem(SUPL_ITEMS_KEY));
+    if (Array.isArray(stored) && stored.length) return stored;
+  } catch {}
+  localStorage.setItem(SUPL_ITEMS_KEY, JSON.stringify(SUPL_ITEMS_DEFAULT));
+  return SUPL_ITEMS_DEFAULT.slice();
+}
+function saveSuplItems(arr) {
+  SUPL_ITEMS = arr;
+  localStorage.setItem(SUPL_ITEMS_KEY, JSON.stringify(arr));
+  renderSuplem();
+  renderSuplWeek();
+}
+
+// ── Gerenciar suplementos (modal de cadastro) ──
+function slugifySupplName(name) {
+  var base = name.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove acentos
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '') || 'suplemento';
+  var id = base, n = 2;
+  var existing = getSuplItems().map(function(s) { return s.id; });
+  while (existing.indexOf(id) >= 0) { id = base + '-' + n; n++; }
+  return id;
+}
+
+function openSupplManageModal() {
+  resetSupplForm();
+  renderSupplManageList();
+  document.getElementById('suppl-modal').classList.add('open');
+}
+function closeSupplManageModal() { document.getElementById('suppl-modal').classList.remove('open'); }
+
+function renderSupplManageList() {
+  var list = document.getElementById('suppl-manage-list');
+  var items = getSuplItems();
+  if (!items.length) {
+    list.innerHTML = '<div class="suppl-manage-empty">Nenhum suplemento cadastrado ainda.</div>';
+    return;
+  }
+  list.innerHTML = items.map(function(sup) {
+    return '<div class="suppl-manage-row">' +
+      '<span class="suppl-manage-icon">' + sup.icon + '</span>' +
+      '<div class="suppl-manage-info">' +
+        '<div class="suppl-manage-name">' + sup.name + (sup.optional ? '<span class="suplem-optional-tag">Opcional</span>' : '') + '</div>' +
+        '<div class="suppl-manage-dose">' + sup.dose + '</div>' +
+      '</div>' +
+      '<div class="suppl-manage-actions">' +
+        '<button class="suppl-icon-btn" title="Editar" onclick="editSupplItem(\'' + sup.id + '\')">✏️</button>' +
+        '<button class="suppl-icon-btn" title="Remover" onclick="deleteSupplItem(\'' + sup.id + '\')">🗑️</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function resetSupplForm() {
+  document.getElementById('suppl-form-editing-id').value = '';
+  document.getElementById('suppl-form-icon').value = '';
+  document.getElementById('suppl-form-name').value = '';
+  document.getElementById('suppl-form-dosedesc').value = '';
+  document.getElementById('suppl-form-doses').value = '1';
+  document.getElementById('suppl-form-optional').checked = false;
+  document.getElementById('suppl-form-title').textContent = 'Adicionar suplemento';
+  document.getElementById('suppl-form-submit-btn').textContent = 'Adicionar';
+  document.getElementById('suppl-form-cancel-btn').style.display = 'none';
+}
+
+function editSupplItem(id) {
+  var sup = getSuplItems().find(function(s) { return s.id === id; });
+  if (!sup) return;
+  document.getElementById('suppl-form-editing-id').value = sup.id;
+  document.getElementById('suppl-form-icon').value = sup.icon;
+  document.getElementById('suppl-form-name').value = sup.name;
+  document.getElementById('suppl-form-dosedesc').value = sup.dose;
+  document.getElementById('suppl-form-doses').value = sup.doses;
+  document.getElementById('suppl-form-optional').checked = !!sup.optional;
+  document.getElementById('suppl-form-title').textContent = 'Editando "' + sup.name + '"';
+  document.getElementById('suppl-form-submit-btn').textContent = 'Salvar alterações';
+  document.getElementById('suppl-form-cancel-btn').style.display = '';
+}
+
+function deleteSupplItem(id) {
+  var sup = getSuplItems().find(function(s) { return s.id === id; });
+  if (!sup) return;
+  if (!confirm('Remover "' + sup.name + '"? O histórico de doses já registradas continua salvo, mas ele deixa de aparecer no controle do dia.')) return;
+  var items = getSuplItems().filter(function(s) { return s.id !== id; });
+  saveSuplItems(items);
+  renderSupplManageList();
+  if (document.getElementById('suppl-form-editing-id').value === id) resetSupplForm();
+}
+
+function submitSupplForm() {
+  var editingId = document.getElementById('suppl-form-editing-id').value;
+  var icon = document.getElementById('suppl-form-icon').value.trim() || '💊';
+  var name = document.getElementById('suppl-form-name').value.trim();
+  var dose = document.getElementById('suppl-form-dosedesc').value.trim();
+  var doses = parseInt(document.getElementById('suppl-form-doses').value, 10);
+  var optional = document.getElementById('suppl-form-optional').checked;
+
+  if (!name) { alert('Dê um nome pro suplemento.'); return; }
+  if (!dose) dose = doses + (doses === 1 ? ' dose por dia' : ' doses por dia');
+  if (!doses || doses < 1) doses = 1;
+  if (doses > 12) doses = 12;
+
+  var items = getSuplItems();
+
+  if (editingId) {
+    items = items.map(function(s) {
+      if (s.id !== editingId) return s;
+      return { id: s.id, icon: icon, name: name, dose: dose, doses: doses, optional: optional };
+    });
+  } else {
+    var id = slugifySupplName(name);
+    items = items.concat([{ id: id, icon: icon, name: name, dose: dose, doses: doses, optional: optional }]);
+  }
+
+  saveSuplItems(items);
+  renderSupplManageList();
+  resetSupplForm();
+}
+
+var SUPL_ITEMS = getSuplItems();
 
 function getSuplData() {
   try { return JSON.parse(localStorage.getItem(SUPL_KEY)) || {}; } catch { return {}; }
@@ -2082,12 +2440,12 @@ function renderSuplem() {
     dotsHtml += '</div>';
 
     var card = document.createElement('div');
-    card.className = 'suplem-card';
+    card.className = 'suplem-card' + (sup.optional ? ' optional' : '');
     card.innerHTML =
       '<div class="suplem-card-header">' +
         '<span class="suplem-icon">' + sup.icon + '</span>' +
         '<div class="suplem-info">' +
-          '<div class="suplem-name">' + sup.name + '</div>' +
+          '<div class="suplem-name">' + sup.name + (sup.optional ? '<span class="suplem-optional-tag">Opcional</span>' : '') + '</div>' +
           '<div class="suplem-dose">' + sup.dose + '</div>' +
         '</div>' +
         '<span class="suplem-week-pct">' + taken.length + '/' + sup.doses + ' hoje</span>' +
@@ -2143,6 +2501,7 @@ function getSuplDoseTotals(dateKey) {
   var dayData = data[dateKey] || {};
   var done = 0, total = 0;
   SUPL_ITEMS.forEach(function(sup) {
+    if (sup.optional) return; // opcionais não entram na meta diária
     total += sup.doses;
     done += (dayData[sup.id] || []).length;
   });
@@ -2748,6 +3107,7 @@ function collectSyncData() {
     hist:         getHist(),
     checkin:      getCiData(),
     suplementos:  getSuplData(),
+    suplItens:    getSuplItems(),
     suplHist:     getSuplHist(),
     agua:         getAguaData(),
     aguaMeta:     getAguaMeta(),
@@ -2769,6 +3129,7 @@ function applySyncData(data) {
   if (Array.isArray(data.hist)) { saveHist(data.hist); renderHist(); }
   if (data.checkin && typeof data.checkin === 'object') { saveCiData(data.checkin); renderCheckin(); }
   if (data.suplementos && typeof data.suplementos === 'object') { saveSuplData(data.suplementos); renderSuplem(); }
+  if (Array.isArray(data.suplItens) && data.suplItens.length) { saveSuplItems(data.suplItens); }
   if (Array.isArray(data.suplHist)) { saveSuplHist(data.suplHist); renderSuplHist(); }
   if (data.agua && typeof data.agua === 'object') { saveAguaData(data.agua); }
   if (typeof data.aguaMeta === 'number' && data.aguaMeta > 0) { saveAguaMeta(data.aguaMeta); }
@@ -2955,7 +3316,7 @@ function importSyncBackup(event) {
    nenhuma delas diretamente — só "encapsula" o comportamento original). */
 [
   'saveChecked', 'saveHist', 'saveCiData', 'saveSuplData', 'saveSuplHist',
-  'saveAguaData', 'saveAguaMeta', 'saveAguaHist', 'saveExtras',
+  'saveSuplItems', 'saveAguaData', 'saveAguaMeta', 'saveAguaHist', 'saveExtras',
 ].forEach(function(fnName) {
   var original = window[fnName];
   if (typeof original !== 'function') return;
@@ -2967,6 +3328,299 @@ function importSyncBackup(event) {
 });
 
 pullFromGitHub(false);
+
+/* ─── Sistema de notificações (lembretes) ───────────────────────────────────
+   Usa a Notification API do navegador. Só funciona enquanto esta aba estiver
+   aberta (pode ficar em segundo plano) — se a aba for fechada, os lembretes
+   param. Em iPhone/Safari, só funciona se o site for adicionado à tela de
+   início (iOS 16.4+); em outros casos o iOS não permite notificações web.
+   As preferências ficam salvas só neste aparelho (não entram na sincronização
+   com a nuvem, já que a permissão do navegador também é por aparelho).
+   ─────────────────────────────────────────────────────────────────────── */
+var NOTIF_KEY = 'notificacoes_v1';
+var NOTIF_FIRED_KEY = 'notificacoes_disparadas_v1';
+var notifTickTimer = null;
+
+function defaultAlimentacaoHorarios() {
+  var sugestoes = {
+    'cafe': '08:00', 'lanche-manha': '10:30', 'almoco': '12:30',
+    'lanche-tarde': '16:00', 'jantar': '19:30', 'ceia': '', 'doce': ''
+  };
+  var list = [];
+  document.querySelectorAll('.meal[data-meal-id]').forEach(function(mealEl) {
+    var id = mealEl.dataset.mealId;
+    var titleEl = mealEl.querySelector('.meal-title');
+    var emoji = mealEl.querySelector('.meal-emoji');
+    var label = (titleEl.childNodes[0] ? titleEl.childNodes[0].textContent : titleEl.textContent).trim();
+    var horario = sugestoes.hasOwnProperty(id) ? sugestoes[id] : '';
+    list.push({ mealId: id, label: label, icon: emoji ? emoji.textContent : '🍽️', horario: horario, enabled: !!horario });
+  });
+  return list;
+}
+
+function defaultNotifSettings() {
+  return {
+    enabled: false,
+    agua: { enabled: true, intervalMin: 90, inicio: '08:00', fim: '22:00' },
+    suplementos: { enabled: true, horarios: ['08:30'] },
+    alimentacao: { enabled: true, refeicoes: defaultAlimentacaoHorarios() },
+  };
+}
+
+function getNotifSettings() {
+  var stored;
+  try { stored = JSON.parse(localStorage.getItem(NOTIF_KEY)); } catch {}
+  var defaults = defaultNotifSettings();
+  if (!stored) return defaults;
+  // Mescla com defaults pra cobrir campos novos (ex: refeição nova no plano)
+  stored.agua = Object.assign({}, defaults.agua, stored.agua || {});
+  stored.suplementos = Object.assign({}, defaults.suplementos, stored.suplementos || {});
+  var savedRefeicoes = (stored.alimentacao && stored.alimentacao.refeicoes) || [];
+  var mergedRefeicoes = defaults.alimentacao.refeicoes.map(function(def) {
+    var saved = savedRefeicoes.find(function(r) { return r.mealId === def.mealId; });
+    return saved ? Object.assign({}, def, saved) : def;
+  });
+  stored.alimentacao = Object.assign({}, defaults.alimentacao, stored.alimentacao || {}, { refeicoes: mergedRefeicoes });
+  if (typeof stored.enabled !== 'boolean') stored.enabled = defaults.enabled;
+  return stored;
+}
+function saveNotifSettings(obj) {
+  localStorage.setItem(NOTIF_KEY, JSON.stringify(obj));
+  setupNotifTimer();
+  updateNotifStatusUI();
+}
+
+function getNotifFired() {
+  try { return JSON.parse(localStorage.getItem(NOTIF_FIRED_KEY)) || {}; } catch { return {}; }
+}
+function saveNotifFired(obj) { localStorage.setItem(NOTIF_FIRED_KEY, JSON.stringify(obj)); }
+
+function updateNotifStatusUI() {
+  var dot = document.getElementById('notif-dot');
+  var label = document.getElementById('notif-label');
+  var settings = getNotifSettings();
+  if (!dot || !label) return;
+  if (!('Notification' in window)) {
+    dot.className = 'sync-dot sync-offline'; label.textContent = 'Sem suporte'; return;
+  }
+  if (!settings.enabled) { dot.className = 'sync-dot sync-offline'; label.textContent = 'Lembretes desligados'; return; }
+  if (Notification.permission === 'denied') { dot.className = 'sync-dot sync-error'; label.textContent = 'Bloqueado'; return; }
+  if (Notification.permission !== 'granted') { dot.className = 'sync-dot sync-warn'; label.textContent = 'Falta permitir'; return; }
+  dot.className = 'sync-dot sync-ok'; label.textContent = 'Lembretes ativos';
+}
+
+function requestNotifPermission() {
+  if (!('Notification' in window)) { alert('Este navegador não tem suporte a notificações.'); return; }
+  function done() {
+    renderNotifModal();
+    updateNotifStatusUI();
+    setupNotifTimer();
+  }
+  try {
+    var result = Notification.requestPermission(done); // estilo antigo (callback), ex: Safari
+    if (result && typeof result.then === 'function') result.then(done); // estilo novo (Promise)
+  } catch (e) {
+    done();
+  }
+}
+
+function fireNotif(tag, title, body) {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  try { new Notification(title, { body: body, tag: tag }); } catch (e) {}
+}
+
+/* Roda a cada minuto enquanto os lembretes estiverem ativos */
+function notifTick() {
+  updateNotifStatusUI();
+  var settings = getNotifSettings();
+  if (!settings.enabled || Notification.permission !== 'granted') return;
+
+  var now = new Date();
+  var hhmm = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+  var today = todayStr();
+  var fired = getNotifFired();
+  if (fired._day !== today) fired = { _day: today };
+
+  // Água — por intervalo, dentro da janela ativa, só se meta ainda não batida
+  if (settings.agua.enabled) {
+    var withinWindow = hhmm >= settings.agua.inicio && hhmm <= settings.agua.fim;
+    var lastMs = fired.aguaLastMs || 0;
+    var dueMs = (settings.agua.intervalMin || 90) * 60000;
+    if (withinWindow && (Date.now() - lastMs) >= dueMs) {
+      var meta = getAguaMeta();
+      var entriesHoje = ((getAguaData()[weekKey(0)] || {})[aguaTodayIdx()]) || [];
+      var totalHoje = diaTotalAgua(entriesHoje);
+      if (totalHoje < meta) {
+        fireNotif('agua', '💧 Hora de beber água', (meta - totalHoje) + ' ml faltando pra bater a meta de hoje.');
+      }
+      fired.aguaLastMs = Date.now();
+    }
+  }
+
+  // Suplementos — em horários fixos, só se houver dose obrigatória pendente
+  if (settings.suplementos.enabled) {
+    (settings.suplementos.horarios || []).forEach(function(h) {
+      var key = 'supl-' + h;
+      if (hhmm === h && !fired[key]) {
+        var totals = getSuplDoseTotals(today);
+        if (totals.total > 0 && totals.done < totals.total) {
+          fireNotif(key, '💊 Hora dos suplementos', (totals.total - totals.done) + ' dose(s) pendente(s) hoje.');
+        }
+        fired[key] = true;
+      }
+    });
+  }
+
+  // Alimentação — em horários fixos por refeição, só se nada dela foi marcado
+  if (settings.alimentacao.enabled) {
+    var checked = getChecked();
+    (settings.alimentacao.refeicoes || []).forEach(function(ref) {
+      if (!ref.enabled || !ref.horario) return;
+      var key = 'alim-' + ref.mealId;
+      if (hhmm === ref.horario && !fired[key]) {
+        var jaMarcou = Object.keys(checked).some(function(id) { return id.indexOf(ref.mealId + '-') === 0; });
+        if (!jaMarcou) {
+          fireNotif(key, ref.icon + ' ' + ref.label, 'Não esqueça de registrar sua refeição no plano.');
+        }
+        fired[key] = true;
+      }
+    });
+  }
+
+  saveNotifFired(fired);
+}
+
+function setupNotifTimer() {
+  clearInterval(notifTickTimer);
+  var settings = getNotifSettings();
+  if (settings.enabled && 'Notification' in window && Notification.permission === 'granted') {
+    notifTick();
+    notifTickTimer = setInterval(notifTick, 60000);
+  }
+}
+
+/* ─── Modal de configuração ─────────────────────────────────────────────── */
+function renderNotifModal() {
+  var settings = getNotifSettings();
+
+  var permBanner = document.getElementById('notif-perm-banner');
+  var supported = 'Notification' in window;
+  permBanner.style.display = (supported && Notification.permission !== 'granted') ? 'flex' : 'none';
+  if (!supported) {
+    permBanner.style.display = 'flex';
+    permBanner.querySelector('span').textContent = 'Este navegador não tem suporte a notificações.';
+    permBanner.querySelector('button').style.display = 'none';
+  }
+
+  document.getElementById('notif-master-toggle').checked = settings.enabled;
+  document.getElementById('notif-agua-toggle').checked = settings.agua.enabled;
+  document.getElementById('notif-agua-intervalo').value = String(settings.agua.intervalMin);
+  document.getElementById('notif-agua-inicio').value = settings.agua.inicio;
+  document.getElementById('notif-agua-fim').value = settings.agua.fim;
+  document.getElementById('notif-suplem-toggle').checked = settings.suplementos.enabled;
+  renderNotifSuplemChips(settings.suplementos.horarios);
+
+  document.getElementById('notif-alim-toggle').checked = settings.alimentacao.enabled;
+  var list = document.getElementById('notif-alim-list');
+  list.innerHTML = settings.alimentacao.refeicoes.map(function(ref, idx) {
+    return '<div class="notif-meal-row">' +
+      '<label class="suppl-switch" style="width:34px; height:20px;">' +
+        '<input type="checkbox" ' + (ref.enabled ? 'checked' : '') + ' onchange="toggleNotifRefeicao(' + idx + ', this.checked)">' +
+        '<span class="suppl-switch-track"></span>' +
+      '</label>' +
+      '<div class="notif-meal-name">' + ref.icon + ' ' + ref.label + '</div>' +
+      '<input type="time" class="sync-input notif-meal-time" value="' + (ref.horario || '') + '" onchange="setNotifRefeicaoHorario(' + idx + ', this.value)">' +
+    '</div>';
+  }).join('');
+}
+
+function renderNotifSuplemChips(horarios) {
+  var el = document.getElementById('notif-suplem-chips');
+  if (!horarios.length) { el.innerHTML = '<span class="suppl-manage-empty">Nenhum horário adicionado.</span>'; return; }
+  el.innerHTML = horarios.slice().sort().map(function(h) {
+    return '<span class="notif-chip">' + h + '<button onclick="removeNotifHorario(\'suplementos\',\'' + h + '\')">×</button></span>';
+  }).join('');
+}
+
+var notifPendingRefeicoes = null;
+
+function toggleNotifRefeicao(idx, val) {
+  var settings = getNotifSettings();
+  settings.alimentacao.refeicoes[idx].enabled = val;
+  notifPendingRefeicoes = settings.alimentacao.refeicoes;
+}
+function setNotifRefeicaoHorario(idx, val) {
+  var settings = getNotifSettings();
+  if (notifPendingRefeicoes) settings.alimentacao.refeicoes = notifPendingRefeicoes;
+  settings.alimentacao.refeicoes[idx].horario = val;
+  settings.alimentacao.refeicoes[idx].enabled = !!val;
+  notifPendingRefeicoes = settings.alimentacao.refeicoes;
+  localStorage.setItem(NOTIF_KEY, JSON.stringify(settings));
+  renderNotifModal();
+}
+
+function addNotifHorario(tipo) {
+  var input = document.getElementById('notif-' + (tipo === 'suplementos' ? 'suplem' : tipo) + '-novo-horario');
+  var val = input.value;
+  if (!val) return;
+  var settings = getNotifSettings();
+  if (settings[tipo].horarios.indexOf(val) < 0) settings[tipo].horarios.push(val);
+  localStorage.setItem(NOTIF_KEY, JSON.stringify(settings));
+  input.value = '';
+  renderNotifSuplemChips(settings[tipo].horarios);
+}
+function removeNotifHorario(tipo, val) {
+  var settings = getNotifSettings();
+  settings[tipo].horarios = settings[tipo].horarios.filter(function(h) { return h !== val; });
+  localStorage.setItem(NOTIF_KEY, JSON.stringify(settings));
+  renderNotifSuplemChips(settings[tipo].horarios);
+}
+
+function openNotifModal() {
+  notifPendingRefeicoes = null;
+  updateNotifStatusUI();
+  renderNotifModal();
+  document.getElementById('notif-modal').classList.add('open');
+}
+function closeNotifModal() { document.getElementById('notif-modal').classList.remove('open'); }
+
+function saveNotifSettingsFromModal() {
+  var settings = getNotifSettings();
+  settings.enabled = document.getElementById('notif-master-toggle').checked;
+  settings.agua.enabled = document.getElementById('notif-agua-toggle').checked;
+  settings.agua.intervalMin = parseInt(document.getElementById('notif-agua-intervalo').value, 10);
+  settings.agua.inicio = document.getElementById('notif-agua-inicio').value || '08:00';
+  settings.agua.fim = document.getElementById('notif-agua-fim').value || '22:00';
+  settings.suplementos.enabled = document.getElementById('notif-suplem-toggle').checked;
+  settings.alimentacao.enabled = document.getElementById('notif-alim-toggle').checked;
+  if (notifPendingRefeicoes) settings.alimentacao.refeicoes = notifPendingRefeicoes;
+
+  if (settings.enabled && (!('Notification' in window) || Notification.permission !== 'granted')) {
+    if ('Notification' in window && Notification.permission !== 'denied') {
+      function afterPerm() {
+        saveNotifSettings(settings);
+        closeNotifModal();
+        updateNotifStatusUI();
+      }
+      var result = Notification.requestPermission(afterPerm);
+      if (result && typeof result.then === 'function') result.then(afterPerm);
+      return;
+    }
+  }
+  saveNotifSettings(settings);
+  closeNotifModal();
+}
+
+updateNotifStatusUI();
+setupNotifTimer();
+setInterval(updateNotifStatusUI, 15000);
+
+// Se a permissão for concedida/alterada fora do modal (ex: pelo cadeado do
+// navegador), reavalia o status assim que a aba voltar a ficar ativa.
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) { updateNotifStatusUI(); setupNotifTimer(); }
+});
+window.addEventListener('focus', function() { updateNotifStatusUI(); setupNotifTimer(); });
 </script>
 </body>
 </html>
