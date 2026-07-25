@@ -843,6 +843,73 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
 .agua-day.today-col .agua-day-label { color: var(--gold); font-weight: 600; }
 .agua-day.today-col .agua-day-bar-wrap { box-shadow: 0 0 0 1.5px var(--gold); }
 
+/* Controle de peso */
+.peso-stats-grid { margin-top: 14px; }
+.peso-stat-hero {
+  background: var(--accent2-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 8px;
+}
+.peso-stat-hero-label {
+  font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--muted); margin-bottom: 5px;
+}
+.peso-stat-hero-value {
+  font-family: 'Lora', serif; font-size: 32px; font-weight: 600; color: var(--text);
+  line-height: 1.1; display: flex; align-items: baseline; gap: 6px;
+}
+.peso-stat-hero-unit { font-size: 15px; font-weight: 500; color: var(--muted); }
+.peso-stat-hero-sub { font-size: 11.5px; color: var(--muted); margin-top: 5px; }
+.peso-stats-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.peso-stat {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+  padding: 11px 12px;
+}
+.peso-stat-label {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--muted); margin-bottom: 5px;
+}
+.peso-stat-value {
+  font-family: 'Lora', serif; font-size: 19px; font-weight: 600; color: var(--text);
+  display: flex; align-items: baseline; gap: 4px;
+}
+.peso-stat-value .peso-stat-arrow { font-size: 13px; }
+.peso-stat-value.up { color: #C0392B; }
+.peso-stat-value.down { color: var(--accent); }
+.peso-stat-sub { font-size: 10.5px; color: var(--muted); margin-top: 3px; }
+.peso-input-row { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+.peso-input {
+  flex: 1; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 9px 12px;
+}
+.peso-input:focus { outline: none; border-color: var(--accent2); }
+.peso-input-unit { font-size: 13px; color: var(--muted); }
+.peso-save-btn {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; color: #fff;
+  background: var(--accent2); border: none; border-radius: 8px;
+  padding: 9px 16px; cursor: pointer; white-space: nowrap; transition: opacity 0.15s;
+}
+.peso-save-btn:hover { opacity: 0.88; }
+.peso-empty-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+.peso-chart-wrap { margin-top: 18px; }
+.peso-chart-svg { width: 100%; height: 90px; display: block; }
+.peso-hist-row {
+  display: grid; grid-template-columns: 76px 1fr auto auto; align-items: center; gap: 8px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.peso-hist-row:last-child { border-bottom: none; }
+.peso-hist-date { font-size: 12.5px; color: var(--muted); }
+.peso-hist-value { font-size: 14px; color: var(--text); font-weight: 500; }
+.peso-hist-delta { font-size: 11.5px; font-weight: 600; padding: 2px 7px; border-radius: 99px; white-space: nowrap; }
+.peso-hist-delta.up { color: #C0392B; background: #FBEBE9; }
+.peso-hist-delta.down { color: var(--accent); background: var(--accent-light); }
+.peso-hist-delta.zero { color: var(--muted); background: var(--bg); }
+.peso-hist-actions { display: flex; gap: 4px; }
+
 /* Histórico semanal de suplementos — layout tipo pirulito (haste + bolinha) */
 .suplweek-days { display: flex; gap: 6px; align-items: flex-end; }
 .suplweek-day { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -1498,6 +1565,38 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
     </table>
 
     <div class="ci-week-summary" id="ci-summary"></div>
+  </div>
+
+  <!-- CONTROLE DE PESO -->
+  <div class="summary-card peso-section" id="peso-section">
+    <div class="agua-header">
+      <div>
+        <div class="agua-title">⚖️ Controle de Peso</div>
+        <div class="agua-meta-label">Meta: <b id="peso-meta-label">—</b></div>
+      </div>
+      <button class="agua-meta-btn" onclick="ajustarMetaPeso()">Ajustar meta</button>
+    </div>
+
+    <div class="peso-stats-grid" id="peso-stats-grid"></div>
+
+    <div class="peso-input-row">
+      <input type="number" step="0.1" min="20" max="400" class="peso-input" id="peso-input" placeholder="Seu peso hoje">
+      <span class="peso-input-unit">kg</span>
+      <button class="peso-save-btn" onclick="registrarPesoHoje()">Registrar</button>
+    </div>
+
+    <div class="peso-chart-wrap" id="peso-chart-wrap"></div>
+  </div>
+
+  <!-- HISTÓRICO DE PESO -->
+  <div class="summary-card hist-section" id="pesohist-section" data-hist-id="pesohist">
+    <div class="hist-header" onclick="toggleHistSection(this)">
+      <div class="hist-title">📅 Histórico de peso</div>
+      <span class="hist-chevron">▾</span>
+    </div>
+    <div class="hist-body-wrap">
+      <div id="pesohist-body"></div>
+    </div>
   </div>
 
   <footer>Plano alimentar — dados salvos no navegador</footer>
@@ -2850,6 +2949,237 @@ function renderAguaHist() {
 
 renderAguaHist();
 
+// ── Controle de peso ──
+var PESO_KEY = 'peso_hist_v1';
+var PESO_META_KEY = 'peso_meta_v1';
+
+function parseBrDate(str) {
+  var p = str.split('/');
+  return new Date(parseInt(p[2], 10), parseInt(p[1], 10) - 1, parseInt(p[0], 10));
+}
+
+function getPesoHist() {
+  try { return JSON.parse(localStorage.getItem(PESO_KEY)) || []; } catch { return []; }
+}
+function savePesoHist(arr) {
+  arr = arr.slice().sort(function(a, b) { return parseBrDate(b.date) - parseBrDate(a.date); });
+  localStorage.setItem(PESO_KEY, JSON.stringify(arr));
+}
+
+function getPesoMeta() {
+  var m = parseFloat(localStorage.getItem(PESO_META_KEY));
+  return (m && m > 0) ? m : null;
+}
+function savePesoMeta(v) {
+  if (v) localStorage.setItem(PESO_META_KEY, String(v));
+  else localStorage.removeItem(PESO_META_KEY);
+}
+
+function fmtPeso(n) { return n.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
+
+function ajustarMetaPeso() {
+  var atual = getPesoMeta();
+  var novo = prompt('Meta de peso em kg (deixe em branco pra remover a meta):', atual ? String(atual).replace('.', ',') : '');
+  if (novo === null) return;
+  if (novo.trim() === '') { savePesoMeta(null); renderPesoAll(); return; }
+  var val = parseFloat(novo.replace(',', '.'));
+  if (isNaN(val) || val < 20 || val > 400) { alert('Informe um valor válido em kg.'); return; }
+  savePesoMeta(val);
+  renderPesoAll();
+}
+
+function registrarPesoHoje() {
+  var input = document.getElementById('peso-input');
+  var val = parseFloat((input.value || '').replace(',', '.'));
+  if (isNaN(val) || val < 20 || val > 400) { alert('Informe um peso válido em kg (entre 20 e 400).'); return; }
+  val = Math.round(val * 10) / 10;
+  var hist = getPesoHist();
+  var today = todayStr();
+  var idx = hist.findIndex(function(r) { return r.date === today; });
+  if (idx >= 0) hist[idx].peso = val;
+  else hist.unshift({ date: today, peso: val });
+  savePesoHist(hist);
+  input.value = '';
+  renderPesoAll();
+}
+
+function deletePesoDia(date) {
+  if (!confirm('Remover registro de peso de ' + date + '?')) return;
+  var hist = getPesoHist().filter(function(r) { return r.date !== date; });
+  savePesoHist(hist);
+  renderPesoAll();
+}
+
+function editPesoValor(date) {
+  var hist = getPesoHist();
+  var entry = hist.find(function(r) { return r.date === date; });
+  if (!entry) return;
+  var novo = prompt('Novo peso para ' + date + ' (kg):', String(entry.peso).replace('.', ','));
+  if (novo === null) return;
+  var val = parseFloat(novo.replace(',', '.'));
+  if (isNaN(val) || val < 20 || val > 400) { alert('Informe um valor válido em kg.'); return; }
+  entry.peso = Math.round(val * 10) / 10;
+  savePesoHist(hist);
+  renderPesoAll();
+}
+
+// Decide se uma variação é "boa" (verde) ou "ruim" (vermelha) considerando
+// a direção da meta (perder ou ganhar peso). Sem meta definida, assume que
+// diminuir é o objetivo — o caso mais comum num plano alimentar.
+function pesoDeltaBadgeClass(delta, direction) {
+  if (Math.abs(delta) < 0.05) return 'zero';
+  if (direction === 'ganhar') return delta > 0 ? 'down' : 'up';
+  return delta < 0 ? 'down' : 'up';
+}
+
+function pesoGetDirection() {
+  var hist = getPesoHist();
+  var meta = getPesoMeta();
+  if (!meta || !hist.length) return null;
+  var primeiro = hist[hist.length - 1].peso;
+  if (meta < primeiro) return 'perder';
+  if (meta > primeiro) return 'ganhar';
+  return null;
+}
+
+function renderPesoStats() {
+  var hist = getPesoHist();
+  var meta = getPesoMeta();
+  var grid = document.getElementById('peso-stats-grid');
+  document.getElementById('peso-meta-label').textContent = meta ? (fmtPeso(meta) + ' kg') : 'não definida';
+
+  if (!hist.length) {
+    grid.innerHTML = '<div class="peso-empty-note" style="grid-column:1/-1;">Registre seu peso pra começar a ver o progresso aqui.</div>';
+    return;
+  }
+
+  var atual = hist[0].peso;
+  var anterior = hist.length > 1 ? hist[1].peso : null;
+  var direction = pesoGetDirection();
+
+  var heroHtml = '<div class="peso-stat-hero">' +
+    '<div class="peso-stat-hero-label">Peso atual</div>' +
+    '<div class="peso-stat-hero-value">' + fmtPeso(atual) + '<span class="peso-stat-hero-unit">kg</span></div>' +
+    '<div class="peso-stat-hero-sub">' + (hist[0].date === todayStr() ? 'hoje' : hist[0].date) + '</div>' +
+  '</div>';
+
+  var cards = [];
+
+  if (meta) {
+    var diffMeta = atual - meta;
+    var naMeta = Math.abs(diffMeta) < 0.05;
+    var clsMeta = naMeta ? 'down' : pesoDeltaBadgeClass(diffMeta, direction);
+    var arrowMeta = naMeta ? '🎉' : (diffMeta > 0 ? '▲' : '▼');
+    cards.push({
+      label: naMeta ? 'Na meta' : (diffMeta > 0 ? 'Acima da meta' : 'Abaixo da meta'),
+      arrow: arrowMeta,
+      value: fmtPeso(Math.abs(diffMeta)) + ' kg',
+      sub: '',
+      cls: clsMeta
+    });
+  } else {
+    cards.push({ label: 'Meta', arrow: '', value: '—', sub: 'defina uma meta', cls: '' });
+  }
+
+  if (anterior !== null) {
+    var diffAnt = atual - anterior;
+    var naoMudou = Math.abs(diffAnt) < 0.05;
+    var clsAnt = pesoDeltaBadgeClass(diffAnt, direction);
+    var arrowAnt = naoMudou ? '●' : (diffAnt > 0 ? '▲' : '▼');
+    cards.push({
+      label: 'Desde o último',
+      arrow: arrowAnt,
+      value: fmtPeso(Math.abs(diffAnt)) + ' kg',
+      sub: 'em ' + hist[1].date,
+      cls: clsAnt
+    });
+  } else {
+    cards.push({ label: 'Desde o último', arrow: '', value: '—', sub: 'só 1 registro', cls: '' });
+  }
+
+  var secondaryHtml = '<div class="peso-stats-secondary">' + cards.map(function(c) {
+    return '<div class="peso-stat">' +
+      '<div class="peso-stat-label">' + c.label + '</div>' +
+      '<div class="peso-stat-value ' + c.cls + '">' +
+        (c.arrow ? '<span class="peso-stat-arrow">' + c.arrow + '</span>' : '') + c.value +
+      '</div>' +
+      (c.sub ? '<div class="peso-stat-sub">' + c.sub + '</div>' : '') +
+    '</div>';
+  }).join('') + '</div>';
+
+  grid.innerHTML = heroHtml + secondaryHtml;
+}
+
+function renderPesoChart() {
+  var wrap = document.getElementById('peso-chart-wrap');
+  var hist = getPesoHist().slice(0, 20).slice().reverse(); // cronológico, mais antigo → mais recente
+  if (hist.length < 2) { wrap.innerHTML = ''; return; }
+
+  var vals = hist.map(function(r) { return r.peso; });
+  var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+  if (min === max) { min -= 1; max += 1; }
+  var padY = (max - min) * 0.2;
+  min -= padY; max += padY;
+
+  var W = 600, H = 90, padX = 6;
+  var stepX = (W - padX * 2) / (hist.length - 1);
+  var points = hist.map(function(r, i) {
+    var x = padX + i * stepX;
+    var y = H - ((r.peso - min) / (max - min)) * H;
+    return [x, y];
+  });
+  var pathD = points.map(function(p, i) { return (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
+  var areaD = pathD + ' L' + points[points.length - 1][0].toFixed(1) + ',' + H + ' L' + points[0][0].toFixed(1) + ',' + H + ' Z';
+  var dots = points.map(function(p) {
+    return '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="2.5" fill="var(--accent2)"></circle>';
+  }).join('');
+
+  wrap.innerHTML = '<svg class="peso-chart-svg" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">' +
+    '<path d="' + areaD + '" fill="var(--accent2-light)" stroke="none"></path>' +
+    '<path d="' + pathD + '" fill="none" stroke="var(--accent2)" stroke-width="2"></path>' +
+    dots +
+  '</svg>';
+}
+
+function renderPesoHist() {
+  var hist = getPesoHist();
+  var body = document.getElementById('pesohist-body');
+  if (!hist.length) {
+    body.innerHTML = '<div class="hist-empty">Nenhum peso registrado ainda.<br>Registre seu peso no card acima para começar.</div>';
+    return;
+  }
+  var direction = pesoGetDirection();
+  var rows = hist.map(function(r, i) {
+    var isOldest = i === hist.length - 1;
+    var deltaHtml = '';
+    if (!isOldest) {
+      var delta = r.peso - hist[i + 1].peso;
+      deltaHtml = '<span class="peso-hist-delta ' + pesoDeltaBadgeClass(delta, direction) + '">' +
+        (delta > 0 ? '+' : (delta < 0 ? '−' : '±')) + fmtPeso(Math.abs(delta)) + ' kg' +
+      '</span>';
+    } else {
+      deltaHtml = '<span></span>';
+    }
+    return '<div class="peso-hist-row" data-pesohist-date="' + r.date + '">' +
+      '<span class="peso-hist-date">' + r.date + '</span>' +
+      '<span class="peso-hist-value">' + fmtPeso(r.peso) + ' kg</span>' +
+      deltaHtml +
+      '<span class="peso-hist-actions">' +
+        '<button class="hist-edit-btn" onclick="editPesoValor(\'' + r.date + '\')" title="Editar peso">✏️</button>' +
+        '<button class="hist-del" onclick="deletePesoDia(\'' + r.date + '\')" title="Remover">✕</button>' +
+      '</span>' +
+    '</div>';
+  }).join('');
+  body.innerHTML = rows;
+}
+
+function renderPesoAll() {
+  renderPesoStats();
+  renderPesoChart();
+  renderPesoHist();
+}
+renderPesoAll();
+
 function renderAgua() {
   var meta = getAguaMeta();
   document.getElementById('agua-meta-label').textContent = meta.toLocaleString('pt-BR') + ' ml';
@@ -3113,6 +3443,8 @@ function collectSyncData() {
     aguaMeta:     getAguaMeta(),
     aguaHist:     getAguaHist(),
     extras:       getExtras(),
+    pesoHist:     getPesoHist(),
+    pesoMeta:     getPesoMeta(),
     _updatedAt:   new Date().toISOString(),
   };
 }
@@ -3135,6 +3467,9 @@ function applySyncData(data) {
   if (typeof data.aguaMeta === 'number' && data.aguaMeta > 0) { saveAguaMeta(data.aguaMeta); }
   if (Array.isArray(data.aguaHist)) { saveAguaHist(data.aguaHist); renderAguaHist(); }
   if (data.extras && typeof data.extras === 'object') { saveExtras(data.extras); renderExtras(); }
+  if (Array.isArray(data.pesoHist)) { savePesoHist(data.pesoHist); }
+  if (typeof data.pesoMeta === 'number' && data.pesoMeta > 0) { savePesoMeta(data.pesoMeta); }
+  renderPesoAll();
   renderAgua();
   renderSuplWeek();
   updateTracker();
@@ -3317,6 +3652,7 @@ function importSyncBackup(event) {
 [
   'saveChecked', 'saveHist', 'saveCiData', 'saveSuplData', 'saveSuplHist',
   'saveSuplItems', 'saveAguaData', 'saveAguaMeta', 'saveAguaHist', 'saveExtras',
+  'savePesoHist', 'savePesoMeta',
 ].forEach(function(fnName) {
   var original = window[fnName];
   if (typeof original !== 'function') return;
