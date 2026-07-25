@@ -958,6 +958,37 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
   gap: 6px; flex-direction: column;
 }
 .extra-form.open { display: flex; }
+.extra-form { position: relative; }
+.extra-suggest {
+  display: none;
+  position: absolute;
+  left: 0; right: 0; top: 100%;
+  margin-top: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(30,28,24,0.14);
+  z-index: 20;
+  max-height: 230px;
+  overflow-y: auto;
+}
+.extra-suggest.open { display: block; }
+.extra-suggest-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 8px 12px; cursor: pointer; font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+.extra-suggest-item:last-of-type { border-bottom: none; }
+.extra-suggest-item:hover { background: var(--bg); }
+.extra-suggest-name { color: var(--text); flex: 1; }
+.extra-suggest-kcal { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.extra-suggest-loading, .extra-suggest-empty {
+  padding: 10px 12px; font-size: 12.5px; color: var(--muted);
+}
+.extra-suggest-credit {
+  padding: 5px 12px; font-size: 10px; color: var(--muted); text-align: right;
+  border-top: 1px solid var(--border);
+}
 .extra-inputs { display: flex; gap: 6px; }
 .extra-input-name {
   flex: 1; padding: 7px 10px; font-size: 13px;
@@ -1232,10 +1263,11 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
       </button>
       <div class="extra-form" id="extra-form-cafe">
         <div class="extra-inputs">
-          <input class="extra-input-name" id="extra-name-cafe" placeholder="Nome do alimento" />
+          <input class="extra-input-name" id="extra-name-cafe" placeholder="Nome do alimento" oninput="onExtraNameInput('cafe')" autocomplete="off" />
           <input class="extra-input-kcal" id="extra-kcal-cafe" type="number" placeholder="kcal" min="1" />
           <button class="extra-add-btn" onclick="addExtra('cafe')">Add</button>
         </div>
+        <div class="extra-suggest" id="extra-suggest-cafe"></div>
       </div>
     </div>
   </div>
@@ -1287,10 +1319,11 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
       </button>
       <div class="extra-form" id="extra-form-lanche-manha">
         <div class="extra-inputs">
-          <input class="extra-input-name" id="extra-name-lanche-manha" placeholder="Nome do alimento" />
+          <input class="extra-input-name" id="extra-name-lanche-manha" placeholder="Nome do alimento" oninput="onExtraNameInput('lanche-manha')" autocomplete="off" />
           <input class="extra-input-kcal" id="extra-kcal-lanche-manha" type="number" placeholder="kcal" min="1" />
           <button class="extra-add-btn" onclick="addExtra('lanche-manha')">Add</button>
         </div>
+        <div class="extra-suggest" id="extra-suggest-lanche-manha"></div>
       </div>
     </div>
   </div>
@@ -1344,10 +1377,11 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
       </button>
       <div class="extra-form" id="extra-form-almoco">
         <div class="extra-inputs">
-          <input class="extra-input-name" id="extra-name-almoco" placeholder="Nome do alimento" />
+          <input class="extra-input-name" id="extra-name-almoco" placeholder="Nome do alimento" oninput="onExtraNameInput('almoco')" autocomplete="off" />
           <input class="extra-input-kcal" id="extra-kcal-almoco" type="number" placeholder="kcal" min="1" />
           <button class="extra-add-btn" onclick="addExtra('almoco')">Add</button>
         </div>
+        <div class="extra-suggest" id="extra-suggest-almoco"></div>
       </div>
     </div>
   </div>
@@ -1383,10 +1417,11 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
       </button>
       <div class="extra-form" id="extra-form-lanche-tarde">
         <div class="extra-inputs">
-          <input class="extra-input-name" id="extra-name-lanche-tarde" placeholder="Nome do alimento" />
+          <input class="extra-input-name" id="extra-name-lanche-tarde" placeholder="Nome do alimento" oninput="onExtraNameInput('lanche-tarde')" autocomplete="off" />
           <input class="extra-input-kcal" id="extra-kcal-lanche-tarde" type="number" placeholder="kcal" min="1" />
           <button class="extra-add-btn" onclick="addExtra('lanche-tarde')">Add</button>
         </div>
+        <div class="extra-suggest" id="extra-suggest-lanche-tarde"></div>
       </div>
     </div>
   </div>
@@ -1426,10 +1461,11 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
       </button>
       <div class="extra-form" id="extra-form-jantar">
         <div class="extra-inputs">
-          <input class="extra-input-name" id="extra-name-jantar" placeholder="Nome do alimento" />
+          <input class="extra-input-name" id="extra-name-jantar" placeholder="Nome do alimento" oninput="onExtraNameInput('jantar')" autocomplete="off" />
           <input class="extra-input-kcal" id="extra-kcal-jantar" type="number" placeholder="kcal" min="1" />
           <button class="extra-add-btn" onclick="addExtra('jantar')">Add</button>
         </div>
+        <div class="extra-suggest" id="extra-suggest-jantar"></div>
       </div>
     </div>
   </div>
@@ -1460,10 +1496,11 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
       </button>
       <div class="extra-form" id="extra-form-ceia">
         <div class="extra-inputs">
-          <input class="extra-input-name" id="extra-name-ceia" placeholder="Nome do alimento" />
+          <input class="extra-input-name" id="extra-name-ceia" placeholder="Nome do alimento" oninput="onExtraNameInput('ceia')" autocomplete="off" />
           <input class="extra-input-kcal" id="extra-kcal-ceia" type="number" placeholder="kcal" min="1" />
           <button class="extra-add-btn" onclick="addExtra('ceia')">Add</button>
         </div>
+        <div class="extra-suggest" id="extra-suggest-ceia"></div>
       </div>
     </div>
   </div>
@@ -3298,6 +3335,93 @@ function addExtra(meal) {
   updateTracker();
   autoSalvarDia();
 }
+
+// ── Busca de calorias (Open Food Facts) ──
+var extraSuggestTimers = {};
+var extraSuggestCache = {};
+var extraSuggestResults = {};
+
+function onExtraNameInput(meal) {
+  var input = document.getElementById('extra-name-' + meal);
+  var query = input.value.trim();
+  var box = document.getElementById('extra-suggest-' + meal);
+  clearTimeout(extraSuggestTimers[meal]);
+  if (query.length < 3) { box.innerHTML = ''; box.classList.remove('open'); return; }
+  extraSuggestTimers[meal] = setTimeout(function() { buscarCalorias(meal, query); }, 400);
+}
+
+function buscarCalorias(meal, query) {
+  var box = document.getElementById('extra-suggest-' + meal);
+  var cacheKey = query.toLowerCase();
+  if (extraSuggestCache[cacheKey]) { renderExtraSuggest(meal, extraSuggestCache[cacheKey]); return; }
+
+  box.innerHTML = '<div class="extra-suggest-loading">Buscando…</div>';
+  box.classList.add('open');
+
+  var url = 'https://world.openfoodfacts.org/cgi/search.pl?search_terms=' + encodeURIComponent(query) +
+    '&search_simple=1&action=process&json=1&page_size=8' +
+    '&fields=product_name,product_name_pt,nutriments';
+
+  fetch(url).then(function(r) { return r.json(); }).then(function(data) {
+    // Se o usuário já digitou algo diferente enquanto a busca rodava, ignora a resposta.
+    var inputAtual = document.getElementById('extra-name-' + meal).value.trim().toLowerCase();
+    if (inputAtual !== cacheKey) return;
+
+    var vistos = {};
+    var results = (data.products || []).reduce(function(acc, p) {
+      var nome = (p.product_name_pt || p.product_name || '').trim();
+      var kcal = p.nutriments && (p.nutriments['energy-kcal_100g'] || p.nutriments['energy-kcal']);
+      if (!nome || !kcal) return acc;
+      var chave = nome.toLowerCase();
+      if (vistos[chave]) return acc;
+      vistos[chave] = true;
+      acc.push({ nome: nome, kcal: Math.round(kcal) });
+      return acc;
+    }, []).slice(0, 6);
+
+    extraSuggestCache[cacheKey] = results;
+    renderExtraSuggest(meal, results);
+  }).catch(function() {
+    box.innerHTML = '<div class="extra-suggest-empty">Não foi possível buscar agora. Digite o kcal manualmente.</div>';
+  });
+}
+
+function renderExtraSuggest(meal, results) {
+  var box = document.getElementById('extra-suggest-' + meal);
+  if (!results.length) {
+    box.innerHTML = '<div class="extra-suggest-empty">Nada encontrado. Digite o kcal manualmente.</div>';
+    box.classList.add('open');
+    return;
+  }
+  extraSuggestResults[meal] = results;
+  box.innerHTML = results.map(function(r, i) {
+    return '<div class="extra-suggest-item" onclick="pickExtraSuggest(\'' + meal + '\',' + i + ')">' +
+      '<span class="extra-suggest-name">' + r.nome + '</span>' +
+      '<span class="extra-suggest-kcal">' + r.kcal + ' kcal/100g</span>' +
+    '</div>';
+  }).join('') + '<div class="extra-suggest-credit">via Open Food Facts</div>';
+  box.classList.add('open');
+}
+
+function pickExtraSuggest(meal, idx) {
+  var r = (extraSuggestResults[meal] || [])[idx];
+  if (!r) return;
+  document.getElementById('extra-name-' + meal).value = r.nome;
+  document.getElementById('extra-kcal-' + meal).value = r.kcal;
+  var box = document.getElementById('extra-suggest-' + meal);
+  box.innerHTML = '';
+  box.classList.remove('open');
+  document.getElementById('extra-kcal-' + meal).focus();
+}
+
+// Fecha qualquer sugestão aberta ao clicar fora do formulário
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.extra-form')) return;
+  EXTRA_MEALS.forEach(function(meal) {
+    var box = document.getElementById('extra-suggest-' + meal);
+    if (box) { box.innerHTML = ''; box.classList.remove('open'); }
+  });
+});
 
 function toggleExtra(meal, id) {
   var extras = getExtras();
