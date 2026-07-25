@@ -7,7 +7,7 @@
   "hist": [
     {
       "date": "25/07/2026",
-      "kcal": 717
+      "kcal": 367
     },
     {
       "date": "24/07/2026",
@@ -434,7 +434,7 @@
         "id": "ext-lanche-tarde-1784942698689",
         "name": "Bolo de pessêgo",
         "kcal": 350,
-        "checked": true
+        "checked": false
       }
     ],
     "jantar": [
@@ -453,5 +453,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-25T13:09:52.430Z"
+  "_updatedAt": "2026-07-25T13:09:58.749Z"
 }
