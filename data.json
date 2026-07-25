@@ -1,0 +1,375 @@
+{
+  "checked": {
+    "cafe-1": 102,
+    "cafe-2": 60,
+    "cafe-3": 55
+  },
+  "hist": [
+    {
+      "date": "24/07/2026",
+      "kcal": 217
+    },
+    {
+      "date": "07/07/2026",
+      "kcal": 1322
+    },
+    {
+      "date": "03/07/2026",
+      "kcal": 1072
+    },
+    {
+      "date": "25/06/2026",
+      "kcal": 1127
+    },
+    {
+      "date": "22/06/2026",
+      "kcal": 1022
+    },
+    {
+      "date": "21/06/2026",
+      "kcal": 1252
+    },
+    {
+      "date": "04/06/2026",
+      "kcal": 1212
+    }
+  ],
+  "checkin": {
+    "2026-05-25": {
+      "leitura_0": true,
+      "agua_0": true,
+      "alim_0": true,
+      "treino_0": true,
+      "cardio_0": true,
+      "oracao_0": true,
+      "agua_1": true,
+      "alim_1": true,
+      "leitura_1": true,
+      "treino_1": true,
+      "oracao_1": true,
+      "agua_2": true,
+      "treino_2": true,
+      "cardio_2": true,
+      "oracao_2": true,
+      "leitura_2": true,
+      "agua_3": true,
+      "alim_3": true,
+      "oracao_3": true,
+      "leitura_3": true,
+      "alim_4": true,
+      "agua_4": true,
+      "cardio_4": true,
+      "oracao_4": true,
+      "leitura_4": true
+    },
+    "2026-05-18": {
+      "alim_4": true,
+      "leitura_4": true,
+      "oracao_4": true,
+      "agua_3": true,
+      "agua_4": true,
+      "alim_3": true,
+      "oracao_3": true,
+      "agua_2": true,
+      "cardio_2": true,
+      "alim_2": true,
+      "oracao_2": true,
+      "treino_1": true,
+      "cardio_1": true,
+      "alim_1": true,
+      "oracao_1": true,
+      "agua_0": true,
+      "treino_0": true,
+      "cardio_0": true,
+      "alim_0": true,
+      "oracao_0": true,
+      "leitura_0": true
+    },
+    "2026-06-01": {
+      "agua_0": true,
+      "oracao_0": true,
+      "leitura_0": true,
+      "alim_1": true,
+      "agua_1": true,
+      "agua_2": true,
+      "treino_2": true,
+      "cardio_2": true,
+      "alim_2": true,
+      "leitura_2": true,
+      "oracao_2": true,
+      "leitura_3": true,
+      "alim_3": true,
+      "agua_3": true,
+      "oracao_3": true,
+      "agua_4": true,
+      "oracao_4": true,
+      "leitura_4": true,
+      "cardio_4": true,
+      "cardio_0": true,
+      "treino_0": true
+    },
+    "2026-06-15": {
+      "agua_0": true,
+      "alim_1": true,
+      "oracao_0": true,
+      "agua_1": true,
+      "leitura_1": true,
+      "oracao_1": true,
+      "oracao_2": true,
+      "treino_2": true,
+      "cardio_2": true,
+      "agua_2": true,
+      "leitura_2": true,
+      "oracao_3": true,
+      "agua_3": true,
+      "oracao_4": true,
+      "leitura_4": true,
+      "agua_4": true,
+      "alim_4": true
+    },
+    "2026-06-29": {
+      "alim_0": true,
+      "oracao_0": true,
+      "leitura_0": true,
+      "agua_0": true,
+      "agua_1": true,
+      "alim_1": true,
+      "oracao_1": true,
+      "oracao_2": true,
+      "leitura_2": true,
+      "oracao_3": true,
+      "leitura_3": true,
+      "alim_4": true,
+      "oracao_4": true,
+      "leitura_4": true,
+      "agua_4": true
+    },
+    "2026-06-22": {
+      "alim_0": true,
+      "oracao_0": true,
+      "oracao_1": true,
+      "oracao_2": true,
+      "leitura_1": true,
+      "leitura_0": true,
+      "alim_2": true,
+      "agua_2": true,
+      "agua_0": true,
+      "agua_1": true,
+      "alim_3": true,
+      "oracao_3": true,
+      "agua_4": true,
+      "treino_4": true,
+      "cardio_4": true,
+      "alim_4": true,
+      "oracao_4": true
+    },
+    "2026-07-06": {
+      "agua_0": true,
+      "alim_0": true,
+      "oracao_0": true,
+      "leitura_0": true,
+      "agua_2": true,
+      "agua_3": true,
+      "treino_2": true,
+      "treino_3": true,
+      "cardio_2": true,
+      "cardio_3": true,
+      "alim_2": true,
+      "oracao_2": true,
+      "leitura_2": true,
+      "oracao_3": true,
+      "oracao_1": true,
+      "alim_1": true,
+      "agua_4": true,
+      "alim_4": true,
+      "oracao_4": true,
+      "leitura_4": true
+    },
+    "2026-07-13": {
+      "agua_0": true,
+      "treino_0": true,
+      "cardio_0": true,
+      "alim_0": true,
+      "oracao_0": true,
+      "agua_1": true,
+      "alim_1": true,
+      "oracao_1": true,
+      "leitura_1": true,
+      "cardio_2": true,
+      "alim_2": true,
+      "oracao_2": true,
+      "leitura_2": true,
+      "cardio_4": true,
+      "agua_4": true,
+      "agua_2": true,
+      "alim_4": true,
+      "oracao_4": true,
+      "leitura_4": true,
+      "agua_3": true,
+      "alim_3": true,
+      "oracao_3": true,
+      "leitura_3": true,
+      "treino_4": true,
+      "treino_2": true
+    },
+    "2026-07-20": {
+      "cardio_0": true,
+      "alim_0": true,
+      "oracao_0": true,
+      "leitura_0": true,
+      "oracao_2": true,
+      "leitura_2": true,
+      "leitura_1": true,
+      "oracao_1": true,
+      "alim_1": true,
+      "agua_0": true,
+      "oracao_3": true,
+      "leitura_3": true,
+      "agua_3": true
+    }
+  },
+  "suplementos": {
+    "2026-06-22": {
+      "creatina": {
+        "0": [
+          0
+        ],
+        "1": [
+          0
+        ],
+        "2": [
+          0
+        ],
+        "3": [
+          0
+        ]
+      },
+      "omega3": {
+        "3": [
+          0
+        ]
+      }
+    },
+    "2026-06-29": {
+      "creatina": {
+        "4": [],
+        "5": [
+          0
+        ],
+        "6": [
+          0
+        ]
+      },
+      "omega3": {
+        "6": [
+          2
+        ]
+      }
+    },
+    "2026-07-06": {
+      "creatina": {
+        "3": [
+          0
+        ]
+      },
+      "omega3": {
+        "3": [
+          0
+        ]
+      }
+    },
+    "23/07/2026": {
+      "creatina": [
+        0
+      ],
+      "omega3": []
+    },
+    "24/07/2026": {
+      "omega3": [
+        0
+      ],
+      "creatina": [
+        0
+      ]
+    }
+  },
+  "suplHist": [
+    {
+      "date": "24/07/2026",
+      "done": 2,
+      "total": 4
+    },
+    {
+      "date": "23/07/2026",
+      "done": 1,
+      "total": 4
+    }
+  ],
+  "agua": {
+    "2026-07-20": {
+      "3": [
+        {
+          "id": "agua-1784857790219",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 700,
+          "effective": 700
+        },
+        {
+          "id": "agua-1784857793554",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 700,
+          "effective": 700
+        },
+        {
+          "id": "agua-1784857806621",
+          "name": "Café",
+          "icon": "☕",
+          "ml": 150,
+          "effective": 120
+        },
+        {
+          "id": "agua-1784857813276",
+          "name": "Leite",
+          "icon": "🥛",
+          "ml": 150,
+          "effective": 135
+        },
+        {
+          "id": "agua-1784857821863",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 600,
+          "effective": 510
+        },
+        {
+          "id": "agua-1784857855187",
+          "name": "Outra bebida",
+          "icon": "🍹",
+          "ml": 500,
+          "effective": 375
+        }
+      ],
+      "4": [
+        {
+          "id": "agua-1784894937688",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 700,
+          "effective": 595
+        }
+      ]
+    }
+  },
+  "aguaMeta": 2500,
+  "aguaHist": [
+    {
+      "date": "24/07/2026",
+      "ml": 595,
+      "meta": 2500
+    }
+  ],
+  "extras": {},
+  "_updatedAt": "2026-07-25T01:18:06.221Z"
+}
