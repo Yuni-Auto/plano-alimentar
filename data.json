@@ -2,12 +2,17 @@
   "checked": {
     "cafe-1": 102,
     "cafe-2": 60,
-    "cafe-3": 55
+    "cafe-3": 55,
+    "jan-1": 215,
+    "alm-1": 215,
+    "alm-2": 130,
+    "alm-4": 65,
+    "doc-1": 50
   },
   "hist": [
     {
       "date": "24/07/2026",
-      "kcal": 217
+      "kcal": 1392
     },
     {
       "date": "07/07/2026",
@@ -225,7 +230,10 @@
       "agua_0": true,
       "oracao_3": true,
       "leitura_3": true,
-      "agua_3": true
+      "agua_3": true,
+      "cardio_4": true,
+      "oracao_4": true,
+      "leitura_4": true
     }
   },
   "suplementos": {
@@ -293,6 +301,22 @@
       ]
     }
   },
+  "suplItens": [
+    {
+      "id": "creatina",
+      "icon": "💪",
+      "name": "Creatina",
+      "dose": "1 dose por dia",
+      "doses": 1
+    },
+    {
+      "id": "omega3",
+      "icon": "🐟",
+      "name": "Ômega 3",
+      "dose": "3 cápsulas por dia",
+      "doses": 3
+    }
+  ],
   "suplHist": [
     {
       "date": "24/07/2026",
@@ -358,6 +382,20 @@
           "icon": "☕",
           "ml": 700,
           "effective": 595
+        },
+        {
+          "id": "agua-1784942640537",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 500,
+          "effective": 500
+        },
+        {
+          "id": "agua-1784942646206",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
         }
       ]
     }
@@ -366,10 +404,27 @@
   "aguaHist": [
     {
       "date": "24/07/2026",
-      "ml": 595,
+      "ml": 1350,
       "meta": 2500
     }
   ],
-  "extras": {},
-  "_updatedAt": "2026-07-25T01:18:06.221Z"
+  "extras": {
+    "lanche-tarde": [
+      {
+        "id": "ext-lanche-tarde-1784942698689",
+        "name": "Bolo de pessêgo",
+        "kcal": 350,
+        "checked": true
+      }
+    ],
+    "jantar": [
+      {
+        "id": "ext-jantar-1784942715775",
+        "name": "Pão de hambuguer",
+        "kcal": 150,
+        "checked": true
+      }
+    ]
+  },
+  "_updatedAt": "2026-07-25T01:43:43.398Z"
 }
