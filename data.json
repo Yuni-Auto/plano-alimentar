@@ -301,6 +301,22 @@
       ]
     }
   },
+  "suplItens": [
+    {
+      "id": "creatina",
+      "icon": "💪",
+      "name": "Creatina",
+      "dose": "1 dose por dia",
+      "doses": 1
+    },
+    {
+      "id": "omega3",
+      "icon": "🐟",
+      "name": "Ômega 3",
+      "dose": "3 cápsulas por dia",
+      "doses": 3
+    }
+  ],
   "suplHist": [
     {
       "date": "24/07/2026",
@@ -410,5 +426,5 @@
       }
     ]
   },
-  "_updatedAt": "2026-07-25T01:25:22.252Z"
+  "_updatedAt": "2026-07-25T01:39:21.980Z"
 }
