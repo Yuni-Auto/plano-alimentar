@@ -232,7 +232,8 @@
       "agua_3": true,
       "cardio_4": true,
       "oracao_4": true,
-      "leitura_4": true
+      "leitura_4": true,
+      "agua_4": true
     }
   },
   "suplementos": {
@@ -453,5 +454,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-25T13:10:02.612Z"
+  "_updatedAt": "2026-07-25T13:10:17.462Z"
 }
