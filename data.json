@@ -228,8 +228,7 @@
       "agua_3": true,
       "cardio_4": true,
       "oracao_4": true,
-      "leitura_4": true,
-      "agua_4": true
+      "leitura_4": true
     }
   },
   "suplementos": {
@@ -362,6 +361,20 @@
           "icon": "☕",
           "ml": 700,
           "effective": 595
+        },
+        {
+          "id": "agua-1784942640537",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 500,
+          "effective": 500
+        },
+        {
+          "id": "agua-1784942646206",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
         }
       ]
     }
@@ -370,10 +383,10 @@
   "aguaHist": [
     {
       "date": "24/07/2026",
-      "ml": 595,
+      "ml": 1350,
       "meta": 2500
     }
   ],
   "extras": {},
-  "_updatedAt": "2026-07-25T01:23:54.322Z"
+  "_updatedAt": "2026-07-25T01:24:08.708Z"
 }
