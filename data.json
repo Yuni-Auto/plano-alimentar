@@ -11,7 +11,7 @@
   "hist": [
     {
       "date": "24/07/2026",
-      "kcal": 842
+      "kcal": 1192
     },
     {
       "date": "07/07/2026",
@@ -391,6 +391,15 @@
       "meta": 2500
     }
   ],
-  "extras": {},
-  "_updatedAt": "2026-07-25T01:24:44.360Z"
+  "extras": {
+    "lanche-tarde": [
+      {
+        "id": "ext-lanche-tarde-1784942698689",
+        "name": "Bolo de pessêgo",
+        "kcal": 350,
+        "checked": true
+      }
+    ]
+  },
+  "_updatedAt": "2026-07-25T01:25:01.196Z"
 }
