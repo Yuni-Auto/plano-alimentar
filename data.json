@@ -447,10 +447,40 @@
           "effective": 500
         }
       ]
+    },
+    "2026-07-27": {
+      "0": [
+        {
+          "id": "agua-1785175841562",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 700,
+          "effective": 700
+        },
+        {
+          "id": "agua-1785175847944",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
+        },
+        {
+          "id": "agua-1785175851762",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 250,
+          "effective": 213
+        }
+      ]
     }
   },
   "aguaMeta": 2500,
   "aguaHist": [
+    {
+      "date": "27/07/2026",
+      "ml": 1168,
+      "meta": 2500
+    },
     {
       "date": "25/07/2026",
       "ml": 2405,
@@ -487,5 +517,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-27T18:10:32.569Z"
+  "_updatedAt": "2026-07-27T18:10:54.265Z"
 }
