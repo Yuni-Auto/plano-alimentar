@@ -330,6 +330,14 @@
       "name": "Ômega 3",
       "dose": "3 cápsulas por dia",
       "doses": 3
+    },
+    {
+      "id": "pre-treino",
+      "icon": "⚡️",
+      "name": "Pré treino",
+      "dose": "1 dose por dia",
+      "doses": 1,
+      "optional": true
     }
   ],
   "suplHist": [
@@ -532,5 +540,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-27T18:11:02.324Z"
+  "_updatedAt": "2026-07-27T18:12:38.755Z"
 }
