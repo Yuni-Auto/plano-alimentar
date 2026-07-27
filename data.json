@@ -346,6 +346,14 @@
       "dose": "1 dose por dia",
       "doses": 1,
       "optional": true
+    },
+    {
+      "id": "melatonina",
+      "icon": "🌒",
+      "name": "Melatonina",
+      "dose": "1 dose por dia",
+      "doses": 1,
+      "optional": true
     }
   ],
   "suplHist": [
@@ -566,5 +574,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-27T22:54:29.395Z"
+  "_updatedAt": "2026-07-27T22:56:19.589Z"
 }
