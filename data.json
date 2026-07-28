@@ -257,8 +257,7 @@
       "oracao_1": true,
       "alim_1": true,
       "leitura_1": true,
-      "cardio_1": true,
-      "agua_1": true
+      "cardio_1": true
     }
   },
   "suplementos": {
@@ -581,6 +580,13 @@
           "icon": "💧",
           "ml": 700,
           "effective": 700
+        },
+        {
+          "id": "agua-1785282463365",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 700,
+          "effective": 700
         }
       ]
     }
@@ -589,7 +595,7 @@
   "aguaHist": [
     {
       "date": "28/07/2026",
-      "ml": 1550,
+      "ml": 2250,
       "meta": 2500
     },
     {
@@ -620,5 +626,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-28T22:51:13.590Z"
+  "_updatedAt": "2026-07-28T23:47:45.878Z"
 }
