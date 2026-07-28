@@ -261,7 +261,8 @@
       "oracao_1": true,
       "alim_1": true,
       "leitura_1": true,
-      "cardio_1": true
+      "cardio_1": true,
+      "agua_1": true
     }
   },
   "suplementos": {
@@ -634,5 +635,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-28T23:48:50.350Z"
+  "_updatedAt": "2026-07-28T23:48:52.897Z"
 }
