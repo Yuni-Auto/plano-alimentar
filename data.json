@@ -1,16 +1,5 @@
 {
-  "checked": {
-    "cafe-1": 102,
-    "cafe-2": 60,
-    "cafe-3": 55,
-    "alm-1": 215,
-    "alm-2": 130,
-    "alm-5": 40,
-    "jan-1": 215,
-    "jan-4": 90,
-    "lm-1": 75,
-    "lt-2": 200
-  },
+  "checked": {},
   "hist": [
     {
       "date": "27/07/2026",
@@ -251,8 +240,7 @@
       "cardio_0": true,
       "alim_0": true,
       "leitura_0": true,
-      "oracao_0": true,
-      "agua_0": true
+      "oracao_0": true
     }
   },
   "suplementos": {
@@ -564,24 +552,7 @@
       "meta": 2500
     }
   ],
-  "extras": {
-    "lanche-tarde": [
-      {
-        "id": "ext-lanche-tarde-1784942698689",
-        "name": "Bolo de pessêgo",
-        "kcal": 350,
-        "checked": false
-      }
-    ],
-    "jantar": [
-      {
-        "id": "ext-jantar-1784942715775",
-        "name": "Pão de hambuguer",
-        "kcal": 150,
-        "checked": false
-      }
-    ]
-  },
+  "extras": {},
   "pesoHist": [
     {
       "date": "27/07/2026",
@@ -593,5 +564,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-28T02:12:44.557Z"
+  "_updatedAt": "2026-07-28T12:36:41.499Z"
 }
