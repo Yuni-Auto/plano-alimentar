@@ -263,7 +263,8 @@
       "leitura_2": true,
       "agua_2": true,
       "agua_1": true,
-      "agua_4": true
+      "agua_4": true,
+      "alim_4": true
     }
   },
   "suplementos": {
@@ -611,5 +612,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-31T14:51:52.549Z"
+  "_updatedAt": "2026-07-31T14:51:56.381Z"
 }
