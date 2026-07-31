@@ -246,7 +246,15 @@
       "leitura_0": true,
       "oracao_0": true,
       "oracao_3": true,
-      "leitura_3": true
+      "leitura_3": true,
+      "alim_1": true,
+      "alim_2": true,
+      "oracao_1": true,
+      "oracao_2": true,
+      "leitura_1": true,
+      "leitura_2": true,
+      "agua_2": true,
+      "agua_1": true
     }
   },
   "suplementos": {
@@ -584,5 +592,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-07-31T11:43:20.461Z"
+  "_updatedAt": "2026-07-31T11:43:27.076Z"
 }
