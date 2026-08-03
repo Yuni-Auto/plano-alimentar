@@ -1,9 +1,5 @@
 {
-  "checked": {
-    "cafe-1": 102,
-    "cafe-2": 60,
-    "cafe-3": 55
-  },
+  "checked": {},
   "hist": [
     {
       "date": "31/07/2026",
@@ -264,10 +260,7 @@
       "agua_2": true,
       "agua_1": true,
       "agua_4": true,
-      "alim_4": true,
-      "cardio_4": true,
-      "oracao_4": true,
-      "leitura_4": true
+      "alim_4": true
     }
   },
   "suplementos": {
@@ -354,14 +347,6 @@
       "creatina": [
         0
       ]
-    },
-    "02/08/2026": {
-      "creatina": [
-        0
-      ],
-      "melatonina": [
-        0
-      ]
     }
   },
   "suplItens": [
@@ -397,11 +382,6 @@
     }
   ],
   "suplHist": [
-    {
-      "date": "02/08/2026",
-      "done": 1,
-      "total": 4
-    },
     {
       "date": "31/07/2026",
       "done": 1,
@@ -628,5 +608,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-08-02T21:57:21.613Z"
+  "_updatedAt": "2026-08-03T02:46:48.066Z"
 }
