@@ -264,12 +264,14 @@
     },
     "2026-08-03": {
       "agua_0": true,
-      "agua_2": true,
       "treino_0": true,
       "cardio_0": true,
       "alim_0": true,
       "oracao_0": true,
-      "leitura_0": true
+      "leitura_0": true,
+      "oracao_1": true,
+      "leitura_1": true,
+      "agua_1": true
     }
   },
   "suplementos": {
@@ -627,5 +629,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-08-05T12:32:11.811Z"
+  "_updatedAt": "2026-08-05T12:32:19.010Z"
 }
