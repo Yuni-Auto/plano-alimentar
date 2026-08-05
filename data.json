@@ -263,7 +263,8 @@
       "alim_4": true
     },
     "2026-08-03": {
-      "agua_0": true
+      "agua_0": true,
+      "agua_2": true
     }
   },
   "suplementos": {
@@ -621,5 +622,5 @@
     }
   ],
   "pesoMeta": 60,
-  "_updatedAt": "2026-08-05T12:31:56.013Z"
+  "_updatedAt": "2026-08-05T12:32:00.764Z"
 }
