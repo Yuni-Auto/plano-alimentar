@@ -291,7 +291,13 @@
       "leitura_1": true,
       "agua_1": true
     },
-    "2026-08-24": {}
+    "2026-08-24": {},
+    "2026-08-31": {
+      "agua_0": true,
+      "treino_0": true,
+      "cardio_0": true,
+      "alim_0": true
+    }
   },
   "suplementos": {
     "2026-06-22": {
@@ -722,5 +728,5 @@
     }
   ],
   "pesoMeta": 69.95,
-  "_updatedAt": "2026-09-01T02:14:17.931Z"
+  "_updatedAt": "2026-09-01T02:14:22.296Z"
 }
