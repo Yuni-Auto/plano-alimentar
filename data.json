@@ -12,7 +12,7 @@
   "hist": [
     {
       "date": "31/08/2026",
-      "kcal": 937
+      "kcal": 1057
     },
     {
       "date": "24/08/2026",
@@ -700,7 +700,16 @@
       "meta": 2500
     }
   ],
-  "extras": {},
+  "extras": {
+    "jantar": [
+      {
+        "id": "ext-jantar-1788228844527",
+        "name": "2 Ovos",
+        "kcal": 120,
+        "checked": true
+      }
+    ]
+  },
   "pesoHist": [
     {
       "date": "27/07/2026",
@@ -712,5 +721,5 @@
     }
   ],
   "pesoMeta": 69.95,
-  "_updatedAt": "2026-09-01T02:13:53.590Z"
+  "_updatedAt": "2026-09-01T02:14:07.037Z"
 }
