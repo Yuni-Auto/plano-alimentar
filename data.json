@@ -14,7 +14,7 @@
   "hist": [
     {
       "date": "01/09/2026",
-      "kcal": 1202
+      "kcal": 1412
     },
     {
       "date": "31/08/2026",
@@ -732,6 +732,12 @@
         "name": "2 Ovos",
         "kcal": 120,
         "checked": false
+      },
+      {
+        "id": "ext-jantar-1788314567132",
+        "name": "Pão de Forma  Integral",
+        "kcal": 210,
+        "checked": true
       }
     ]
   },
@@ -746,5 +752,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-02T02:02:24.070Z"
+  "_updatedAt": "2026-09-02T02:02:49.635Z"
 }
