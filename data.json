@@ -1,5 +1,6 @@
 {
   "checked": {},
+  "checkedDate": "2026-9-3",
   "hist": [
     {
       "date": "03/09/2026",
@@ -718,22 +719,7 @@
       "meta": 2500
     }
   ],
-  "extras": {
-    "jantar": [
-      {
-        "id": "ext-jantar-1788228844527",
-        "name": "2 Ovos",
-        "kcal": 120,
-        "checked": false
-      },
-      {
-        "id": "ext-jantar-1788314567132",
-        "name": "Pão de Forma  Integral",
-        "kcal": 210,
-        "checked": false
-      }
-    ]
-  },
+  "extras": {},
   "pesoHist": [
     {
       "date": "27/07/2026",
@@ -745,5 +731,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-03T22:27:08.834Z"
+  "_updatedAt": "2026-09-03T22:52:22.278Z"
 }
