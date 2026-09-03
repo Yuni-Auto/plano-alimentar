@@ -3,7 +3,7 @@
   "hist": [
     {
       "date": "03/09/2026",
-      "kcal": 210
+      "kcal": 0
     },
     {
       "date": "01/09/2026",
@@ -730,7 +730,7 @@
         "id": "ext-jantar-1788314567132",
         "name": "Pão de Forma  Integral",
         "kcal": 210,
-        "checked": true
+        "checked": false
       }
     ]
   },
@@ -745,5 +745,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-03T22:26:55.286Z"
+  "_updatedAt": "2026-09-03T22:27:08.834Z"
 }
