@@ -310,7 +310,6 @@
       "treino_1": true,
       "alim_1": true,
       "oracao_1": true,
-      "agua_3": true,
       "oracao_3": true,
       "oracao_0": true
     }
@@ -696,11 +695,32 @@
           "ml": 2500,
           "effective": 2500
         }
+      ],
+      "3": [
+        {
+          "id": "agua-1788480283934",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 600,
+          "effective": 510
+        },
+        {
+          "id": "agua-1788480287956",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 700,
+          "effective": 595
+        }
       ]
     }
   },
   "aguaMeta": 2500,
   "aguaHist": [
+    {
+      "date": "03/09/2026",
+      "ml": 1105,
+      "meta": 2500
+    },
     {
       "date": "31/08/2026",
       "ml": 2223,
@@ -748,5 +768,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-04T00:04:01.047Z"
+  "_updatedAt": "2026-09-04T00:04:50.460Z"
 }
