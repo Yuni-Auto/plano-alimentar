@@ -71,6 +71,18 @@ header p { font-size: 14px; color: var(--muted); }
   transition: background 0.15s;
 }
 .sync-status:hover { background: var(--bg); }
+.meal-now-alert {
+  margin-top: 10px;
+  background: var(--gold-light);
+  border: 1px solid #EBDBA8;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #7A5D14;
+  text-align: center;
+  line-height: 1.5;
+}
+.meal-now-alert strong { color: #5C4610; }
 .sync-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: #c8c4bb; }
 .sync-dot.sync-ok { background: #5C6E3F; }
 .sync-dot.sync-syncing { background: var(--gold); animation: sync-pulse 1s ease-in-out infinite; }
@@ -182,6 +194,47 @@ header p { font-size: 14px; color: var(--muted); }
 .suppl-form-row .sync-form-group { flex: 1; }
 .suppl-form-row-icon { max-width: 70px; }
 .suppl-icon-input { text-align: center; font-size: 17px; }
+
+/* Cardápio de marmitas + lista de compras */
+.mrm-tabs{display:flex;gap:8px;margin-bottom:1rem;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:5px;}
+.mrm-tab-btn{flex:1;padding:9px 8px;border:none;background:transparent;border-radius:8px;font-family:'DM Sans';font-size:13.5px;font-weight:500;color:var(--muted);cursor:pointer;transition:.15s;}
+.mrm-tab-btn.active{background:var(--accent);color:#fff;}
+.mrm-panel{display:none;}
+.mrm-panel.active{display:block;}
+.mrm-day-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.9rem;}
+.mrm-day-head{display:flex;align-items:center;gap:10px;margin-bottom:.6rem;}
+.mrm-day-emoji{font-size:19px;}
+.mrm-day-name{font-family:'Lora',serif;font-size:15px;font-weight:600;flex:1;}
+.mrm-day-kcal{font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:99px;padding:3px 9px;}
+.mrm-combo-row{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-top:1px solid var(--border);}
+.mrm-combo-row:first-of-type{border-top:none;}
+.mrm-combo-tag{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-weight:600;width:62px;flex-shrink:0;padding-top:1px;}
+.mrm-combo-text{font-size:13px;line-height:1.45;flex:1;}
+.mrm-combo-qty{font-size:11.5px;color:var(--muted);}
+.mrm-day-note{margin-top:.6rem;font-size:11.5px;color:var(--muted);line-height:1.55;background:var(--card);border-radius:8px;padding:8px 10px;}
+.mrm-prep-check{display:flex;align-items:center;gap:8px;margin-top:.6rem;padding-top:.6rem;border-top:1px dashed var(--border);cursor:pointer;user-select:none;}
+.mrm-prep-box{width:19px;height:19px;border-radius:6px;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s;background:var(--card);}
+.mrm-prep-box.on{background:var(--accent);border-color:var(--accent);}
+.mrm-prep-box.on::after{content:'✓';color:#fff;font-size:12px;font-weight:600;}
+.mrm-prep-label{font-size:12.5px;color:var(--muted);}
+.mrm-prep-check.done .mrm-prep-label{color:var(--accent);text-decoration:line-through;}
+.mrm-batch-tip{background:var(--gold-light);border:1px solid #EBDBA8;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#7A5D14;line-height:1.6;margin-bottom:1rem;}
+.mrm-batch-tip strong{color:#5C4610;}
+.mrm-cat-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.9rem;}
+.mrm-cat-title{font-family:'Lora',serif;font-size:14px;font-weight:600;margin-bottom:.6rem;display:flex;align-items:center;gap:7px;}
+.mrm-shop-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--border);cursor:pointer;user-select:none;}
+.mrm-shop-item:first-of-type{border-top:none;}
+.mrm-shop-box{width:19px;height:19px;border-radius:6px;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s;background:var(--card);}
+.mrm-shop-box.on{background:var(--accent);border-color:var(--accent);}
+.mrm-shop-box.on::after{content:'✓';color:#fff;font-size:12px;font-weight:600;}
+.mrm-shop-name{flex:1;font-size:13px;}
+.mrm-shop-item.checked .mrm-shop-name{color:var(--muted);text-decoration:line-through;}
+.mrm-shop-qty{font-size:11.5px;color:var(--muted);}
+.mrm-progress-bar{height:6px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:.4rem;}
+.mrm-progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .25s;width:0%;}
+.mrm-progress-label{font-size:12px;color:var(--muted);text-align:center;margin-bottom:1rem;}
+.mrm-reset-btn{display:block;margin:.5rem auto 0;background:none;border:1px solid var(--border);color:var(--muted);font-family:'DM Sans';font-size:12px;padding:8px 16px;border-radius:99px;cursor:pointer;}
+.mrm-reset-btn:hover{background:var(--card);}
 
 /* Notificações */
 .notif-section { padding: 14px 0; border-top: 1px solid var(--border); }
@@ -392,6 +445,7 @@ header p { font-size: 14px; color: var(--muted); }
   font-weight: 500;
 }
 
+
 .tip {
   background: var(--accent-light);
   border-radius: 8px;
@@ -542,6 +596,8 @@ footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--m
 }
 
 .checkin-col-today th, .checkin-col-today td { background: var(--gold-light); }
+.checkin-table th.today-col { color: var(--gold); font-weight: 600; }
+.checkin-table td.today-col { background: var(--gold-light); }
 
 
 .save-report-btn {
@@ -1114,8 +1170,144 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
         <span class="sync-dot" id="notif-dot"></span>
         <span id="notif-label">Notificações</span>
       </button>
+      <div class="sync-status" id="hoje-pill" style="cursor:default;">
+        <span class="sync-dot sync-ok"></span>
+        <span id="hoje-label">—</span>
+      </div>
     </div>
+    <div class="meal-now-alert" id="meal-now-alert">—</div>
   </header>
+
+  <!-- ROTINA DA SEMANA -->
+  <div class="summary-card" id="rotina-section">
+    <div class="summary-title">🗓️ Minha Rotina da Semana</div>
+    <table class="checkin-table" id="rotina-table">
+      <thead>
+        <tr id="rotina-head-row"><th class="row-header"></th></tr>
+      </thead>
+      <tbody id="rotina-body"></tbody>
+    </table>
+    <div class="tip">💡 Marque os dias fixos da sua semana (escritório, pós, treino) — isso atualiza o indicador do dia lá em cima.</div>
+  </div>
+
+  <!-- MARMITAS DA SEMANA -->
+  <div class="summary-card hist-section" id="marmitas-section" data-hist-id="marmitas">
+    <div class="hist-header" onclick="toggleHistSection(this)">
+      <div class="hist-title">🍱 Marmitas da semana</div>
+      <span class="hist-chevron">▾</span>
+    </div>
+    <div class="hist-body-wrap">
+
+    <div class="mrm-tabs">
+      <button class="mrm-tab-btn active" onclick="mrmSwitchTab('cardapio')">Cardápio</button>
+      <button class="mrm-tab-btn" onclick="mrmSwitchTab('compras')">Lista de compras</button>
+    </div>
+
+    <!-- CARDÁPIO -->
+    <div class="mrm-panel active" id="mrm-panel-cardapio">
+    <div class="mrm-batch-tip">🧊 <strong>Prepare tudo de uma vez</strong> — domingo à noite ou segunda em home office. Cozinhe as 3 proteínas, os carboidratos e os vegetais juntos, monte as 3 marmitas e guarde na geladeira (ou congele se for usar depois de 2 dias). Assim seg/ter/qua ficam resolvidos sem decisão de última hora.</div>
+
+    <div class="mrm-day-card">
+      <div class="mrm-day-head">
+        <span class="mrm-day-emoji">🐔</span>
+        <span class="mrm-day-name">Segunda-feira</span>
+        <span class="mrm-day-kcal">~215 + 130 + 65 kcal</span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Proteína</span>
+        <span class="mrm-combo-text">Frango grelhado <span class="mrm-combo-qty">(120 g prontos · ~150 g cru)</span></span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Carboidrato</span>
+        <span class="mrm-combo-text">Arroz branco <span class="mrm-combo-qty">(100 g prontos)</span></span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Vegetal</span>
+        <span class="mrm-combo-text">Brócolis e cenoura no vapor <span class="mrm-combo-qty">(~65 g)</span></span>
+      </div>
+      <div class="mrm-prep-check" onclick="mrmTogglePrep(this,'seg')">
+        <div class="mrm-prep-box"></div>
+        <span class="mrm-prep-label">Marmita preparada</span>
+      </div>
+    </div>
+
+    <div class="mrm-day-card">
+      <div class="mrm-day-head">
+        <span class="mrm-day-emoji">🥩</span>
+        <span class="mrm-day-name">Terça-feira</span>
+        <span class="mrm-day-kcal">~215 + 130 + 65 kcal</span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Proteína</span>
+        <span class="mrm-combo-text">Carne magra desfiada (patinho/coxão mole) <span class="mrm-combo-qty">(120 g prontos · ~150 g cru)</span></span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Carboidrato</span>
+        <span class="mrm-combo-text">Macarrão <span class="mrm-combo-qty">(100 g prontos)</span></span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Vegetal</span>
+        <span class="mrm-combo-text">Legumes variados (abobrinha, vagem, cenoura) <span class="mrm-combo-qty">(~65 g)</span></span>
+      </div>
+      <div class="mrm-day-note">🥗 Se quiser salada nessa, leve à parte num potinho separado — folhas não congelam/aguentam bem dentro da marmita.</div>
+      <div class="mrm-prep-check" onclick="mrmTogglePrep(this,'ter')">
+        <div class="mrm-prep-box"></div>
+        <span class="mrm-prep-label">Marmita preparada</span>
+      </div>
+    </div>
+
+    <div class="mrm-day-card">
+      <div class="mrm-day-head">
+        <span class="mrm-day-emoji">🐟</span>
+        <span class="mrm-day-name">Quarta-feira</span>
+        <span class="mrm-day-kcal">~215 + 130 + 65 kcal</span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Proteína</span>
+        <span class="mrm-combo-text">Peixe assado (tilápia) <span class="mrm-combo-qty">(120 g prontos · ~150 g cru)</span></span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Carboidrato</span>
+        <span class="mrm-combo-text">Arroz branco <span class="mrm-combo-qty">(100 g prontos)</span></span>
+      </div>
+      <div class="mrm-combo-row">
+        <span class="mrm-combo-tag">Vegetal</span>
+        <span class="mrm-combo-text">Abóbora assada <span class="mrm-combo-qty">(~65 g)</span></span>
+      </div>
+      <div class="mrm-prep-check" onclick="mrmTogglePrep(this,'qua')">
+        <div class="mrm-prep-box"></div>
+        <span class="mrm-prep-label">Marmita preparada</span>
+      </div>
+    </div>
+    </div>
+
+    <!-- LISTA DE COMPRAS -->
+    <div class="mrm-panel" id="mrm-panel-compras">
+      <div class="mrm-progress-bar"><div class="mrm-progress-fill" id="mrm-progress-fill"></div></div>
+      <div class="mrm-progress-label" id="mrm-progress-label">0 de 0 itens</div>
+
+      <div class="mrm-cat-card">
+        <div class="mrm-cat-title">🥩 Proteínas</div>
+        <div id="mrm-cat-proteinas"></div>
+      </div>
+      <div class="mrm-cat-card">
+        <div class="mrm-cat-title">🍚 Carboidratos</div>
+        <div id="mrm-cat-carbo"></div>
+      </div>
+      <div class="mrm-cat-card">
+        <div class="mrm-cat-title">🥦 Vegetais</div>
+        <div id="mrm-cat-vegetais"></div>
+      </div>
+      <div class="mrm-cat-card">
+        <div class="mrm-cat-title">🧂 Temperos e outros</div>
+        <div id="mrm-cat-outros"></div>
+      </div>
+
+      <button class="mrm-reset-btn" onclick="mrmResetShopping()">Limpar lista de compras</button>
+    </div>
+
+    </div>
+  </div>
 
   <!-- CONTROLE DE ÁGUA -->
   <div class="summary-card agua-section" id="agua-section">
@@ -1134,6 +1326,7 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
 
     <div class="agua-subtitle">O que você bebeu?</div>
     <div class="agua-grid" id="agua-grid"></div>
+    <div class="tip" id="tip-agua-horario">💧 Agora: 300 ml ao acordar.</div>
   </div>
 
   <!-- HISTÓRICO DE ÁGUA -->
@@ -1257,6 +1450,7 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
         <span class="item-kcal">~62 kcal</span>
       </div>
       <div class="tip">💡 Pode revezar entre queijo e ovo, ou adicionar os dois, conforme fome e treino.</div>
+      <div class="tip" id="tip-cafe-horario">⏰ Hoje: 7h30–8h. Proteína aprox.: 15–20g.</div>
       <div id="extra-list-cafe" class="extra-list"></div>
       <button class="extra-toggle" onclick="toggleExtraForm('cafe')">
         <span class="extra-toggle-icon">+</span> Adicionar alimento
@@ -1277,7 +1471,7 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
     <div class="meal-header" onclick="toggleMeal(this)">
       <span class="meal-emoji">🍎</span>
       <span class="meal-title">Lanche da manhã</span>
-      <span class="kcal-pill">60–90 kcal</span>
+      <span class="kcal-pill">150–220 kcal</span>
       <span class="meal-chevron">▾</span>
     </div>
     <div class="card" data-meal="lanche-manha">
@@ -1313,6 +1507,7 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
         <span class="item-name">Banana com pasta de amendoim</span>
         <span class="item-kcal">~210 kcal</span>
       </div>
+      <div class="tip" id="tip-lanchemanha-esc">💡 Em dia de escritório ou de pós, leve pronto num potinho (fruta + pasta de amendoim, ou pão com queijo embalado) — evita parar em conveniência. Horário: por volta das 10h. Proteína aprox.: 10–20g (whey ou ovo puxam mais).</div>
       <div id="extra-list-lanche-manha" class="extra-list"></div>
       <button class="extra-toggle" onclick="toggleExtraForm('lanche-manha')">
         <span class="extra-toggle-icon">+</span> Adicionar alimento
@@ -1371,6 +1566,7 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
         <span class="item-kcal">~40 kcal</span>
       </div>
       <div class="tip">💡 Alternar proteínas e legumes ao longo da semana.</div>
+      <div class="tip" id="tip-almoco-esc">🍱 Em dias de escritório, pós ou cansaço, use sempre uma marmita pronta (ver sugestões no card de marmitas) — evita decisão de última hora e comida cara/de rua. Horário: 12h30–13h. Proteína aprox.: 30–35g.</div>
       <div id="extra-list-almoco" class="extra-list"></div>
       <button class="extra-toggle" onclick="toggleExtraForm('almoco')">
         <span class="extra-toggle-icon">+</span> Adicionar alimento
@@ -1411,6 +1607,8 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
         <span class="item-name">Whey protein com leite</span>
         <span class="item-kcal">~200 kcal</span>
       </div>
+      <div class="tip">🥪 Em dias de mais correria: banana + pasta de amendoim · pão com ovo · whey + leite · tapioca com frango desfiado (da marmita) · pipoca sem óleo · pão com queijo + fruta.</div>
+      <div class="tip" id="tip-lanchetarde-treino">⏰ Hoje: ~15h30, à vontade entre as opções. Proteína aprox.: 15–20g.</div>
       <div id="extra-list-lanche-tarde" class="extra-list"></div>
       <button class="extra-toggle" onclick="toggleExtraForm('lanche-tarde')">
         <span class="extra-toggle-icon">+</span> Adicionar alimento
@@ -1455,6 +1653,7 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
         <span class="item-name">Legumes variados (150 g)</span>
         <span class="item-kcal">~70 kcal</span>
       </div>
+      <div class="tip" id="tip-jantar-treino">⏰ Hoje: 19h30–20h30. Proteína aprox.: 30–35g.</div>
       <div id="extra-list-jantar" class="extra-list"></div>
       <button class="extra-toggle" onclick="toggleExtraForm('jantar')">
         <span class="extra-toggle-icon">+</span> Adicionar alimento
@@ -1490,6 +1689,7 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
         <span class="item-name">1 fruta pequena</span>
         <span class="item-kcal">~70 kcal</span>
       </div>
+      <div class="tip" id="tip-ceia-treino">💡 Use em dias de mais fome, TPM ou treino puxado. Se estiver editando conteúdo até tarde, deixe pelo menos 1h de intervalo entre a ceia e a hora de dormir — sono ruim é o que mais derruba a adesão no dia seguinte.</div>
       <div id="extra-list-ceia" class="extra-list"></div>
       <button class="extra-toggle" onclick="toggleExtraForm('ceia')">
         <span class="extra-toggle-icon">+</span> Adicionar alimento
@@ -1535,11 +1735,19 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
           <span>1 colher de doce de leite (~70 kcal)</span>
         </div>
       </div>
+      <div class="tip">💡 Fixo todo dia, inclusive na TPM ou em saída social — comer o doce planejado não é "sair da dieta", é parte do plano. Pode ser um bom fechamento depois de uma sessão de gravação/edição.</div>
     </div>
   </div>
 
   </div>
   <!-- FIM DO CONTROLE DE ALIMENTAÇÃO -->
+
+  <!-- HORÁRIOS POR TIPO DE DIA -->
+  <div class="summary-card" id="horarios-section">
+    <div class="summary-title">🗓️ Horários por tipo de dia</div>
+    <div id="horarios-dinamico"></div>
+    <div class="tip">💡 Esses horários seguem o que você marcou em "Minha Rotina da Semana" lá em cima — mude os toggles de lá que a lista se atualiza sozinha.</div>
+  </div>
 
   <!-- SUMMARY -->
   <div class="summary-card">
@@ -1932,7 +2140,10 @@ function toggleHistSection(headerEl) {
 function initHistSectionsCollapsed() {
   var state = getHistSectionsCollapsed();
   document.querySelectorAll('.hist-section[data-hist-id]').forEach(function(section) {
-    if (state[section.dataset.histId]) section.classList.add('collapsed');
+    var val = state[section.dataset.histId];
+    if (val === true) section.classList.add('collapsed');
+    else if (val === false) section.classList.remove('collapsed');
+    // se nunca foi mexido (undefined), respeita o estado padrão já presente no HTML
   });
 }
 initHistSectionsCollapsed();
@@ -3295,6 +3506,319 @@ function syncAguaComCheckin() {
 
 renderAgua();
 
+// ── Rotina da Semana ──
+var ROTINA_KEY = 'rotina_semana_v1';
+var ROTINA_DIAS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+var ROTINA_DIAS_LONGOS = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
+var ROTINA_CATS = [
+  { id: 'escritorio', icon: '🏢', label: 'Escritório' },
+  { id: 'pos',        icon: '🎓', label: 'Pós' },
+  { id: 'treino',     icon: '💪', label: 'Treino' },
+  { id: 'influencer', icon: '🎥', label: 'Influencer' }
+];
+var ROTINA_DEFAULT = {
+  escritorio: [false, true,  false, false, false, false, false],
+  pos:        [false, false, false, true,  false, false, false],
+  treino:     [true,  false, true,  false, true,  false, false],
+  influencer: [false, false, false, false, false, false, false]
+};
+
+function getRotina() {
+  try {
+    var stored = JSON.parse(localStorage.getItem(ROTINA_KEY));
+    if (!stored) return JSON.parse(JSON.stringify(ROTINA_DEFAULT));
+    ROTINA_CATS.forEach(function(c) { if (!stored[c.id]) stored[c.id] = ROTINA_DEFAULT[c.id].slice(); });
+    return stored;
+  } catch (e) { return JSON.parse(JSON.stringify(ROTINA_DEFAULT)); }
+}
+function saveRotina(data) { localStorage.setItem(ROTINA_KEY, JSON.stringify(data)); }
+
+function renderRotina() {
+  var data = getRotina();
+  var hoje = aguaTodayIdx();
+
+  var headRow = document.getElementById('rotina-head-row');
+  headRow.innerHTML = '<th class="row-header"></th>' + ROTINA_DIAS.map(function(d, i) {
+    return '<th' + (i === hoje ? ' class="today-col"' : '') + '>' + d + '</th>';
+  }).join('');
+
+  var body = document.getElementById('rotina-body');
+  body.innerHTML = ROTINA_CATS.map(function(cat) {
+    var cells = data[cat.id].map(function(val, i) {
+      return '<td' + (i === hoje ? ' class="today-col"' : '') + '>' +
+        '<div class="ci-dot' + (val ? ' done' : '') + (i === hoje ? ' today-col' : '') + '" onclick="toggleRotina(\'' + cat.id + '\',' + i + ')"></div>' +
+        '</td>';
+    }).join('');
+    return '<tr><td class="row-header"><span class="row-icon">' + cat.icon + '</span><span class="row-name">' + cat.label + '</span></td>' + cells + '</tr>';
+  }).join('');
+
+  updateHojePill(data, hoje);
+}
+
+function toggleRotina(catId, idx) {
+  var data = getRotina();
+  data[catId][idx] = !data[catId][idx];
+  saveRotina(data);
+  renderRotina();
+  renderHorariosDinamico();
+  updateMealTipsDinamico();
+  updateMealNowAlert();
+  updateAguaTipDinamico();
+}
+
+function updateHojePill(data, hoje) {
+  var ativos = ROTINA_CATS.filter(function(c) { return data[c.id][hoje]; })
+    .map(function(c) { return c.icon + ' ' + c.label; });
+  var agora = new Date();
+  var hh = String(agora.getHours()).padStart(2, '0');
+  var mm = String(agora.getMinutes()).padStart(2, '0');
+  var texto = ROTINA_DIAS_LONGOS[hoje] + ' · ⏰ ' + hh + ':' + mm + (ativos.length ? ' · ' + ativos.join(' · ') : '');
+  document.getElementById('hoje-label').textContent = texto;
+}
+
+var MEAL_SCHEDULE_INFO = [
+  { emoji: '☕', label: 'Café da manhã',   suggestion: 'pão integral + queijo, tapioca, ou aveia com leite' },
+  { emoji: '🍎', label: 'Lanche da manhã', suggestion: 'fruta, iogurte com whey, ou pão com ovo' },
+  { emoji: '🍚', label: 'Almoço',          suggestion: 'proteína grelhada + arroz/macarrão + feijão + salada' },
+  { emoji: '🍿', label: 'Lanche da tarde', suggestion: 'pipoca, pão com queijo, ou whey com leite' },
+  { emoji: '🍗', label: 'Jantar',          suggestion: 'frango desfiado + arroz/macarrão + legumes' },
+  { emoji: '🌙', label: 'Ceia',            suggestion: 'leite ou iogurte com aveia, ou 1 fruta pequena' }
+];
+
+function getMealTimesForDay(idx, data) {
+  var esc = data.escritorio[idx], pos = data.pos[idx];
+  var cafeStart = esc ? (6 * 60 + 30) : (7 * 60 + 30);
+  var lmStart = 10 * 60;
+  var almStart = 12 * 60 + 30;
+  var ltStart = 15 * 60 + 30;
+  var janStart = pos ? (19 * 60) : (esc ? (20 * 60) : (19 * 60 + 30));
+  var ceiStart = 21 * 60 + 30;
+  return [cafeStart, lmStart, almStart, ltStart, janStart, ceiStart];
+}
+
+function fmtHora(mins) {
+  var h = Math.floor(mins / 60), m = mins % 60;
+  return String(h).padStart(2, '0') + 'h' + String(m).padStart(2, '0');
+}
+
+function updateMealNowAlert() {
+  var el = document.getElementById('meal-now-alert');
+  if (!el) return;
+  var data = getRotina();
+  var hoje = aguaTodayIdx();
+  var times = getMealTimesForDay(hoje, data);
+  var agora = new Date();
+  var nowMin = agora.getHours() * 60 + agora.getMinutes();
+
+  var idxAtual = -1;
+  for (var i = 0; i < times.length; i++) {
+    if (nowMin >= times[i]) idxAtual = i;
+  }
+
+  if (idxAtual === -1) {
+    var info0 = MEAL_SCHEDULE_INFO[0];
+    el.innerHTML = '⏰ Próxima refeição: ' + info0.emoji + ' <strong>' + info0.label + '</strong> às ' + fmtHora(times[0]) + ' — ' + info0.suggestion + '.';
+    return;
+  }
+
+  var info = MEAL_SCHEDULE_INFO[idxAtual];
+  var horaIni = fmtHora(times[idxAtual]);
+  var horaFim = idxAtual < times.length - 1 ? fmtHora(times[idxAtual + 1]) : null;
+  var janela = horaFim ? (horaIni + '–' + horaFim) : (horaIni + ' em diante');
+  el.innerHTML = '⏰ Agora (' + janela + '): ' + info.emoji + ' <strong>' + info.label + '</strong> — ' + info.suggestion + '.';
+}
+
+var AGUA_FASES = [
+  '300 ml ao acordar',
+  '+700 ml até o almoço',
+  '+700 ml à tarde',
+  '+400 ml à noite'
+];
+
+function getAguaFaseAtual(idx, data) {
+  var esc = data.escritorio[idx], pos = data.pos[idx];
+  var lmStart = 10 * 60;
+  var almStart = 12 * 60 + 30;
+  var janStart = pos ? (19 * 60) : (esc ? (20 * 60) : (19 * 60 + 30));
+  var agora = new Date();
+  var nowMin = agora.getHours() * 60 + agora.getMinutes();
+  if (nowMin < lmStart) return 0;
+  if (nowMin < almStart) return 1;
+  if (nowMin < janStart) return 2;
+  return 3;
+}
+
+function updateAguaTipDinamico() {
+  var el = document.getElementById('tip-agua-horario');
+  if (!el) return;
+  var data = getRotina();
+  var hoje = aguaTodayIdx();
+  var faseIdx = getAguaFaseAtual(hoje, data);
+  var fase = AGUA_FASES[faseIdx];
+
+  var extra = '';
+  if (data.escritorio[hoje]) extra = ' Hoje é dia de escritório — leve garrafa de 750 ml–1 L.';
+  else if (data.influencer[hoje]) extra = ' Hoje é dia de gravação/edição — deixe a garrafa visível na mesa.';
+  else if (data.treino[hoje]) extra = ' Não esqueça +500–700 ml no treino.';
+
+  el.innerHTML = '💧 Agora: ' + fase + '.' + extra;
+}
+
+function diasLabel(catId, data) {
+  var dias = ROTINA_DIAS.filter(function(d, i) { return data[catId][i]; });
+  return dias.length ? dias.join('/') : 'nenhum dia marcado';
+}
+
+function computeDiaInfo(idx, data) {
+  var esc = data.escritorio[idx], pos = data.pos[idx], tre = data.treino[idx], inf = data.influencer[idx];
+  var tags = [];
+  if (esc) tags.push('🏢 Escritório');
+  if (pos) tags.push('🎓 Pós');
+  if (tre) tags.push('💪 Treino');
+  if (inf) tags.push('🎥 Influencer');
+  var tagStr = tags.length ? tags.join(' · ') : 'livre';
+
+  var cafe = esc ? '6h30–7h (antes de sair)' : '7h30–8h';
+  var lm = '10h' + ((esc || pos) ? ' (levar pronto)' : '');
+  var alm = '12h30–13h' + ((esc || pos) ? ' (marmita)' : '');
+  var lt = '15h30' + (tre ? ' (pré-treino)' : '');
+  var jan;
+  if (pos) jan = '19h (antes da aula)';
+  else if (esc) jan = '20h–20h30';
+  else if (tre) jan = '19h30–20h (pós-treino)';
+  else jan = '19h30–20h30';
+  var cei = pos ? '21h30–22h (se a aula for até tarde)' : '21h30';
+
+  return { tagStr: tagStr, cafe: cafe, lm: lm, alm: alm, lt: lt, jan: jan, cei: cei };
+}
+
+function renderHorariosDinamico() {
+  var data = getRotina();
+  var container = document.getElementById('horarios-dinamico');
+  if (!container) return;
+  container.innerHTML = ROTINA_DIAS_LONGOS.map(function(nome, idx) {
+    var info = computeDiaInfo(idx, data);
+    return '<div class="option-label">' + nome + ' — ' + info.tagStr + '</div>' +
+      '<div class="tip">Café ' + info.cafe + ' · lanche manhã ' + info.lm + ' · almoço ' + info.alm +
+      ' · lanche tarde ' + info.lt + ' · jantar ' + info.jan + ' · ceia ' + info.cei + '.</div>';
+  }).join('');
+}
+
+function statusHorario(nowMin, startMin, endMin) {
+  if (nowMin < startMin) return 'proximo';
+  if (nowMin >= endMin) return 'passou';
+  return 'agora';
+}
+
+function updateMealTipsDinamico() {
+  var data = getRotina();
+  var hoje = aguaTodayIdx();
+  var esc = data.escritorio[hoje], pos = data.pos[hoje], tre = data.treino[hoje], inf = data.influencer[hoje];
+  var times = getMealTimesForDay(hoje, data); // [cafe, lanche-manha, almoco, lanche-tarde, jantar, ceia]
+  var agora = new Date();
+  var nowMin = agora.getHours() * 60 + agora.getMinutes();
+
+  var cafeTip = document.getElementById('tip-cafe-horario');
+  if (cafeTip) {
+    var horarioCafe = esc ? '6h30–7h, antes de sair (dia de escritório)' : '7h30–8h';
+    var stCafe = statusHorario(nowMin, times[0], times[1]);
+    var relevanteCafe = esc; // só escritório muda o café da manhã
+    if (stCafe === 'passou' || !relevanteCafe) {
+      cafeTip.style.display = 'none';
+    } else {
+      cafeTip.style.display = '';
+      cafeTip.innerHTML = stCafe === 'agora'
+        ? '⏰ Agora (' + horarioCafe + '). Proteína aprox.: 15–20g.'
+        : '⏰ Hoje ainda vai rolar, às ' + horarioCafe + '. Proteína aprox.: 15–20g.';
+    }
+  }
+
+  var lmTip = document.getElementById('tip-lanchemanha-esc');
+  if (lmTip) {
+    var stLm = statusHorario(nowMin, times[1], times[2]);
+    var relevanteLm = esc || pos; // só escritório ou pós mudam o lanche da manhã
+    if (stLm === 'passou' || !relevanteLm) {
+      lmTip.style.display = 'none';
+    } else {
+      lmTip.style.display = '';
+      lmTip.innerHTML = (stLm === 'agora' ? '⏰ Agora' : '⏰ Hoje ainda vai rolar, por volta') +
+        ' das 10h: leve pronto num potinho (fruta + pasta de amendoim, ou pão com queijo embalado) — evita parar em conveniência. Proteína aprox.: 10–20g (whey ou ovo puxam mais).';
+    }
+  }
+
+  var almTip = document.getElementById('tip-almoco-esc');
+  if (almTip) {
+    var stAlm = statusHorario(nowMin, times[2], times[3]);
+    var relevanteAlm = esc || pos; // só escritório ou pós mudam o almoço
+    if (stAlm === 'passou' || !relevanteAlm) {
+      almTip.style.display = 'none';
+    } else {
+      almTip.style.display = '';
+      almTip.innerHTML = (stAlm === 'agora' ? '🍱 Agora (12h30–13h)' : '🍱 Hoje ainda vai rolar, às 12h30–13h') +
+        ': use sempre uma marmita pronta (ver sugestões no card de marmitas) — evita decisão de última hora e comida cara/de rua. Proteína aprox.: 30–35g.';
+    }
+  }
+
+  var ltTip = document.getElementById('tip-lanchetarde-treino');
+  if (ltTip) {
+    var ltObs = tre ? 'pré-treino — priorize o whey com leite' : 'leve pronto (dia de escritório)';
+    var stLt = statusHorario(nowMin, times[3], times[4]);
+    var relevanteLt = tre || esc; // só treino ou escritório mudam o lanche da tarde
+    if (stLt === 'passou' || !relevanteLt) {
+      ltTip.style.display = 'none';
+    } else {
+      ltTip.style.display = '';
+      ltTip.innerHTML = stLt === 'agora'
+        ? '⏰ Agora (~15h30): ' + ltObs + '. Proteína aprox.: 15–20g.'
+        : '⏰ Hoje ainda vai rolar, às ~15h30 — ' + ltObs + '. Proteína aprox.: 15–20g.';
+    }
+  }
+
+  var janTip = document.getElementById('tip-jantar-treino');
+  if (janTip) {
+    var horarioJan = pos ? '19h, antes da aula' : (esc ? '20h–20h30' : (tre ? '19h30–20h, pós-treino' : '19h30–20h30'));
+    var janObs = inf ? ' Jante antes de gravar/editar.' : '';
+    var stJan = statusHorario(nowMin, times[4], times[5]);
+    var relevanteJan = pos || esc || tre || inf; // qualquer marcação muda o jantar
+    if (stJan === 'passou' || !relevanteJan) {
+      janTip.style.display = 'none';
+    } else {
+      janTip.style.display = '';
+      janTip.innerHTML = stJan === 'agora'
+        ? '⏰ Agora (' + horarioJan + ').' + janObs + ' Proteína aprox.: 30–35g.'
+        : '⏰ Hoje ainda vai rolar, às ' + horarioJan + '.' + janObs + ' Proteína aprox.: 30–35g.';
+    }
+  }
+
+  var ceiTip = document.getElementById('tip-ceia-treino');
+  if (ceiTip) {
+    var stCei = statusHorario(nowMin, times[5], 24 * 60);
+    var relevanteCei = tre || inf; // treino puxado ou gravação/edição até tarde
+    if (stCei === 'passou' || !relevanteCei) {
+      ceiTip.style.display = 'none';
+    } else {
+      var motivoCei = tre ? 'hoje teve treino puxado' : 'hoje é dia de gravação/edição';
+      ceiTip.innerHTML = (stCei === 'agora' ? '⏰ Agora (21h30 em diante): ' : '⏰ Hoje ainda vai rolar, a partir das 21h30: ') +
+        motivoCei + ' — se estiver editando até tarde, deixe pelo menos 1h de intervalo entre a ceia e a hora de dormir.';
+      ceiTip.style.display = '';
+    }
+  }
+}
+
+renderRotina();
+renderHorariosDinamico();
+updateMealTipsDinamico();
+updateMealNowAlert();
+updateAguaTipDinamico();
+setInterval(function() {
+  var data = getRotina();
+  var hoje = aguaTodayIdx();
+  updateHojePill(data, hoje);
+  updateMealTipsDinamico();
+  updateMealNowAlert();
+  updateAguaTipDinamico();
+}, 30000);
+
 // ── Alimentos extras ──
 var EXTRA_KEY = 'plano_extras_v1';
 var EXTRA_MEALS = ['cafe','lanche-manha','almoco','lanche-tarde','jantar','ceia'];
@@ -3558,6 +4082,7 @@ function setSyncStatus(state, msg) {
 function collectSyncData() {
   return {
     checked:      getChecked(),
+    checkedDate:  todayKeyISO(),
     hist:         getHist(),
     checkin:      getCiData(),
     suplementos:  getSuplData(),
@@ -3574,7 +4099,13 @@ function collectSyncData() {
 }
 
 function applySyncData(data) {
-  if (data.checked && typeof data.checked === 'object') {
+  // "checked" e "extras" são o controle de alimentação do dia atual — só fazem
+  // sentido se vierem de uma sincronização feita hoje. Dado de outro dia já foi
+  // salvo no histórico (data.hist), então aqui ele é ignorado de propósito pra
+  // não reaparecer marcado quando o dia vira.
+  var dadoDeHoje = data.checkedDate === todayKeyISO();
+
+  if (dadoDeHoje && data.checked && typeof data.checked === 'object') {
     saveChecked(data.checked);
     document.querySelectorAll('.item.checked').forEach(function(el) { el.classList.remove('checked'); });
     Object.keys(data.checked).forEach(function(id) {
@@ -3590,7 +4121,7 @@ function applySyncData(data) {
   if (data.agua && typeof data.agua === 'object') { saveAguaData(data.agua); }
   if (typeof data.aguaMeta === 'number' && data.aguaMeta > 0) { saveAguaMeta(data.aguaMeta); }
   if (Array.isArray(data.aguaHist)) { saveAguaHist(data.aguaHist); renderAguaHist(); }
-  if (data.extras && typeof data.extras === 'object') { saveExtras(data.extras); renderExtras(); }
+  if (dadoDeHoje && data.extras && typeof data.extras === 'object') { saveExtras(data.extras); renderExtras(); }
   if (Array.isArray(data.pesoHist)) { savePesoHist(data.pesoHist); }
   if (typeof data.pesoMeta === 'number' && data.pesoMeta > 0) { savePesoMeta(data.pesoMeta); }
   renderPesoAll();
@@ -4081,6 +4612,108 @@ document.addEventListener('visibilitychange', function() {
   if (!document.hidden) { updateNotifStatusUI(); setupNotifTimer(); }
 });
 window.addEventListener('focus', function() { updateNotifStatusUI(); setupNotifTimer(); });
+
+/* ─── Marmitas: cardápio + lista de compras ─────────────────────────────── */
+function mrmSwitchTab(name) {
+  document.querySelectorAll('.mrm-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('.mrm-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelector('.mrm-tab-btn[onclick*="' + name + '"]').classList.add('active');
+  document.getElementById('mrm-panel-' + name).classList.add('active');
+}
+
+var MRM_PREP_KEY = 'marmitas_prep_v1';
+var MRM_SHOP_KEY = 'marmitas_shopping_v1';
+
+function mrmGetPrep() {
+  try { return JSON.parse(localStorage.getItem(MRM_PREP_KEY)) || {}; } catch (e) { return {}; }
+}
+function mrmTogglePrep(el, day) {
+  var box = el.querySelector('.mrm-prep-box');
+  var nowOn = !el.classList.contains('done');
+  el.classList.toggle('done', nowOn);
+  box.classList.toggle('on', nowOn);
+  var data = mrmGetPrep();
+  data[day] = nowOn;
+  localStorage.setItem(MRM_PREP_KEY, JSON.stringify(data));
+}
+function mrmLoadPrepChecks() {
+  var data = mrmGetPrep();
+  var dayIds = ['seg', 'ter', 'qua'];
+  var cards = document.querySelectorAll('#mrm-panel-cardapio .mrm-day-card');
+  dayIds.forEach(function(day, i) {
+    if (data[day] && cards[i]) {
+      var el = cards[i].querySelector('.mrm-prep-check');
+      el.classList.add('done');
+      el.querySelector('.mrm-prep-box').classList.add('on');
+    }
+  });
+}
+
+var MRM_SHOPPING_ITEMS = [
+  { cat: 'proteinas', id: 'frango', name: 'Peito de frango', qty: '150 g (1 filé médio)' },
+  { cat: 'proteinas', id: 'carne', name: 'Carne magra (patinho ou coxão mole)', qty: '150 g' },
+  { cat: 'proteinas', id: 'peixe', name: 'Filé de tilápia (ou outro peixe branco)', qty: '150 g' },
+  { cat: 'carbo', id: 'arroz', name: 'Arroz branco', qty: '~100 g cru (2 marmitas)' },
+  { cat: 'carbo', id: 'macarrao', name: 'Macarrão', qty: '~50 g cru' },
+  { cat: 'vegetais', id: 'brocolis', name: 'Brócolis', qty: '1 cabeça pequena' },
+  { cat: 'vegetais', id: 'cenoura', name: 'Cenoura', qty: '2 unidades' },
+  { cat: 'vegetais', id: 'abobrinha', name: 'Abobrinha', qty: '1 unidade' },
+  { cat: 'vegetais', id: 'vagem', name: 'Vagem', qty: '100 g' },
+  { cat: 'vegetais', id: 'abobora', name: 'Abóbora', qty: '~200 g' },
+  { cat: 'outros', id: 'alho', name: 'Alho', qty: '2 dentes' },
+  { cat: 'outros', id: 'cebola', name: 'Cebola', qty: '1 unidade' },
+  { cat: 'outros', id: 'azeite', name: 'Azeite', qty: 'a gosto' },
+  { cat: 'outros', id: 'limao', name: 'Limão (para o peixe)', qty: '1 unidade' },
+  { cat: 'outros', id: 'temperos', name: 'Sal, pimenta, ervas de preferência', qty: '—' },
+  { cat: 'outros', id: 'potes', name: 'Potes de marmita (3 unidades)', qty: '3' }
+];
+var MRM_CAT_MAP = { proteinas: 'mrm-cat-proteinas', carbo: 'mrm-cat-carbo', vegetais: 'mrm-cat-vegetais', outros: 'mrm-cat-outros' };
+
+function mrmGetShopping() {
+  try { return JSON.parse(localStorage.getItem(MRM_SHOP_KEY)) || {}; } catch (e) { return {}; }
+}
+
+function mrmRenderShoppingList() {
+  Object.keys(MRM_CAT_MAP).forEach(function(k) { document.getElementById(MRM_CAT_MAP[k]).innerHTML = ''; });
+  var data = mrmGetShopping();
+  MRM_SHOPPING_ITEMS.forEach(function(item) {
+    var row = document.createElement('div');
+    row.className = 'mrm-shop-item' + (data[item.id] ? ' checked' : '');
+    row.id = 'mrm-shop-' + item.id;
+    row.innerHTML = '<div class="mrm-shop-box' + (data[item.id] ? ' on' : '') + '"></div>' +
+      '<span class="mrm-shop-name">' + item.name + '</span>' +
+      '<span class="mrm-shop-qty">' + item.qty + '</span>';
+    row.onclick = function() { mrmToggleShopItem(item.id); };
+    document.getElementById(MRM_CAT_MAP[item.cat]).appendChild(row);
+  });
+  mrmUpdateProgress();
+}
+
+function mrmToggleShopItem(id) {
+  var data = mrmGetShopping();
+  data[id] = !data[id];
+  localStorage.setItem(MRM_SHOP_KEY, JSON.stringify(data));
+  var row = document.getElementById('mrm-shop-' + id);
+  row.classList.toggle('checked', data[id]);
+  row.querySelector('.mrm-shop-box').classList.toggle('on', data[id]);
+  mrmUpdateProgress();
+}
+
+function mrmUpdateProgress() {
+  var total = MRM_SHOPPING_ITEMS.length;
+  var done = document.querySelectorAll('#mrm-panel-compras .mrm-shop-item.checked').length;
+  document.getElementById('mrm-progress-fill').style.width = (total ? (done / total * 100) : 0) + '%';
+  document.getElementById('mrm-progress-label').textContent = done + ' de ' + total + ' itens';
+}
+
+function mrmResetShopping() {
+  if (!confirm('Limpar a lista de compras das marmitas?')) return;
+  localStorage.removeItem(MRM_SHOP_KEY);
+  mrmRenderShoppingList();
+}
+
+mrmRenderShoppingList();
+mrmLoadPrepChecks();
 </script>
 </body>
 </html>
