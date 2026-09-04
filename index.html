@@ -56,6 +56,25 @@ header p { font-size: 14px; color: var(--muted); }
   gap: 8px;
   margin-top: 10px;
 }
+.header-icon-btn {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--text);
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.header-icon-btn:hover { background: var(--bg); border-color: var(--accent); }
+.schedule-modal { max-width: 680px; }
+.schedule-modal .summary-title { margin-bottom: 1rem; }
+.schedule-modal .tip { margin-bottom: 0.25rem; }
+.schedule-modal-close { display: block; margin: 1rem auto 0; }
 .sync-status {
   display: inline-flex;
   align-items: center;
@@ -1170,6 +1189,7 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
         <span class="sync-dot" id="notif-dot"></span>
         <span id="notif-label">Notificações</span>
       </button>
+      <button class="header-icon-btn" type="button" onclick="openScheduleModal()" aria-label="Abrir horários por tipo de dia" title="Horários por tipo de dia">🕒</button>
       <div class="sync-status" id="hoje-pill" style="cursor:default;">
         <span class="sync-dot sync-ok"></span>
         <span id="hoje-label">—</span>
@@ -1742,13 +1762,6 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
   </div>
   <!-- FIM DO CONTROLE DE ALIMENTAÇÃO -->
 
-  <!-- HORÁRIOS POR TIPO DE DIA -->
-  <div class="summary-card" id="horarios-section">
-    <div class="summary-title">🗓️ Horários por tipo de dia</div>
-    <div id="horarios-dinamico"></div>
-    <div class="tip">💡 Esses horários seguem o que você marcou em "Minha Rotina da Semana" lá em cima — mude os toggles de lá que a lista se atualiza sozinha.</div>
-  </div>
-
   <!-- SUMMARY -->
   <div class="summary-card">
     <div class="summary-title">⚖️ Resumo do dia</div>
@@ -1845,6 +1858,16 @@ button, .item, .ci-dot, .suplem-dot, .agua-item, .week-nav-btn, .extra-toggle {
   </div>
 
   <footer>Plano alimentar — dados salvos no navegador</footer>
+</div>
+
+<!-- Horários por tipo de dia Modal -->
+<div class="sync-modal-overlay" id="schedule-modal" onclick="if(event.target===this) closeScheduleModal()">
+  <div class="sync-modal schedule-modal" role="dialog" aria-modal="true" aria-labelledby="schedule-modal-title">
+    <div class="summary-title" id="schedule-modal-title">🗓️ Horários por tipo de dia</div>
+    <div id="horarios-dinamico"></div>
+    <div class="tip">💡 Esses horários seguem o que você marcou em "Minha Rotina da Semana" lá em cima — mude os toggles de lá que a lista se atualiza sozinha.</div>
+    <button class="sync-btn schedule-modal-close" type="button" onclick="closeScheduleModal()">Fechar</button>
+  </div>
 </div>
 
 <!-- Sync Modal -->
@@ -4254,6 +4277,8 @@ function openSyncModal() {
   document.getElementById('sync-modal').classList.add('open');
 }
 function closeSyncModal() { document.getElementById('sync-modal').classList.remove('open'); }
+function openScheduleModal() { document.getElementById('schedule-modal').classList.add('open'); }
+function closeScheduleModal() { document.getElementById('schedule-modal').classList.remove('open'); }
 function saveGhTokenFromModal() {
   const val = document.getElementById('sync-token-input').value.trim();
   setGhToken(val);
