@@ -3,13 +3,47 @@
     "cafe-1": 102,
     "cafe-2": 60,
     "cafe-3": 55,
-    "jan-1": 215,
     "alm-1": 215,
-    "alm-2": 130,
     "alm-4": 65,
-    "doc-1": 50
+    "alm-2": 130,
+    "lt-2": 200,
+    "jan-2": 90,
+    "doc-2": 65
   },
+  "checkedDate": "2026-9-3",
   "hist": [
+    {
+      "date": "03/09/2026",
+      "kcal": 982
+    },
+    {
+      "date": "01/09/2026",
+      "kcal": 1482
+    },
+    {
+      "date": "31/08/2026",
+      "kcal": 1157
+    },
+    {
+      "date": "24/08/2026",
+      "kcal": 787
+    },
+    {
+      "date": "31/07/2026",
+      "kcal": 217
+    },
+    {
+      "date": "28/07/2026",
+      "kcal": 217
+    },
+    {
+      "date": "27/07/2026",
+      "kcal": 1182
+    },
+    {
+      "date": "25/07/2026",
+      "kcal": 907
+    },
     {
       "date": "24/07/2026",
       "kcal": 1392
@@ -233,7 +267,51 @@
       "agua_3": true,
       "cardio_4": true,
       "oracao_4": true,
-      "leitura_4": true
+      "leitura_4": true,
+      "agua_4": true
+    },
+    "2026-07-27": {
+      "treino_0": true,
+      "cardio_0": true,
+      "alim_0": true,
+      "leitura_0": true,
+      "oracao_0": true,
+      "oracao_3": true,
+      "leitura_3": true,
+      "alim_1": true,
+      "alim_2": true,
+      "oracao_1": true,
+      "oracao_2": true,
+      "leitura_1": true,
+      "leitura_2": true,
+      "agua_2": true,
+      "agua_1": true,
+      "agua_4": true,
+      "alim_4": true
+    },
+    "2026-08-03": {
+      "agua_0": true,
+      "treino_0": true,
+      "cardio_0": true,
+      "alim_0": true,
+      "oracao_0": true,
+      "leitura_0": true,
+      "oracao_1": true,
+      "leitura_1": true,
+      "agua_1": true
+    },
+    "2026-08-24": {},
+    "2026-08-31": {
+      "agua_0": true,
+      "treino_0": true,
+      "cardio_0": true,
+      "alim_0": true,
+      "agua_1": true,
+      "treino_1": true,
+      "alim_1": true,
+      "oracao_1": true,
+      "oracao_3": true,
+      "oracao_0": true
     }
   },
   "suplementos": {
@@ -299,6 +377,37 @@
       "creatina": [
         0
       ]
+    },
+    "27/07/2026": {
+      "omega3": [
+        0,
+        1,
+        2
+      ],
+      "pre-treino": [
+        0
+      ],
+      "creatina": [
+        0
+      ],
+      "melatonina": [
+        0
+      ]
+    },
+    "31/07/2026": {
+      "creatina": [
+        0
+      ]
+    },
+    "05/08/2026": {
+      "creatina": [
+        0
+      ]
+    },
+    "31/08/2026": {
+      "pre-treino": [
+        0
+      ]
     }
   },
   "suplItens": [
@@ -315,9 +424,40 @@
       "name": "Ômega 3",
       "dose": "3 cápsulas por dia",
       "doses": 3
+    },
+    {
+      "id": "pre-treino",
+      "icon": "⚡️",
+      "name": "Pré treino",
+      "dose": "1 dose por dia",
+      "doses": 1,
+      "optional": true
+    },
+    {
+      "id": "melatonina",
+      "icon": "🌒",
+      "name": "Melatonina",
+      "dose": "1 dose por dia",
+      "doses": 1,
+      "optional": true
     }
   ],
   "suplHist": [
+    {
+      "date": "05/08/2026",
+      "done": 1,
+      "total": 4
+    },
+    {
+      "date": "31/07/2026",
+      "done": 1,
+      "total": 4
+    },
+    {
+      "date": "27/07/2026",
+      "done": 4,
+      "total": 4
+    },
     {
       "date": "24/07/2026",
       "done": 2,
@@ -404,41 +544,236 @@
           "ml": 700,
           "effective": 525
         }
+      ],
+      "5": [
+        {
+          "id": "agua-1784984877257",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 700,
+          "effective": 595
+        },
+        {
+          "id": "agua-1785007285224",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 700,
+          "effective": 700
+        },
+        {
+          "id": "agua-1785007293203",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
+        },
+        {
+          "id": "agua-1785026390817",
+          "name": "Outra bebida",
+          "icon": "🍹",
+          "ml": 473,
+          "effective": 355
+        },
+        {
+          "id": "agua-1785026396663",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 500,
+          "effective": 500
+        }
+      ]
+    },
+    "2026-07-27": {
+      "0": [
+        {
+          "id": "agua-1785175841562",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 700,
+          "effective": 700
+        },
+        {
+          "id": "agua-1785175847944",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
+        },
+        {
+          "id": "agua-1785175851762",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 250,
+          "effective": 213
+        },
+        {
+          "id": "agua-1785192766226",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 150,
+          "effective": 150
+        },
+        {
+          "id": "agua-1785192780556",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 500,
+          "effective": 500
+        },
+        {
+          "id": "agua-1785203897460",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 400,
+          "effective": 340
+        }
+      ],
+      "1": [
+        {
+          "id": "agua-1785242236493",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 700,
+          "effective": 595
+        }
+      ]
+    },
+    "2026-08-24": {
+      "0": [
+        {
+          "id": "agua-1787570035167",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 250,
+          "effective": 213
+        },
+        {
+          "id": "agua-1787597870402",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 300,
+          "effective": 300
+        },
+        {
+          "id": "agua-1787601421802",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 300,
+          "effective": 300
+        }
+      ]
+    },
+    "2026-08-31": {
+      "0": [
+        {
+          "id": "agua-1788228793530",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 1500,
+          "effective": 1500
+        },
+        {
+          "id": "agua-1788228798661",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 250,
+          "effective": 213
+        },
+        {
+          "id": "agua-1788228802992",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 600,
+          "effective": 510
+        }
+      ],
+      "1": [
+        {
+          "id": "agua-1788314487816",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 2500,
+          "effective": 2500
+        }
+      ],
+      "3": [
+        {
+          "id": "agua-1788480283934",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 600,
+          "effective": 510
+        },
+        {
+          "id": "agua-1788480287956",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 700,
+          "effective": 595
+        },
+        {
+          "id": "agua-1788480474034",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 500,
+          "effective": 500
+        }
       ]
     }
   },
   "aguaMeta": 2500,
   "aguaHist": [
     {
+      "date": "03/09/2026",
+      "ml": 1605,
+      "meta": 2500
+    },
+    {
+      "date": "31/08/2026",
+      "ml": 2223,
+      "meta": 2500
+    },
+    {
+      "date": "24/08/2026",
+      "ml": 813,
+      "meta": 2500
+    },
+    {
+      "date": "28/07/2026",
+      "ml": 595,
+      "meta": 2500
+    },
+    {
+      "date": "27/07/2026",
+      "ml": 2158,
+      "meta": 2500
+    },
+    {
+      "date": "25/07/2026",
+      "ml": 2405,
+      "meta": 2500
+    },
+    {
       "date": "24/07/2026",
       "ml": 1875,
       "meta": 2500
     }
   ],
-  "extras": {
-    "lanche-tarde": [
-      {
-        "id": "ext-lanche-tarde-1784942698689",
-        "name": "Bolo de pessêgo",
-        "kcal": 350,
-        "checked": true
-      }
-    ],
-    "jantar": [
-      {
-        "id": "ext-jantar-1784942715775",
-        "name": "Pão de hambuguer",
-        "kcal": 150,
-        "checked": true
-      }
-    ]
-  },
+  "extras": {},
   "pesoHist": [
+    {
+      "date": "03/09/2026",
+      "peso": 69.9
+    },
+    {
+      "date": "27/07/2026",
+      "peso": 70
+    },
     {
       "date": "24/07/2026",
       "peso": 71.9
     }
   ],
-  "pesoMeta": 60,
-  "_updatedAt": "2026-07-25T02:14:56.673Z"
+  "pesoMeta": 65,
+  "_updatedAt": "2026-09-04T00:07:56.538Z"
 }
