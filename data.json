@@ -317,7 +317,6 @@
       "oracao_0": true,
       "agua_3": true,
       "agua_4": true,
-      "treino_4": true,
       "cardio_4": true,
       "alim_4": true
     }
@@ -811,5 +810,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-05T01:20:31.196Z"
+  "_updatedAt": "2026-09-05T01:20:34.085Z"
 }
