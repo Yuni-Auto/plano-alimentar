@@ -317,7 +317,6 @@
       "oracao_3": true,
       "oracao_0": true,
       "agua_3": true,
-      "agua_4": true,
       "cardio_4": true,
       "alim_4": true,
       "oracao_4": true,
@@ -752,6 +751,13 @@
           "icon": "💧",
           "ml": 700,
           "effective": 700
+        },
+        {
+          "id": "agua-1788571354760",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 600,
+          "effective": 600
         }
       ]
     }
@@ -760,7 +766,7 @@
   "aguaHist": [
     {
       "date": "04/09/2026",
-      "ml": 1545,
+      "ml": 2145,
       "meta": 2500
     },
     {
@@ -815,5 +821,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-05T01:21:18.856Z"
+  "_updatedAt": "2026-09-05T01:22:37.268Z"
 }
