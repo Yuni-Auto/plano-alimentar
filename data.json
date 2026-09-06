@@ -12,7 +12,7 @@
   "hist": [
     {
       "date": "06/09/2026",
-      "kcal": 1047
+      "kcal": 1207
     },
     {
       "date": "05/09/2026",
@@ -865,6 +865,12 @@
         "name": "Coxinhas De Frango",
         "kcal": 320,
         "checked": true
+      },
+      {
+        "id": "ext-jantar-1788737634966",
+        "name": "2 Ovos",
+        "kcal": 160,
+        "checked": true
       }
     ]
   },
@@ -883,5 +889,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-06T23:33:38.830Z"
+  "_updatedAt": "2026-09-06T23:33:57.471Z"
 }
