@@ -12,7 +12,7 @@
   "hist": [
     {
       "date": "06/09/2026",
-      "kcal": 1207
+      "kcal": 1357
     },
     {
       "date": "05/09/2026",
@@ -871,6 +871,12 @@
         "name": "2 Ovos",
         "kcal": 160,
         "checked": true
+      },
+      {
+        "id": "ext-jantar-1788737646824",
+        "name": "1 fatia de pão",
+        "kcal": 150,
+        "checked": true
       }
     ]
   },
@@ -889,5 +895,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-06T23:33:57.471Z"
+  "_updatedAt": "2026-09-06T23:34:09.329Z"
 }
