@@ -12,7 +12,7 @@
   "hist": [
     {
       "date": "06/09/2026",
-      "kcal": 727
+      "kcal": 1047
     },
     {
       "date": "05/09/2026",
@@ -858,7 +858,16 @@
       "meta": 2500
     }
   ],
-  "extras": {},
+  "extras": {
+    "jantar": [
+      {
+        "id": "ext-jantar-1788737616318",
+        "name": "Coxinhas De Frango",
+        "kcal": 320,
+        "checked": true
+      }
+    ]
+  },
   "pesoHist": [
     {
       "date": "03/09/2026",
@@ -874,5 +883,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-06T21:31:01.045Z"
+  "_updatedAt": "2026-09-06T23:33:38.830Z"
 }
