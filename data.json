@@ -14,7 +14,7 @@
   "hist": [
     {
       "date": "06/09/2026",
-      "kcal": 1632
+      "kcal": 1852
     },
     {
       "date": "05/09/2026",
@@ -880,6 +880,14 @@
         "kcal": 150,
         "checked": true
       }
+    ],
+    "almoco": [
+      {
+        "id": "ext-almoco-1788737716555",
+        "name": "kit kat",
+        "kcal": 220,
+        "checked": true
+      }
     ]
   },
   "pesoHist": [
@@ -897,5 +905,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-06T23:34:23.272Z"
+  "_updatedAt": "2026-09-06T23:35:19.061Z"
 }
