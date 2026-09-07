@@ -332,6 +332,13 @@
       "alim_2": true,
       "agua_4": true,
       "cardio_1": true
+    },
+    "2026-09-07": {
+      "agua_0": true,
+      "treino_0": true,
+      "cardio_0": true,
+      "alim_0": true,
+      "oracao_0": true
     }
   },
   "suplementos": {
@@ -928,5 +935,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-07T21:58:22.616Z"
+  "_updatedAt": "2026-09-07T21:58:39.179Z"
 }
