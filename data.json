@@ -1,16 +1,6 @@
 {
-  "checked": {
-    "cafe-1": 102,
-    "cafe-2": 60,
-    "cafe-3": 55,
-    "alm-1": 215,
-    "alm-2": 130,
-    "alm-4": 65,
-    "doc-3": 100,
-    "lt-2": 200,
-    "lm-1": 75
-  },
-  "checkedDate": "2026-9-6",
+  "checked": {},
+  "checkedDate": "2026-9-7",
   "hist": [
     {
       "date": "06/09/2026",
@@ -860,36 +850,7 @@
       "meta": 2500
     }
   ],
-  "extras": {
-    "jantar": [
-      {
-        "id": "ext-jantar-1788737616318",
-        "name": "Coxinhas De Frango",
-        "kcal": 320,
-        "checked": true
-      },
-      {
-        "id": "ext-jantar-1788737634966",
-        "name": "2 Ovos",
-        "kcal": 160,
-        "checked": true
-      },
-      {
-        "id": "ext-jantar-1788737646824",
-        "name": "1 fatia de pão",
-        "kcal": 150,
-        "checked": true
-      }
-    ],
-    "almoco": [
-      {
-        "id": "ext-almoco-1788737716555",
-        "name": "kit kat",
-        "kcal": 220,
-        "checked": true
-      }
-    ]
-  },
+  "extras": {},
   "pesoHist": [
     {
       "date": "03/09/2026",
@@ -905,5 +866,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-07T00:37:31.353Z"
+  "_updatedAt": "2026-09-07T21:53:56.699Z"
 }
