@@ -818,6 +818,20 @@
           "icon": "☕",
           "ml": 400,
           "effective": 340
+        },
+        {
+          "id": "agua-1788818235090",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 500,
+          "effective": 425
+        },
+        {
+          "id": "agua-1788818237830",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 500,
+          "effective": 425
         }
       ]
     }
@@ -826,7 +840,7 @@
   "aguaHist": [
     {
       "date": "07/09/2026",
-      "ml": 1295,
+      "ml": 2145,
       "meta": 2500
     },
     {
@@ -896,5 +910,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-07T21:57:08.928Z"
+  "_updatedAt": "2026-09-07T21:57:20.332Z"
 }
