@@ -9,7 +9,7 @@
   "hist": [
     {
       "date": "07/09/2026",
-      "kcal": 617
+      "kcal": 782
     },
     {
       "date": "06/09/2026",
@@ -918,6 +918,14 @@
         "kcal": 200,
         "checked": true
       }
+    ],
+    "jantar": [
+      {
+        "id": "ext-jantar-1788827026914",
+        "name": "tapioca",
+        "kcal": 165,
+        "checked": true
+      }
     ]
   },
   "pesoHist": [
@@ -935,5 +943,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-07T21:58:39.179Z"
+  "_updatedAt": "2026-09-08T00:23:49.422Z"
 }
