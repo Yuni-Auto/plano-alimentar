@@ -9,7 +9,7 @@
   "hist": [
     {
       "date": "07/09/2026",
-      "kcal": 872
+      "kcal": 938
     },
     {
       "date": "06/09/2026",
@@ -931,6 +931,12 @@
         "name": "1 ovo",
         "kcal": 90,
         "checked": true
+      },
+      {
+        "id": "ext-jantar-1788827065330",
+        "name": "Queijo mussarela",
+        "kcal": 66,
+        "checked": true
       }
     ]
   },
@@ -949,5 +955,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-08T00:24:10.589Z"
+  "_updatedAt": "2026-09-08T00:24:27.834Z"
 }
