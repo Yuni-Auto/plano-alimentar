@@ -9,7 +9,7 @@
   "hist": [
     {
       "date": "07/09/2026",
-      "kcal": 782
+      "kcal": 872
     },
     {
       "date": "06/09/2026",
@@ -925,6 +925,12 @@
         "name": "tapioca",
         "kcal": 165,
         "checked": true
+      },
+      {
+        "id": "ext-jantar-1788827048080",
+        "name": "1 ovo",
+        "kcal": 90,
+        "checked": true
       }
     ]
   },
@@ -943,5 +949,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-08T00:23:49.422Z"
+  "_updatedAt": "2026-09-08T00:24:10.589Z"
 }
