@@ -14,7 +14,7 @@
   "hist": [
     {
       "date": "10/09/2026",
-      "kcal": 852
+      "kcal": 1002
     },
     {
       "date": "07/09/2026",
@@ -947,7 +947,16 @@
       "meta": 2500
     }
   ],
-  "extras": {},
+  "extras": {
+    "lanche-tarde": [
+      {
+        "id": "ext-lanche-tarde-1789075691469",
+        "name": "Tapioca",
+        "kcal": 150,
+        "checked": true
+      }
+    ]
+  },
   "pesoHist": [
     {
       "date": "03/09/2026",
@@ -963,5 +972,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-10T20:55:36.115Z"
+  "_updatedAt": "2026-09-10T21:28:14.005Z"
 }
