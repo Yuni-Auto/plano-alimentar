@@ -14,7 +14,7 @@
   "hist": [
     {
       "date": "10/09/2026",
-      "kcal": 1092
+      "kcal": 1152
     },
     {
       "date": "07/09/2026",
@@ -960,6 +960,12 @@
         "name": "Ovo",
         "kcal": 90,
         "checked": true
+      },
+      {
+        "id": "ext-lanche-tarde-1789075707685",
+        "name": "mussarela",
+        "kcal": 60,
+        "checked": true
       }
     ]
   },
@@ -978,5 +984,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-10T21:28:19.057Z"
+  "_updatedAt": "2026-09-10T21:28:30.195Z"
 }
