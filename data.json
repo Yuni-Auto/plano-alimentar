@@ -1,11 +1,6 @@
 {
-  "checked": {
-    "cafe-1": 102,
-    "cafe-3": 55,
-    "cafe-2": 60,
-    "lt-3": 200
-  },
-  "checkedDate": "2026-9-7",
+  "checked": {},
+  "checkedDate": "2026-9-10",
   "hist": [
     {
       "date": "07/09/2026",
@@ -910,36 +905,7 @@
       "meta": 2500
     }
   ],
-  "extras": {
-    "almoco": [
-      {
-        "id": "ext-almoco-1788818286991",
-        "name": "Noque de espinafre recheado",
-        "kcal": 200,
-        "checked": true
-      }
-    ],
-    "jantar": [
-      {
-        "id": "ext-jantar-1788827026914",
-        "name": "tapioca",
-        "kcal": 165,
-        "checked": true
-      },
-      {
-        "id": "ext-jantar-1788827048080",
-        "name": "1 ovo",
-        "kcal": 90,
-        "checked": true
-      },
-      {
-        "id": "ext-jantar-1788827065330",
-        "name": "Queijo mussarela",
-        "kcal": 66,
-        "checked": true
-      }
-    ]
-  },
+  "extras": {},
   "pesoHist": [
     {
       "date": "03/09/2026",
@@ -955,5 +921,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-08T00:24:27.834Z"
+  "_updatedAt": "2026-09-10T18:37:59.394Z"
 }
