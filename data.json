@@ -1,18 +1,6 @@
 {
-  "checked": {
-    "cafe-1": 102,
-    "cafe-2": 60,
-    "cafe-3": 55,
-    "alm-1": 215,
-    "alm-2": 130,
-    "alm-3": 85,
-    "alm-4": 65,
-    "alm-5": 40,
-    "doc-3": 100,
-    "jan-2": 90,
-    "jan-3": 70
-  },
-  "checkedDate": "2026-9-10",
+  "checked": {},
+  "checkedDate": "2026-9-11",
   "hist": [
     {
       "date": "10/09/2026",
@@ -952,36 +940,7 @@
       "meta": 2500
     }
   ],
-  "extras": {
-    "lanche-tarde": [
-      {
-        "id": "ext-lanche-tarde-1789075691469",
-        "name": "Tapioca",
-        "kcal": 150,
-        "checked": true
-      },
-      {
-        "id": "ext-lanche-tarde-1789075696537",
-        "name": "Ovo",
-        "kcal": 90,
-        "checked": true
-      },
-      {
-        "id": "ext-lanche-tarde-1789075707685",
-        "name": "mussarela",
-        "kcal": 60,
-        "checked": true
-      }
-    ],
-    "jantar": [
-      {
-        "id": "ext-jantar-1789086912559",
-        "name": "2 ovos",
-        "kcal": 120,
-        "checked": true
-      }
-    ]
-  },
+  "extras": {},
   "pesoHist": [
     {
       "date": "03/09/2026",
@@ -997,5 +956,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-11T00:35:25.679Z"
+  "_updatedAt": "2026-09-11T04:07:56.307Z"
 }
