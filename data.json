@@ -363,6 +363,12 @@
       "agua_3": true,
       "alim_3": true,
       "oracao_3": true
+    },
+    "2026-09-14": {
+      "agua_0": true,
+      "alim_0": true,
+      "oracao_0": true,
+      "leitura_0": true
     }
   },
   "suplementos": {
@@ -1018,5 +1024,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-14T21:50:43.006Z"
+  "_updatedAt": "2026-09-14T21:50:48.478Z"
 }
