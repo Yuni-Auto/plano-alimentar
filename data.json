@@ -382,8 +382,7 @@
       "oracao_0": true,
       "cardio_0": true,
       "treino_0": true,
-      "leitura_0": true,
-      "agua_0": true
+      "leitura_0": true
     }
   },
   "suplementos": {
@@ -953,10 +952,54 @@
           "effective": 128
         }
       ]
+    },
+    "2026-09-21": {
+      "0": [
+        {
+          "id": "agua-1790037267388",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
+        },
+        {
+          "id": "agua-1790037270949",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
+        },
+        {
+          "id": "agua-1790037274002",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
+        },
+        {
+          "id": "agua-1790037277144",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 1000,
+          "effective": 1000
+        },
+        {
+          "id": "agua-1790037282813",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 300,
+          "effective": 255
+        }
+      ]
     }
   },
   "aguaMeta": 2500,
   "aguaHist": [
+    {
+      "date": "21/09/2026",
+      "ml": 2020,
+      "meta": 2500
+    },
     {
       "date": "14/09/2026",
       "ml": 841,
@@ -1039,5 +1082,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-22T00:26:21.612Z"
+  "_updatedAt": "2026-09-22T00:34:45.761Z"
 }
