@@ -1,19 +1,6 @@
 {
-  "checked": {
-    "cafe-1": 102,
-    "cafe-2": 60,
-    "cafe-3": 55,
-    "cafe-7": 62,
-    "alm-1": 215,
-    "alm-2": 130,
-    "alm-4": 65,
-    "doc-2": 65,
-    "lt-2": 200,
-    "jan-2": 90,
-    "jan-1": 215,
-    "jan-3": 70
-  },
-  "checkedDate": "2026-9-23",
+  "checked": {},
+  "checkedDate": "2026-9-24",
   "hist": [
     {
       "date": "23/09/2026",
@@ -1151,22 +1138,7 @@
       "meta": 2500
     }
   ],
-  "extras": {
-    "lanche-manha": [
-      {
-        "id": "ext-lanche-manha-1790170911693",
-        "name": "aveia",
-        "kcal": 55,
-        "checked": true
-      },
-      {
-        "id": "ext-lanche-manha-1790170938409",
-        "name": "Iorgute caseiro",
-        "kcal": 61,
-        "checked": true
-      }
-    ]
-  },
+  "extras": {},
   "pesoHist": [
     {
       "date": "03/09/2026",
@@ -1182,5 +1154,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-24T00:34:08.408Z"
+  "_updatedAt": "2026-09-24T11:44:31.051Z"
 }
