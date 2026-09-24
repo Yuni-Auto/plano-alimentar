@@ -376,10 +376,8 @@
       "oracao_0": true,
       "cardio_0": true,
       "treino_0": true,
-      "leitura_0": true,
       "oracao_1": true,
       "agua_1": true,
-      "leitura_1": true,
       "agua_2": true,
       "treino_2": true,
       "cardio_2": true,
@@ -1154,5 +1152,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-09-24T11:44:31.051Z"
+  "_updatedAt": "2026-09-24T11:44:36.304Z"
 }
