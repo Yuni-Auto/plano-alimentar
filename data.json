@@ -398,7 +398,8 @@
       "treino_0": true,
       "cardio_0": true,
       "alim_0": true,
-      "oracao_0": true
+      "oracao_0": true,
+      "alim_1": true
     }
   },
   "suplementos": {
@@ -1208,5 +1209,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-10-06T12:41:53.068Z"
+  "_updatedAt": "2026-10-06T17:40:59.966Z"
 }
