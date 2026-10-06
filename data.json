@@ -392,6 +392,13 @@
       "alim_2": true,
       "oracao_2": true,
       "leitura_0": true
+    },
+    "2026-10-05": {
+      "agua_0": true,
+      "treino_0": true,
+      "cardio_0": true,
+      "alim_0": true,
+      "oracao_0": true
     }
   },
   "suplementos": {
@@ -1194,5 +1201,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-10-06T11:22:32.592Z"
+  "_updatedAt": "2026-10-06T11:22:42.643Z"
 }
