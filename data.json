@@ -13,7 +13,7 @@
     "jan-3": 70,
     "doc-3": 100
   },
-  "checkedDate": "2026-10-6",
+  "checkedDate": "2026-10-7",
   "hist": [
     {
       "date": "06/10/2026",
@@ -408,7 +408,10 @@
       "cardio_0": true,
       "alim_0": true,
       "oracao_0": true,
-      "alim_1": true
+      "alim_1": true,
+      "agua_1": true,
+      "treino_1": true,
+      "cardio_1": true
     }
   },
   "suplementos": {
@@ -1232,5 +1235,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-10-06T22:08:24.063Z"
+  "_updatedAt": "2026-10-07T11:32:02.783Z"
 }
