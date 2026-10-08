@@ -8,7 +8,7 @@
     "alm-4": 65,
     "alm-3": 85
   },
-  "checkedDate": "2026-10-7",
+  "checkedDate": "2026-10-8",
   "hist": [
     {
       "date": "07/10/2026",
@@ -413,7 +413,9 @@
       "cardio_1": true,
       "oracao_1": true,
       "agua_2": true,
-      "alim_2": true
+      "alim_2": true,
+      "cardio_2": true,
+      "oracao_2": true
     }
   },
   "suplementos": {
@@ -1275,5 +1277,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-10-07T19:58:35.544Z"
+  "_updatedAt": "2026-10-08T13:31:18.795Z"
 }
