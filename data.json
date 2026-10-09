@@ -415,7 +415,12 @@
       "cardio_3": true,
       "alim_3": true,
       "oracao_3": true,
-      "agua_3": true
+      "agua_3": true,
+      "agua_4": true,
+      "treino_4": true,
+      "cardio_4": true,
+      "oracao_4": true,
+      "leitura_4": true
     }
   },
   "suplementos": {
@@ -1305,5 +1310,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-10-09T14:05:51.475Z"
+  "_updatedAt": "2026-10-09T15:22:50.652Z"
 }
