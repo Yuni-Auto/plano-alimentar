@@ -1,7 +1,15 @@
 {
-  "checked": {},
+  "checked": {
+    "cafe-1": 102,
+    "cafe-2": 60,
+    "cafe-3": 55
+  },
   "checkedDate": "2026-10-13",
   "hist": [
+    {
+      "date": "13/10/2026",
+      "kcal": 217
+    },
     {
       "date": "08/10/2026",
       "kcal": 812
@@ -1193,10 +1201,40 @@
           "effective": 255
         }
       ]
+    },
+    "2026-10-12": {
+      "1": [
+        {
+          "id": "agua-1791917732299",
+          "name": "Café com leite",
+          "icon": "☕",
+          "ml": 500,
+          "effective": 425
+        },
+        {
+          "id": "agua-1791917735725",
+          "name": "Refrigerante",
+          "icon": "🥤",
+          "ml": 300,
+          "effective": 255
+        },
+        {
+          "id": "agua-1791917740758",
+          "name": "Água",
+          "icon": "💧",
+          "ml": 600,
+          "effective": 600
+        }
+      ]
     }
   },
   "aguaMeta": 2500,
   "aguaHist": [
+    {
+      "date": "13/10/2026",
+      "ml": 1280,
+      "meta": 2500
+    },
     {
       "date": "08/10/2026",
       "ml": 810,
@@ -1309,5 +1347,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-10-13T18:20:34.197Z"
+  "_updatedAt": "2026-10-13T18:55:47.190Z"
 }
