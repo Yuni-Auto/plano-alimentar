@@ -8,7 +8,7 @@
   "hist": [
     {
       "date": "15/10/2026",
-      "kcal": 237
+      "kcal": 340
     },
     {
       "date": "13/10/2026",
@@ -1385,7 +1385,14 @@
     }
   ],
   "extras": {
-    "lanche-manha": []
+    "lanche-manha": [
+      {
+        "id": "ext-lanche-manha-1792102999258",
+        "name": "Iorgute",
+        "kcal": 103,
+        "checked": true
+      }
+    ]
   },
   "pesoHist": [
     {
@@ -1402,5 +1409,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-10-15T22:23:15.144Z"
+  "_updatedAt": "2026-10-15T22:23:21.764Z"
 }
