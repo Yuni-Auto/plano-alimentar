@@ -465,6 +465,9 @@
       "oracao_2": true,
       "agua_1": true,
       "agua_0": true
+    },
+    "2026-11-02": {
+      "alim_1": true
     }
   },
   "suplementos": {
@@ -1432,5 +1435,5 @@
     }
   ],
   "pesoMeta": 65,
-  "_updatedAt": "2026-11-03T03:23:16.091Z"
+  "_updatedAt": "2026-11-03T21:41:42.691Z"
 }
